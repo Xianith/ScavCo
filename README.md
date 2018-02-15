@@ -1,7 +1,7 @@
 # ScavCo
 Escape from Tarkov website
 
-#### 0.0.3
+Current Version: 0.0.3
 
 ## Todo
 -Number don't matter, but it's in a state that I can actually mess with the site now
