@@ -1,0 +1,229 @@
+/*-----------*/
+/*footer*/
+/*-----------*/
+.madeby, .loading-div {
+    display: block;
+    position: fixed;
+    bottom: 0px;
+    padding: 15px;
+    margin: auto;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 9px;
+    background-color: #685c45;
+    color: #d6bd8e;
+}
+.madeby a, .loading-div { color: #d6bd8e; }
+
+/*-----------*/
+/*Home*/
+/*-----------*/
+#Home {
+    color:#d6bd8e !important;
+    background-color: #685c45;
+    margin:auto;    
+    margin-top: 20px;
+    width:550px;
+}
+
+#Home a {
+    color:#a29987;
+}
+/*-----------*/
+/*loading prompt*/
+/*-----------*/
+.loading-div {
+    top: 20%;
+    width: 200px;
+    height: 125px;
+    font-size: 25px;
+    display: block;
+    padding: 45px;
+}
+
+/*-----------*/
+/*social icons*/
+/*-----------*/
+.socialicon{
+    opacity: 1;
+    height: 35px;
+    border-radius: 55px;
+    border: 2px solid #d6bd8e;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.socialicon:hover {
+        -moz-transform: scale(1.3);
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+}
+
+p.post-text {
+font-size: 12px;
+color: gray;
+}
+
+/*@font-face {
+    font-family: tarkov;
+    src: url('../assets/1escape.ttf'); /*1ESCAPE FROM TARKOV by iWolf.ttf
+}*/
+
+.container .jumbotron {
+    padding-right: 15px;
+    padding-left: 15px;   
+}
+
+.nav-btn {
+    text-shadow: 0px 0px 5px #d6bd8e;
+    padding:10px !important;
+}
+
+.nav-btn-brd {
+    margin: 3px;
+}
+
+.nav-btn {
+    margin: 0;
+}
+
+a.post-title-WTS, a.post-title-WTB, a.post-title-WTT {
+    color: black !important;
+    font-size: 16px;
+}
+
+.post-text {
+    font-size: 12px;
+    font-style: italic;
+    color: darkgray;
+}
+
+.nav-btn-brd.WTS {
+    border: 2px solid green;
+    background-color: #00800069;
+}
+
+.nav-btn-brd.WTB {
+    border: 2px solid orange;
+    background-color: #ffa50070;
+}
+
+.nav-btn-brd.WTT {
+    border: 2px solid purple;
+    background-color: #c100c16e;
+}
+
+.Closed:parent.thing {
+    display:none;
+}
+
+.contentcontainer {
+    margin-top: 27px;
+}
+
+.navbar-fixed-top {
+    box-shadow: 0 0 100px rgba(65,61,52,1), 0 0 6px rgba(232,190,107,0.8);
+    border:0;
+    background-color: black;
+    border-color: #9a8866;
+}
+
+.navbar-brand {
+    /*font-family: tarkov;*/
+    letter-spacing: 3px;
+    font-size: 24px;
+    color: white;
+    padding: 15px;
+    margin: 0px;
+}
+
+.active  {
+    border: 2px solid #9a8866 !important;
+    background-color:#9a8866ad !important;
+    border-radius: 0px;
+}
+
+.active .nav-btn{
+    /*border-radius: 0;*/
+    color:#d6bd8e !important;
+    font-size: 15.5px;
+    background-color:#9a8866ad !important;
+}
+
+body {
+    background-color: #2f2e27;
+    height: auto;
+}
+
+#Barter {
+    overflow-y: scroll;
+    height: 500px;
+    margin-top: 27px;
+}
+
+#mapid { height: 180px; }
+
+/*-----------*/
+/*Trdaers*/
+/*-----------*/
+.trader-btns {
+    height: 85px;
+    margin: 5px;
+    border: 3px solid black;
+    cursor: pointer;
+}
+
+.trader-menu {
+    background-color: black;
+    width: 400px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.trader-container {
+    padding-bottom: 0;
+}
+/*-----------*/
+
+
+.sidebar {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: #685c45; /*#eee*/
+    display: block;
+    position: fixed;
+    left: -10px;
+    top: 15%;
+    width: 150px;
+    /*border-radius: 15px;*/
+    /*box-shadow: 1px 5px 20px 0px #888888;*/
+}
+
+/*.tab-img .tab-title {overflow: visible !important;}*/
+.tab-img {
+    /*background: url(../img/traders/tabs.png) no-repeat;*/
+    width: 40px;
+    height: 40px;
+    /*background-position: 5px -1px;*/
+    /*padding: 20px;*/
+    /*margin: 5px;*/
+     background-color: black; 
+    /* border-radius: 3px; */
+}
+
+
+.tab-img a.tab-title[href*="steampowered.com"], .tab-img a.tab-title[href*="/steam"] {background-position: -1px -1457px; padding: 0 0 0 20px;}
+.tab-img a.tab-title[href*="2game.com"] {background-position: -1px 1px; padding: 0 0 0 20px;}
+.tab-img a.tab-title[href*="2k.com"] {background-position: -1px -17px; padding: 0 0 0 20px;}
+.tab-img a.tab-title[href*="alienware.com"] {background-position: -1px -35px; padding: 0 0 0 20px;}
+.tab-img a.tab-title[href*="amazon"], .tab-img a.tab-title[href*="amzn.com"] {background-position: -1px -53px; padding: 0 0 0 20px;}
+.tab-img a.tab-title[href*="argos.co.uk"] {background-position: -1px -71px; padding: 0 0 0 20px;}
+.tab-img a.tab-title[href*="battle.net"] {background-position: -1px -89px; padding: 0 0 0 20px;;}
+.tab-img a.tab-title[href*="bestbuy.com"], .tab-img a.tab-title[href*="bestbuy.ca"], .tab-img a.tab-title[href*="/bestbuy"], .tab-img a.tab-title[href*="/best_buy"] {background-position: -1px -107px; padding: 0 0 0 20px;}
+.tab-img a.tab-title[href*="bestsku.com"] {background-position: -1px -125px; padding: 0 0 0 20px;}
+.tab-img a.tab-title[href*="bigfishgames.com"] {background-position: -1px -143px; padding: 0 0 0 20px;}
+.tab-img a.tab-title[href*="bioware.com"] {background-position: -1px -161px; padding: 0 0 0 20px;}
+.tab-img a.tab-title[href*="blizzard.com"] {background-position: -1px -179px; padding: 0 0 0 20px;}

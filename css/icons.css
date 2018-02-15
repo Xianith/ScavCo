@@ -1,0 +1,125 @@
+/* Adds icon beside submissions based on URL or title. Icons are in spritesheet, this simply gives the position. */
+.thing .title {overflow: visible !important;}
+.title a {background: url(../imgs/favicons.png) no-repeat; background-position: -9999px -9999px;}
+
+.thing a.title[href*="steampowered.com"], .thing a.title[href*="/steam"] {background-position: -1px -1457px; padding: 0 0 0 20px;}
+.thing a.title[href*="2game.com"] {background-position: -1px 1px; padding: 0 0 0 20px;}
+.thing a.title[href*="2k.com"] {background-position: -1px -17px; padding: 0 0 0 20px;}
+.thing a.title[href*="alienware.com"] {background-position: -1px -35px; padding: 0 0 0 20px;}
+.thing a.title[href*="amazon"], .thing a.title[href*="amzn.com"] {background-position: -1px -53px; padding: 0 0 0 20px;}
+.thing a.title[href*="argos.co.uk"] {background-position: -1px -71px; padding: 0 0 0 20px;}
+.thing a.title[href*="battle.net"] {background-position: -1px -89px; padding: 0 0 0 20px;;}
+.thing a.title[href*="bestbuy.com"], .thing a.title[href*="bestbuy.ca"], .thing a.title[href*="/bestbuy"], .thing a.title[href*="/best_buy"] {background-position: -1px -107px; padding: 0 0 0 20px;}
+.thing a.title[href*="bestsku.com"] {background-position: -1px -125px; padding: 0 0 0 20px;}
+.thing a.title[href*="bigfishgames.com"] {background-position: -1px -143px; padding: 0 0 0 20px;}
+.thing a.title[href*="bioware.com"] {background-position: -1px -161px; padding: 0 0 0 20px;}
+.thing a.title[href*="blizzard.com"] {background-position: -1px -179px; padding: 0 0 0 20px;}
+.thing a.title[href*="bundlestars.com"], .thing a.title[href*="/bundle_stars"], .thing a.title[href*="/bundlestars"] {background-position: -1px -197px; padding: 0 0 0 20px;}
+.thing a.title[href*="capcom.com"] {background-position: -1px -215px; padding: 0 0 0 20px;}
+.thing a.title[href*="cdp.pl"] {background-position: -1px -233px; padding: 0 0 0 20px;}
+.thing a.title[href*="chrono.gg"] {background-position: -1px -251px; padding: 0 0 0 20px;}
+.thing a.title[href*="coinplay.io"] {background-position: -1px -269px; padding: 0 0 0 20px;}
+.thing a.title[href*="cubicbundle.com"] {background-position: -1px -287px; padding: 0 0 0 20px;}
+.thing a.title[href*="dailyindiegame.com"] {background-position: -1px -305px; padding: 0 0 0 20px;}
+.thing a.title[href*="desura.com"] {background-position: -1px -323px; padding: 0 0 0 20px;}
+.thing a.title[href*="digitaldownload.com"] {background-position: -1px -341px; padding: 0 0 0 20px;}
+.thing a.title[href*="direct2drive.com"] {background-position: -1px -359px; padding: 0 0 0 20px;}
+.thing a.title[href*="dlgamer.com"], .thing a.title[href*="dlgamer.us"], .thing a.title[href*="dlgamer.eu"], .thing a.title[href*="dlgamer.fr"], .thing a.title[href*="dlgamer.de"], .thing a.title[href*="dlgamer.it"], .thing a.title[href*="dlgamer.es"], .thing a.title[href*="dlgamer.nl"], .thing a.title[href*="/dlgamer"] {background-position: -1px -377px; padding: 0 0 0 20px;}
+.thing a.title[href*="dotemu.com"] {background-position: -1px -395px; padding: 0 0 0 20px;}
+.thing a.title[href*="ebay"] {background-position: -1px -413px; padding: 0 0 0 20px;}
+.thing a.title[href*="ebgames.ca"] {background-position: -1px -431px; padding: 0 0 0 20px;}
+.thing a.title[href*="elgiganten.dk"] {background-position: -1px -449px; padding: 0 0 0 20px;}
+.thing a.title[href*="fireflowergames.com"] {background-position: -1px -467px; padding: 0 0 0 20px;}
+.thing a.title[href*="flyingbundle.com"] {background-position: -1px -485px; padding: 0 0 0 20px;}
+.thing a.title[href*="frys.com"] {background-position: -1px -503px; padding: 0 0 0 20px;}
+.thing a.title[href*="funstockdigital.co.uk"] {background-position: -1px -521px; padding: 0 0 0 20px;}
+.thing a.title[href*="game.co.uk"] {background-position: -1px -539px; padding: 0 0 0 20px;}
+.thing a.title[href*="gamebillet.com"], .thing a.title[href*="/gamebillet"] {background-position: -1px -557px; padding: 0 0 0 20px;}
+.thing a.title[href*="gamebundle.com"] {background-position: -1px -575px; padding: 0 0 0 20px;}
+.thing a.title[href*="gamefly.com"], .thing a.title[href*="/gamefly"] {background-position: -1px -593px; padding: 0 0 0 20px;}
+.thing a.title[href*="gamersgate"] {background-position: -1px -611px; padding: 0 0 0 20px;}
+.thing a.title[href*="gamesplanet.com"], .thing a.title[href*="/gamesplanet"] {background-position: -1px -629px; padding: 0 0 0 20px;}
+.thing a.title[href*="gamesrepublic.com"], .thing a.title[href*="/gamesrepublic"], .thing a.title[href*="/gamerepublic"] {background-position: -1px -647px; padding: 0 0 0 20px;}
+.thing a.title[href*="gamestop.com"], .thing a.title[href*="/gamestop"] {background-position: -1px -665px; padding: 0 0 0 20px;}
+.thing a.title[href*="getgamesgo.com"] {background-position: -1px -683px; padding: 0 0 0 20px;}
+.thing a.title[href*="gog.com"], .thing a.title[href*="/gog"] {background-position: -1px -701px; padding: 0 0 0 20px;}
+.thing a.title[href*="groupees.com"] {background-position: -1px -719px; padding: 0 0 0 20px;}
+.thing a.title[href*="groupon.com"] {background-position: -1px -737px; padding: 0 0 0 20px;}
+.thing a.title[href*="humblebundle.com"] {background-position: -1px -755px; padding: 0 0 0 20px;}
+.thing a.title[href*="iceberg-games.com"] {background-position: -1px -773px; padding: 0 0 0 20px;}
+.thing a.title[href*="imperialgames.com"] {background-position: -1px -791px; padding: 0 0 0 20px;}
+.thing a.title[href*="indiegala.com"], .thing a.title[href*="/indiegala"], .thing a.title[href*="/gala"] {background-position: -1px -809px; padding: 0 0 0 20px;}
+.thing a.title[href*="indiegamestand.com"] {background-position: -1px -827px; padding: 0 0 0 20px;}
+.thing a.title[href*="indieroyale.com"] {background-position: -1px -845px; padding: 0 0 0 20px;}
+.thing a.title[href*="itch.io"] {background-position: -1px -863px; padding: 0 0 0 20px;}
+.thing a.title[href*="itunes-apple.com"] {background-position: -1px -881px; padding: 0 0 0 20px;}
+.thing a.title[href*="macgamestore.com"] {background-position: -1px -899px; padding: 0 0 0 20px;}
+.thing a.title[href*="madorc.com"] {background-position: -1px -917px; padding: 0 0 0 20px;}
+.thing a.title[href*="mcgame.com"] {background-position: -1px -935px; padding: 0 0 0 20px;}
+.thing a.title[href*="microsoftstore.com"], .thing a.title[href*="microsoft.com"] {background-position: -1px -953px; padding: 0 0 0 20px;}
+.thing a.title[href*="muve.pl"] {background-position: -1px -971px; padding: 0 0 0 20px;}
+.thing a.title[href*="ncix.com"] {background-position: -1px -989px; padding: 0 0 0 20px;}
+.thing a.title[href*="ncixus.com"] {background-position: -1px -1007px; padding: 0 0 0 20px;}
+.thing a.title[href*="newegg.com"], .thing a.title[href*="/newegg"] {background-position: -1px -1025px; padding: 0 0 0 20px;}
+.thing a.title[href*="nintendo.com"], .thing a.title[href*="nintendo.co.uk"] {background-position: -1px -1043px; padding: 0 0 0 20px;}
+.thing a.title[href*="nuuvem.com"] {background-position: -1px -1061px; padding: 0 0 0 20px;}
+.thing a.title[href*="origin.com"] {background-position: -1px -1079px; padding: 0 0 0 20px;}
+.thing a.title[href*="otakumaker.com"] {background-position: -1px -1097px; padding: 0 0 0 20px;}
+.thing a.title[href*="paradoxplaza.com"] {background-position: -1px -1115px; padding: 0 0 0 20px;}
+.thing a.title[href*="paypal.com"] {background-position: -1px -1133px; padding: 0 0 0 20px;}
+.thing a.title[href*="paywuw.com"] {background-position: -1px -1151px; padding: 0 0 0 20px;}
+.thing a.title[href*="playfield.io"] {background-position: -1px -1169px; padding: 0 0 0 20px;}
+.thing a.title[href*="playfire.com"] {background-position: -1px -1187px; padding: 0 0 0 20px;}
+.thing a.title[href*="playinjector.com"] {background-position: -1px -1205px; padding: 0 0 0 20px;}
+.thing a.title[href*="playstation.com"] {background-position: -1px -1223px; padding: 0 0 0 20px;}
+.thing a.title[href*="popcap.com"] {background-position: -1px -1241px; padding: 0 0 0 20px;}
+.thing a.title[href*="rakuten.com"] {background-position: -1px -1259px; padding: 0 0 0 20px;}
+.thing a.title[href*="reddit.com"] {background-position: -1px -1277px; padding: 0 0 0 20px;}
+.thing a.title[href*="retroism.com"] {background-position: -1px -1295px; padding: 0 0 0 20px;}
+.thing a.title[href*="ricedigital.co.uk"] {background-position: -1px -1313px; padding: 0 0 0 20px;}
+.thing a.title[href*="savemidownload.com"] {background-position: -1px -1331px; padding: 0 0 0 20px;}
+.thing a.title[href*="silagames.com"], .thing a.title[href*="/sila_games"], .thing a.title[href*="/silagames"], .thing a.title[href*="/sila_games"] {background-position: -1px -1349px; padding: 0 0 0 20px;}
+.thing a.title[href*="simulatorcentral.com"] {background-position: -1px -1367px; padding: 0 0 0 20px;}
+.thing a.title[href*="splitplay.com"] {background-position: -1px -1385px; padding: 0 0 0 20px;}
+.thing a.title[href*="square-enix.com"] {background-position: -1px -1403px; padding: 0 0 0 20px;}
+.thing a.title[href*="stacksocial.com"] {background-position: -1px -1421px; padding: 0 0 0 20px;}
+.thing a.title[href*="stardock.com"] {background-position: -1px -1439px; padding: 0 0 0 20px;}
+.thing a.title[href*="target.com"], .thing a.title[href*="/target"] {background-position: -1px -1475px; padding: 0 0 0 20px;}
+.thing a.title[href*="tesco.com"] {background-position: -1px -1493px; padding: 0 0 0 20px;}
+.thing a.title[href*="theindiebox.com"] {background-position: -1px -1511px; padding: 0 0 0 20px;}
+.thing a.title[href*="tigerdirect.com"] {background-position: -1px -1529px; padding: 0 0 0 20px;}
+.thing a.title[href*="toysrus.com"] {background-position: -1px -1547px; padding: 0 0 0 20px;}
+.thing a.title[href*="ubisoft.com"], .thing a.title[href*="/store.ubi.com"] {background-position: -1px -1565px; padding: 0 0 0 20px;}
+.thing a.title[href*="vodo.net"] {background-position: -1px -1583px; padding: 0 0 0 20px;}
+.thing a.title[href*="walmart.com"], .thing a.title[href*="/walmart"] {background-position: -1px -1601px; padding: 0 0 0 20px;}
+.thing a.title[href*="wingamestore"] {background-position: -1px -1619px; padding: 0 0 0 20px;}
+.thing a.title[href*="xbox.com"], .thing a.title[href*="majornelson.com"] {background-position: -1px -1637px; padding: 0 0 0 20px;}
+.thing a.title[href*="zavvi.com"] {background-position: -1px -1655px; padding: 0 0 0 20px;}
+
+/*Curtosy of /r/gamedeals sub*/
+
+
+.title{font-size: 18px;}
+
+a .title {}
+
+.free {color: green;}
+.old {color: red;}
+
+.thing {position: relative!important;}
+
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+.discount {
+	color: darkgray;
+	font-style: italic;
+	font-size: 11px;
+}
+
+.thing .title {margin-bottom: 0px;}
