@@ -1,19 +1,14 @@
 # Scav Co
 Escape from Tarkov website for all your EFT needs. Links out to many guides and resources but I am working on trying to house everything in one area while providing unique tools that people can use.
 
-Written in: React
+**Written in:** [React](https://reactjs.org/)
 
-Current Version: 0.0.4
+**Current Version: 0.0.5**
 
 ---
 
 ## Currently working on:
--Number don't matter, but it's in a state that I can actually mess with the site now
 
--Need to reactify the pages that handle the GoogleAPI stuff (ammo.html and barter.html)
-
-      barter complete, need to work on ammo
- 
 -Clean up CSS and make it not look bad. Re-create style from EFT website perhaps?
 
 -Eventually put this somewhere for people to see.
@@ -33,6 +28,18 @@ Current Version: 0.0.4
 -News page with latest patch notes
 
 -Maps that are clean but have styling per user (shareable styles) similar to DayZ maps and the sorts
+
+---
+
+## Finished
+
+*0.0.4*
+
+      -Number don't matter, but it's in a state that I can actually mess with the site now
+
+      -Need to reactify the pages that handle the GoogleAPI stuff (ammo.html and barter.html)
+
+            barter complete, need to work on ammo
 
 ---
 
