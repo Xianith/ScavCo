@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 import '../css/barter.css'
+import mods from '../assets/categories/mods.png';
 
 var API_KEY = 'AIzaSyBuiD7FAD9c7PAj0Np_ZwVsiHLbyTLKoBk';
 var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleusercontent.com';
@@ -93,7 +94,7 @@ function updateSignInStatus(isSignedIn) {
 function makeApiCall() {
   var params = {
     spreadsheetId: '1Yk-VriCy_8vDH4V9SsLwRYxem2mkzoDrULiaHZY5UGQ',
-    range: 'A2:L151',
+    range: 'A2:L184',
     valueRenderOption: 'FORMATTED_VALUE',
     dateTimeRenderOption: 'SERIAL_NUMBER',
   };
@@ -114,6 +115,8 @@ function makeApiCall() {
     console.error('error: ' + reason.result.error.message);
   });
 }
+
+var dnr = [3,4,5,7,8]; //Rows that should not be rendered
 
 function styleHeader(row) {
   var table = document.getElementById('barter-table');
@@ -138,7 +141,7 @@ function styleHeader(row) {
       var text = document.createTextNode(row[y]);
     }
 
-    if (y == 3 || y == 4 || y == 7 || y == 8  || y == 5) { } 
+    if (dnr.indexOf(y) > -1) { } 
     else {
       th.appendChild(text);
       tr.appendChild(th);
@@ -175,9 +178,6 @@ function styleRow(row) {
       tr.style.display = 'none';  
     }
 
-    // if (row.indexOf('Mod') > 0 && y == 1) {
-    // td.innerHTML = '<div class="tab-img"><a class="tab-title" alt="Mod" title="Mod"></a></div>';
-    // }
     if (y == 6) {td.className = 'success';}
 
     if (typeof row[10] != 'undefined' && row[10].length > 0) {tr.className = tr.className + ' tradeable-row'; }
@@ -190,36 +190,46 @@ function styleRow(row) {
     var value = document.createElement('span');
 
     if (y == 0) {
-        td.appendChild(document.createTextNode(row[1])); //Swap Category to row 0
+        td.appendChild(styleCat(row[1])); //Swap Category to row 0
       } else if (y == 1) {
         td.colSpan = 2;
         td.appendChild(document.createTextNode(row[0])); //Swap Item to row 1
       } else if (y == 2) {
         if (row[3] == row[4]) { 
-          value.innerHTML = row[2];
+          value.innerHTML = row[2] +'₽';
           } else {
-          value.innerHTML = '<span class="sell-min">' + 
-            row[2] + '</span> - <span class="sell-max">' + 
-            row[3] + '</span> - <span class="sell-avg">' + 
-            row[4] + '</span>';
+          value.innerHTML = '<span title="Maximum Price" class="alert-success"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span><span class="sell-min">' + 
+            row[3] + '₽</span> <br /> <span title="Average Price" class="alert-info"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span><span class="sell-max">' + 
+            row[4] + '₽</span> <br /> <span title="Minimum Price" class="alert-danger"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span><span class="sell-avg">' + 
+            row[2] + '₽</span></span>';
         }
         td.appendChild(value);
         td.colSpan = 2;
         tr.appendChild(td);
         tbody.appendChild(tr);
       } else if (y == 6) {
-        value.innerHTML = row[6] + 
-          ' (' + row[7] + ':' + row[5] + ')';
+        value.innerHTML = row[6] +  
+          '₽ (' + row[7] + ':' + row[5] + ')';
         td.colSpan = 2;
         td.appendChild(value);
       } else {
         td.appendChild(text);
     }
 
-    if (y == 8 || y == 3 || y == 4 || y == 7 || y == 5) { 
+    if (dnr.indexOf(y) > -1) { 
     } else {
       tr.appendChild(td);
       tbody.appendChild(tr);
     }
   }
+}
+
+function styleCat(row) {
+  if (row == 'Mod') {
+    var img = document.createElement('img');
+    img.src = mods;
+    img.alt = row;
+    img.title = row;
+    return img;
+  } else { return document.createTextNode(row); }
 }

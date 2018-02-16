@@ -39,3 +39,18 @@
     background-color: white;
     width: calc( 100% - 1em )
 }
+
+#ammo-table tbody {
+    display:block;
+    height:405px;
+    overflow:auto;
+}
+#ammo-table thead, #ammo-table tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+#ammo-table thead {
+    background-color: white;
+    width: calc( 100% - 1em )
+}

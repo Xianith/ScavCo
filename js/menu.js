@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 
 import '../css/menu.css';
 
-var BtnArray = [{"name":"Home","color":"white","status":"active"},{"name":"Bartering","color":"white","status":""},{"name":"WTS","color":"green", "status": ""},{"name":"WTB","color":"orange", "status": ""},{"name":"WTT","color":"purple", "status": ""}];
+var BtnArray = [{"name":"Home","color":"white","status":"active"},{"name":"Ammo","color":"white","status":""},{"name":"Bartering","color":"white","status":""},{"name":"WTS","color":"green", "status": ""},{"name":"WTB","color":"orange", "status": ""},{"name":"WTT","color":"purple", "status": ""}];
 // {"name":"Ammo","color":"white","status":""}
 
 function menuSelect(Id) {
