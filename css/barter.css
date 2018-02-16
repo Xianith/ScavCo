@@ -1,0 +1,34 @@
+.trader-menu {
+  background-color: #eee;
+  padding-bottom: 5px;
+}
+
+.trader-btn {
+  color:white;
+  background-color: black;
+}
+
+.trader-btn:hover {
+  color:gray;
+  background-color: black;
+}
+
+.trader-container {
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+
+#barter-table tbody {
+    display:block;
+    height:405px;
+    overflow:auto;
+}
+#barter-table thead, #barter-table tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+#barter-table thead {
+    background-color: white;
+    width: calc( 100% - 1em )
+}
