@@ -1,7 +1,11 @@
-# ScavCo
+# Scav Co
 Escape from Tarkov website for all your EFT needs. Links out to many guides and resources but I am working on trying to house everything in one area while providing unique tools that people can use.
 
+Written in: React
+
 Current Version: 0.0.4
+
+---
 
 ## Currently working on:
 -Number don't matter, but it's in a state that I can actually mess with the site now
@@ -16,6 +20,8 @@ Current Version: 0.0.4
 
 -Figure out why Font's are weird.
 
+---
+
 ## Planned:
 
 -Search barter page by categories as well as traders (Categories from in game / will use same imaging)
@@ -27,3 +33,8 @@ Current Version: 0.0.4
 -News page with latest patch notes
 
 -Maps that are clean but have styling per user (shareable styles) similar to DayZ maps and the sorts
+
+---
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](
+https://www.paypal.me/xianith)
