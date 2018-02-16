@@ -25,3 +25,5 @@ Current Version: 0.0.4
 -Api pull from multiple discords that have trade channels and post them on site (maybe have the login post there as well eventually)
 
 -News page with latest patch notes
+
+-Maps that are clean but have styling per user (shareable styles) similar to DayZ maps and the sorts
