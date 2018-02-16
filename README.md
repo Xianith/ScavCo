@@ -1,9 +1,9 @@
 # ScavCo
-Escape from Tarkov website
+Escape from Tarkov website for all your EFT needs. Links out to many guides and resources but I am working on trying to house everything in one area while providing unique tools that people can use.
 
 Current Version: 0.0.4
 
-## Todo
+## Currently working on:
 -Number don't matter, but it's in a state that I can actually mess with the site now
 
 -Need to reactify the pages that handle the GoogleAPI stuff (ammo.html and barter.html)
@@ -15,3 +15,13 @@ Current Version: 0.0.4
 -Eventually put this somewhere for people to see.
 
 -Figure out why Font's are weird.
+
+## Planned:
+
+-Search barter page by categories as well as traders (Categories from in game / will use same imaging)
+
+-Trade login to post trades on site as well as automatically to the trade sub reddit
+
+-Api pull from multiple discords that have trade channels and post them on site (maybe have the login post there as well eventually)
+
+-News page with latest patch notes
