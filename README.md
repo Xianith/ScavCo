@@ -15,6 +15,10 @@ Escape from Tarkov website for all your EFT needs. Links out to many guides and 
 
 -Figure out why Font's are weird.
 
+-Finish up the imaging for bartering categories
+
+-Finish up ammo types
+
 ---
 
 ## Planned:
