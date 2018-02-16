@@ -7,7 +7,7 @@ var API_KEY = 'AIzaSyBuiD7FAD9c7PAj0Np_ZwVsiHLbyTLKoBk';
 var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleusercontent.com';
 var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
-export default class Bartering extends Component {
+export default class Barter extends Component {
 
   loadGapi() {
     const script = document.createElement("script");
@@ -49,9 +49,14 @@ export default class Bartering extends Component {
 
     const trader = id.replace('sort-','') + '-row';
     const traderRows = document.getElementsByClassName('trader-row');
+    const traderBtns = document.getElementsByClassName('trader-btn');
+
+    for (var i=0; i < traderBtns.length; i++) {
+      if (traderBtns[i].id.includes(trader))
+      { traderBtns[i].classList.add('trader-btn-active'); } else { traderBtns[i].classList.remove('trader-btn-active'); }
+    }
 
     for (var i=0; i < traderRows.length; i++) {
-      console.log(traderRows[i].className); 
       if (traderRows[i].className.includes(trader))
       { traderRows[i].style.display = "table"; } else { traderRows[i].style.display = "none"; }
     }
@@ -61,7 +66,7 @@ export default class Bartering extends Component {
     return (  
       <div className="jumbotron contentcontainer trader-container" id="Bartering" style={{display: "none"}}>
         <div className="trader-menu"><center>
-          <button id="sort-prapor" className="btn btn-default trader-btn" onClick={this.onClick}>Prapor</button>
+          <button id="sort-prapor" className="btn btn-default trader-btn trader-btn-active" onClick={this.onClick}>Prapor</button>
           <button id="sort-therapist" className="btn btn-default trader-btn" onClick={this.onClick}>Therapist</button>
           <button id="sort-fence" className="btn btn-default trader-btn" onClick={this.onClick}>Fence</button>
           <button id="sort-skier" className="btn btn-default trader-btn" onClick={this.onClick}>Skier</button>
@@ -119,7 +124,9 @@ function styleHeader(row) {
     var th = document.createElement('th');
 
     if (y == 0) {
-      var text = document.createTextNode(row[y]);
+      var text = document.createTextNode(row[1]);
+    } else if (y == 1) { 
+      var text = document.createTextNode(row[0]);
       th.colSpan = 2;
     } else if (y == 2) {
         var text = document.createTextNode('Sell Price');
@@ -148,25 +155,24 @@ function styleRow(row) {
     var tbody = table.getElementsByTagName('tbody')[0];
     var td = document.createElement('td');
     var text = document.createTextNode(row[y]);
-    td.appendChild(text);
 
     if (row.indexOf('Prapor') > 0) {
-    tr.className = 'prapor-row trader-row';
-    } else if (row.indexOf('Skier') > 0) {
-    tr.className = 'skier-row trader-row';
-    tr.style.display = 'none';
-    } else if (row.indexOf('Therapist') > 0) {
-    tr.className = 'therapist-row trader-row';
-    tr.style.display = 'none'; 
-    } else if (row.indexOf('Peacekeeper') > 0) {
-    tr.className = 'peacekeeper-row trader-row';
-    tr.style.display = 'none'; 
-    } else if (row.indexOf('Fence') > 0) {
-    tr.className = 'fence-row trader-row';
-    tr.style.display = 'none'; 
-    } else {
-    tr.className = 'other-row trader-row';
-    tr.style.display = 'none';  
+      tr.className = 'prapor-row trader-row';
+      } else if (row.indexOf('Skier') > 0) {
+      tr.className = 'skier-row trader-row';
+      tr.style.display = 'none';
+      } else if (row.indexOf('Therapist') > 0) {
+      tr.className = 'therapist-row trader-row';
+      tr.style.display = 'none'; 
+      } else if (row.indexOf('Peacekeeper') > 0) {
+      tr.className = 'peacekeeper-row trader-row';
+      tr.style.display = 'none'; 
+      } else if (row.indexOf('Fence') > 0) {
+      tr.className = 'fence-row trader-row';
+      tr.style.display = 'none'; 
+      } else {
+      tr.className = 'other-row trader-row';
+      tr.style.display = 'none';  
     }
 
     // if (row.indexOf('Mod') > 0 && y == 1) {
@@ -175,54 +181,43 @@ function styleRow(row) {
     if (y == 6) {td.className = 'success';}
 
     if (typeof row[10] != 'undefined' && row[10].length > 0) {tr.className = tr.className + ' tradeable-row'; }
-
     if (typeof row[9] != 'undefined' && row[9].length > 0) {tr.className = tr.className + ' quest-row'; }
-
     if (typeof row[y] == 'undefined') { 
-          var td = document.createElement('td');
-          var text = document.createTextNode('');
+      var td = document.createElement('td');
+      var text = document.createTextNode('');
     }
 
-    if (y == 8 || y == 3 || y == 4 || y == 7 || y == 5) { }
-    else if (y == 0) {
-      td.colSpan = 2;
-      td.appendChild(text);
-      tr.appendChild(td);
-      tbody.appendChild(tr);
-    }
-    else if (y == 2) {
-      if (row[3] == row[4]) { 
+    var value = document.createElement('span');
+
+    if (y == 0) {
+        td.appendChild(document.createTextNode(row[1])); //Swap Category to row 0
+      } else if (y == 1) {
         td.colSpan = 2;
-        tr.appendChild(td);
-        tbody.appendChild(tr);} 
-        // style the sell price if there is an average
-        else {
-        var min = document.createElement('strong');
-        min.style.color = 'green';
-        var text = document.createTextNode(' - ' + row[3] + ' - ');
-        min.appendChild(text);
-        td.appendChild(min);
-        td.colSpan = 2;
-        tr.appendChild(td);
-        var avg = document.createElement('strong');
-        avg.style.color = 'blue';
-        var text = document.createTextNode(row[4]);
-        avg.appendChild(text);
-        td.appendChild(avg);
+        td.appendChild(document.createTextNode(row[0])); //Swap Item to row 1
+      } else if (y == 2) {
+        if (row[3] == row[4]) { 
+          value.innerHTML = row[2];
+          } else {
+          value.innerHTML = '<span class="sell-min">' + 
+            row[2] + '</span> - <span class="sell-max">' + 
+            row[3] + '</span> - <span class="sell-avg">' + 
+            row[4] + '</span>';
+        }
+        td.appendChild(value);
         td.colSpan = 2;
         tr.appendChild(td);
         tbody.appendChild(tr);
-      }
-    } else if (y == 6) {
-      var dim = document.createElement('span');
-      var text = document.createTextNode(' (' + row[7] + ':' + row[5] + ')');
-      dim.appendChild(text);
-      td.colSpan = 2;
-      td.appendChild(dim);
-      tr.appendChild(td);
-      tbody.appendChild(tr);
+      } else if (y == 6) {
+        value.innerHTML = row[6] + 
+          ' (' + row[7] + ':' + row[5] + ')';
+        td.colSpan = 2;
+        td.appendChild(value);
+      } else {
+        td.appendChild(text);
+    }
+
+    if (y == 8 || y == 3 || y == 4 || y == 7 || y == 5) { 
     } else {
-      td.appendChild(text);
       tr.appendChild(td);
       tbody.appendChild(tr);
     }

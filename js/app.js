@@ -8,7 +8,7 @@ import Post from '../js/post.js';
 import Menu from '../js/menu.js';
 import Home from '../js/home.js';
 import Ammo from '../js/ammo.js';
-import Bartering from '../js/bartering.js';
+import Barter from '../js/barter.js';
 
 class MainContainer extends Component {
 
@@ -24,40 +24,6 @@ class MainContainer extends Component {
     fetch('https://www.reddit.com/r/TarkovTrading/new/.json?limit=100').then((e) => {
       e.json().then((f) => { this.setState({ posts: f.data.children })})
     });
-
-    $('#barterframe').hide();
-    $('#barterframe').on('load', function () {
-           $('#top-bar', $(this).contents()).hide();
-           $(this).contents().find('body').css({
-               background: 'red'
-           });
-           $(this).show();
-           $(this)[0].contentWindow.onbeforeunload = function () {
-               $('#barterframe').hide();
-           };
-       });
-  }
-
-  componentDidMount() {
-    $('#barterframe').hide();
-    $('#barterframe').on('load', function () {
-           $('#top-bar', $(this).contents()).hide();
-           $(this).contents().find('body').css({
-               background: '#f4f5f8'
-           });
-           $(this).show();
-           $(this)[0].contentWindow.onbeforeunload = function () {
-               $('#barterframe').hide();
-           };
-       });
-
-      // let postCounts = postCount;
-
-      // console.log(postCounts);
-      // for (let i=0; i < 3; i++) {
-      //   console.log(postCounts[i].name + " -> " + postCounts[i].count + " --> " + i);
-      //   if (postCounts[i].count == 0) { };
-      // }
   }
 
   render() {
@@ -74,7 +40,7 @@ class MainContainer extends Component {
         </div>
         <Home />
         <Ammo />
-        <Bartering />
+        <Barter />
       </div>
 
       </div>);

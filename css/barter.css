@@ -1,3 +1,8 @@
+.trader-container {
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+
 .trader-menu {
   background-color: #eee;
   padding-bottom: 5px;
@@ -13,10 +18,12 @@
   background-color: black;
 }
 
-.trader-container {
-  padding-top: 30px;
-  padding-bottom: 15px;
+.trader-btn-active {
+  color:black;
+  background-color: white;
 }
+
+/*Table Style*/
 
 #barter-table tbody {
     display:block;
