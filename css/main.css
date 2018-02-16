@@ -49,6 +49,7 @@
     height: 35px;
     border-radius: 55px;
     border: 2px solid #d6bd8e;
+    background-color: white;
     -moz-transition: all 0.3s;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
@@ -152,7 +153,7 @@ a.post-title-WTS, a.post-title-WTB, a.post-title-WTT {
 }
 
 body {
-    background-color: #2f2e27;
+    background-color: #1f1e1c;
     height: auto;
 }
 
@@ -174,12 +175,12 @@ body {
     cursor: pointer;
 }
 
-.trader-menu {
+/*.trader-menu {
     background-color: black;
     width: 400px;
     border-radius: 10px;
     margin-bottom: 5px;
-}
+}*/
 
 .trader-container {
     padding-bottom: 0;
