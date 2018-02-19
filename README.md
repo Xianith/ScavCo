@@ -3,21 +3,19 @@ Escape from Tarkov website for all your EFT needs. Links out to many guides and 
 
 **Written in:** [React](https://reactjs.org/)
 
-**Current Version: 0.0.5**
+**Current Version: 0.0.6**
 
 ---
 
 ## Currently working on:
 
-* Clean up CSS and make it not look bad. Re-create style from EFT website perhaps?
-
-* Eventually put this somewhere for people to see.
-
-* Figure out why Font's are weird.
+* Eventually put this somewhere for people to see
 
 * Finish up the imaging for bartering categories
 
 * Finish up ammo types
+
+* Redo Posts js
 
 ---
 
@@ -39,11 +37,19 @@ Escape from Tarkov website for all your EFT needs. Links out to many guides and 
 
 ## Finished
 
+*0.0.5*
+
+      * Clean up CSS and make it not look bad. Re-create style from EFT website perhaps? 
+            -- Copied subreddit styling (which is similar to websites)
+      
+      * Figure out why Font's are weird. 
+            -- Fixed in Webpack config
+
 *0.0.4*
 
-      -Need to reactify the pages that handle the GoogleAPI stuff (ammo.html and barter.html)
+      * Need to reactify the pages that handle the GoogleAPI stuff (ammo.html and barter.html)
 
-            barter complete, need to work on ammo
+          * barter complete, need to work on ammo
 
 ---
 
