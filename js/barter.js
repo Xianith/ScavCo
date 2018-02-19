@@ -8,6 +8,10 @@ var API_KEY = 'AIzaSyBuiD7FAD9c7PAj0Np_ZwVsiHLbyTLKoBk';
 var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleusercontent.com';
 var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
+var dnr = [3,4,5,7,8]; //Rows that should not be rendered
+
+var traderArray = ['prapor','therapist','fence','skier','peacekeeper','tradeable'];
+
 export default class Barter extends Component {
 
   loadGapi() {
@@ -67,12 +71,9 @@ export default class Barter extends Component {
     return (  
       <div className="jumbotron contentcontainer trader-container" id="Bartering" style={{display: "none"}}>
         <div className="trader-menu"><center>
-          <button id="sort-prapor" className="btn btn-default trader-btn trader-btn-active" onClick={this.onClick}>Prapor</button>
-          <button id="sort-therapist" className="btn btn-default trader-btn" onClick={this.onClick}>Therapist</button>
-          <button id="sort-fence" className="btn btn-default trader-btn" onClick={this.onClick}>Fence</button>
-          <button id="sort-skier" className="btn btn-default trader-btn" onClick={this.onClick}>Skier</button>
-          <button id="sort-peacekeeper" className="btn btn-default trader-btn" onClick={this.onClick}>Peacekeeper</button>
-          <button id="sort-tradeable" className="btn btn-default trader-btn" onClick={this.onClick}>Tradeable</button>
+        {traderArray.map((btn) =>
+               <button id={'sort-'+btn} className='btn btn-default trader-btn' onClick={this.onClick}>{jsUcfirst(btn)}</button>
+            )}
         </center></div>
 
       <table data-toggle="table" id="barter-table" className="table table-fixed table-hover table-bordered table-responsive table-sm" cellSpacing="0" width="100%">
@@ -83,6 +84,11 @@ export default class Barter extends Component {
       <span>Data is pulled from the following <a href="https://docs.google.com/spreadsheets/d/1Yk-VriCy_8vDH4V9SsLwRYxem2mkzoDrULiaHZY5UGQ/edit#gid=0">spreadsheet</a>. Which is maintained by /u/Gieke85</span>
     </div>);
   }
+}
+
+function jsUcfirst(string) 
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function updateSignInStatus(isSignedIn) {
@@ -115,8 +121,6 @@ function makeApiCall() {
     console.error('error: ' + reason.result.error.message);
   });
 }
-
-var dnr = [3,4,5,7,8]; //Rows that should not be rendered
 
 function styleHeader(row) {
   var table = document.getElementById('barter-table');
@@ -159,24 +163,35 @@ function styleRow(row) {
     var td = document.createElement('td');
     var text = document.createTextNode(row[y]);
 
-    if (row.indexOf('Prapor') > 0) {
-      tr.className = 'prapor-row trader-row';
-      } else if (row.indexOf('Skier') > 0) {
-      tr.className = 'skier-row trader-row';
-      tr.style.display = 'none';
-      } else if (row.indexOf('Therapist') > 0) {
-      tr.className = 'therapist-row trader-row';
-      tr.style.display = 'none'; 
-      } else if (row.indexOf('Peacekeeper') > 0) {
-      tr.className = 'peacekeeper-row trader-row';
-      tr.style.display = 'none'; 
-      } else if (row.indexOf('Fence') > 0) {
-      tr.className = 'fence-row trader-row';
-      tr.style.display = 'none'; 
-      } else {
-      tr.className = 'other-row trader-row';
-      tr.style.display = 'none';  
+    for (var a = 0; a < traderArray.length; a++) {
+      if (row.indexOf(jsUcfirst(traderArray[a])) > -1) {
+        tr.className = traderArray[a] + '-row trader-row';
+        if (traderArray[a] == 'prapor') { tr.style.display = 'table' } else {
+          tr.style.display = 'none'; }
+      } else if (tr.className.length == 0) {
+        tr.className = 'other-trader-row ammo-row';
+        tr.style.display = 'none';
+      }
     }
+
+    // if (row.indexOf('Prapor') > 0) {
+    //   tr.className = 'prapor-row trader-row';
+    //   } else if (row.indexOf('Skier') > 0) {
+    //   tr.className = 'skier-row trader-row';
+    //   tr.style.display = 'none';
+    //   } else if (row.indexOf('Therapist') > 0) {
+    //   tr.className = 'therapist-row trader-row';
+    //   tr.style.display = 'none'; 
+    //   } else if (row.indexOf('Peacekeeper') > 0) {
+    //   tr.className = 'peacekeeper-row trader-row';
+    //   tr.style.display = 'none'; 
+    //   } else if (row.indexOf('Fence') > 0) {
+    //   tr.className = 'fence-row trader-row';
+    //   tr.style.display = 'none'; 
+    //   } else {
+    //   tr.className = 'other-row trader-row';
+    //   tr.style.display = 'none';  
+    // }
 
     if (y == 6) {td.className = 'success';}
 

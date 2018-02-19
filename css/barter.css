@@ -1,56 +1,41 @@
-.trader-container {
+.ammo-container, .trader-container {
   padding-top: 30px;
   padding-bottom: 15px;
 }
 
-.trader-menu {
+.ammo-menu, .trader-menu {
   background-color: #eee;
   padding-bottom: 5px;
 }
 
-.trader-btn {
+.ammo-btn, .trader-btn {
   color:white;
   background-color: black;
 }
 
-.trader-btn:hover {
+.ammo-btn:hover,.trader-btn:hover {
   color:gray;
   background-color: black;
 }
 
-.trader-btn-active {
+.ammo-btn-active, .trader-btn-active {
   color:black;
   background-color: white;
 }
 
 /*Table Style*/
 
-#barter-table tbody {
+#barter-table tbody, #ammo-table tbody {
     display:block;
     height:405px;
     overflow:auto;
 }
-#barter-table thead, #barter-table tbody tr {
+#barter-table thead, #barter-table tbody tr, #ammo-table thead, #ammo-table tbody tr {
     display:table;
     width:100%;
     table-layout:fixed;
 }
-#barter-table thead {
-    background-color: white;
-    width: calc( 100% - 1em )
-}
-
-#ammo-table tbody {
-    display:block;
-    height:405px;
-    overflow:auto;
-}
-#ammo-table thead, #ammo-table tbody tr {
-    display:table;
-    width:100%;
-    table-layout:fixed;
-}
-#ammo-table thead {
+#barter-table thead, #ammo-table thead {
     background-color: white;
     width: calc( 100% - 1em )
 }

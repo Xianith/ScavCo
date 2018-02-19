@@ -11,6 +11,14 @@ var API_KEY = 'AIzaSyBuiD7FAD9c7PAj0Np_ZwVsiHLbyTLKoBk';
 var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleusercontent.com';
 var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
+var dnr = [1,2,3,6,11]; //Rows that should not be rendered
+var ammoArray = [{"name":".366","id":"366"},
+  {"name":"5.45x39","id":"545x39"},
+  {"name":"5.56x45","id":"556x45"},
+  {"name":"7.62x","id":"762x"},
+  {"name":"9x","id":"9x"},
+  {"name":"Other","id":"other-ammo"}];
+
 export default class Barter extends Component {
 
   loadGapi() {
@@ -69,14 +77,13 @@ export default class Barter extends Component {
   render() {
     return (  
       <div className="jumbotron contentcontainer ammo-container" id="Ammo" style={{display: "none"}}>
-       <div class="ammo-menu"><center>
-             <button id="sort-545x39" class="btn btn-default ammo-btn" onClick={this.onClick}>5.45x39</button>
-             <button id="sort-556x45" class="btn btn-default ammo-btn" onClick={this.onClick}>5.56x45</button>
-             <button id="sort-762x25" class="btn btn-default ammo-btn" onClick={this.onClick}>7.62x25</button>
-             <button id="sort-other-ammo" class="btn btn-default ammo-btn" onClick={this.onClick}>Other</button>
+       <div className="ammo-menu"><center>
+           {ammoArray.map((btn) =>
+                  <button id={'sort-'+btn.id} className='btn btn-default ammo-btn' onClick={this.onClick}>{btn.name}</button>
+                 )}
            </center></div>
 
-           <table id="ammo-table" class="table table-fixed table-hover table-bordered table-responsive table-sm" cellspacing="0" width="100%">
+           <table id="ammo-table" className="table table-fixed table-hover table-bordered table-responsive table-sm" cellspacing="0" width="100%">
              <thead></thead>
              <tbody></tbody>
            </table>
@@ -115,8 +122,6 @@ function makeApiCall() {
     console.error('error: ' + reason.result.error.message);
   });
 }
-
-var dnr = [1,2,3,6,11]; //Rows that should not be rendered
 
 function styleHeader(row) {
   var table = document.getElementById('ammo-table');
@@ -162,20 +167,15 @@ function styleRow(row) {
     var tbody = table.getElementsByTagName('tbody')[0];
     var td = document.createElement('td');
 
-    if (row[0].indexOf('.366') > -1) {
-      tr.className = '366-row ammo-row';
-      tr.style.display = 'none';
-      } else if (row[0].indexOf('5.45x39') > -1) {
-        tr.className = '545x39-row ammo-row';
-        tr.style.display = 'none';
-      } else if (row[0].indexOf('5.56x45') > -1) {
-        tr.className = '556x45-row ammo-row';
-        tr.style.display = 'none';
-      } else if (row[0].indexOf('7.62x25') > -1) {
-        tr.className = '762x25-row ammo-row';
-      } else {
+    for (var a = 0; a < ammoArray.length; a++) {
+      if (row[0].indexOf(ammoArray[a].name) > -1) {
+        tr.className = ammoArray[a].id + '-row ammo-row';
+        if (ammoArray[a].id == '762x') { tr.style.display = 'table' } else {
+          tr.style.display = 'none'; }
+      } else if (tr.className.length == 0) {
         tr.className = 'other-ammo-row ammo-row';
         tr.style.display = 'none';
+      }
     }
 
     switch (y) {
@@ -185,8 +185,8 @@ function styleRow(row) {
         break;
       case 5:
         td.title ='Armor Penetration Power';
-        td.innerHTML = row[y] + ' <span class="alert-info" title="Max Armor Penetration Class">(' + row[6] + ')</span>'+
-          ' <span class="alert-warning" title="Penetration Power Deveation">' + row[11] + '</span>';
+        td.innerHTML = row[y] + ' <span className="alert-info" title="Max Armor Penetration Class">(' + row[6] + ')</span>'+
+          ' <span className="alert-warning" title="Penetration Power Deveation">' + row[11] + '</span>';
         break;
       case 9:
         if (row[y] == 'TRUE') {
