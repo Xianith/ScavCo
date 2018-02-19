@@ -16,6 +16,14 @@ Escape from Tarkov website for all your EFT needs. Links out to many guides and 
 * Finish up ammo types
 
 * Redo Posts js
+     
+  * Should contain itslef in a "Trading Tab"
+  * WTS, WTB and WTT are sub page navigation options
+  * Tidbit at the bottom to inform where this data is coming from
+
+* Clean up naviagtion and unify it
+
+* Fix up the mobile view because it's terrible
 
 ---
 
