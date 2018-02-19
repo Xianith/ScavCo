@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 import '../css/menu.css';
+import font from '../assets/1escape.ttf';
 
-var BtnArray = [{"name":"Home","color":"white","status":"active"},{"name":"Ammo","color":"white","status":""},{"name":"Bartering","color":"white","status":""},{"name":"WTS","color":"green", "status": ""},{"name":"WTB","color":"orange", "status": ""},{"name":"WTT","color":"purple", "status": ""}];
-// {"name":"Ammo","color":"white","status":""}
+var BtnArray = [{"name":"Home","color":"white","status":"active"},{"name":"Ammo","color":"white","status":""},{"name":"Bartering","color":"white","status":""},{"name":"WTS","color":"green", "status": ""},{"name":"WTB","color":"orange", "status": ""},{"name":"WTT","color":"#b557b5", "status": ""}];
 
 function menuSelect(Id) {
     const content =  document.getElementsByClassName('contentcontainer');
@@ -55,7 +55,7 @@ export default class Menu extends Component {
           <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span className="sr-only">Toggle navigation</span>
           </button>
-          <p className="navbar-brand" style={{color: "white"}}>Scav <b>CO</b></p>
+          <p className="navbar-brand" style={{color: "white"}}>SCAV<b>.CO</b></p>
         </div>
         <div id="navbar" className="navbar-collapse collapse">
           <ul className="nav navbar-nav">

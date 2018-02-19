@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-// import '../css/ammo.css'
 import '../css/barter.css'
 
 var SHEET_ID = '1t4lA1NCQmM0NpTprGJT7rDVKZXHmQuPzQK5Ul23UoVo';
@@ -12,11 +11,11 @@ var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleuserco
 var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
 var dnr = [1,2,3,6,11]; //Rows that should not be rendered
-var ammoArray = [{"name":".366","id":"366"},
+var ammoArray = [{"name":"7.62x","id":"762x"},
+  {"name":"9x","id":"9x"},
   {"name":"5.45x39","id":"545x39"},
   {"name":"5.56x45","id":"556x45"},
-  {"name":"7.62x","id":"762x"},
-  {"name":"9x","id":"9x"},
+  {"name":".366","id":"366"},
   {"name":"Other","id":"other-ammo"}];
 
 export default class Barter extends Component {
@@ -83,7 +82,7 @@ export default class Barter extends Component {
                  )}
            </center></div>
 
-           <table id="ammo-table" className="table table-fixed table-hover table-bordered table-responsive table-sm" cellspacing="0" width="100%">
+           <table id="ammo-table" className="table table-fixed table-hover table-bordered table-responsive table-sm" cellSpacing="0" width="100%">
              <thead></thead>
              <tbody></tbody>
            </table>
@@ -185,8 +184,8 @@ function styleRow(row) {
         break;
       case 5:
         td.title ='Armor Penetration Power';
-        td.innerHTML = row[y] + ' <span className="alert-info" title="Max Armor Penetration Class">(' + row[6] + ')</span>'+
-          ' <span className="alert-warning" title="Penetration Power Deveation">' + row[11] + '</span>';
+        td.innerHTML = row[y] + ' <span class="alert-info" title="Max Armor Penetration Class">(' + row[6] + ')</span>'+
+          ' <span class="alert-warning" title="Penetration Power Deveation">' + row[11] + '</span>';
         break;
       case 9:
         if (row[y] == 'TRUE') {
