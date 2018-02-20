@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 import '../css/barter.css'
+import { navMenu } from '../js/menu.js';
 
 var SHEET_ID = '1t4lA1NCQmM0NpTprGJT7rDVKZXHmQuPzQK5Ul23UoVo';
 var RANGE = 'A1:P72';
@@ -55,22 +56,7 @@ export default class Barter extends Component {
 
   handleClick(event) {
     const {id} = event.target;
-
-    let total = 0;
-
-    const ammo = id.replace('sort-','') + '-row';
-    const ammoRows = document.getElementsByClassName('ammo-row');
-    const ammoBtns = document.getElementsByClassName('ammo-btn');
-
-    for (var i=0; i < ammoBtns.length; i++) {
-      if (ammoBtns[i].id.includes(ammo))
-      { ammoBtns[i].classList.add('ammo-btn-active'); } else { ammoBtns[i].classList.remove('ammo-btn-active'); }
-    }
-
-    for (var i=0; i < ammoRows.length; i++) {
-      if (ammoRows[i].className.includes(ammo))
-      { ammoRows[i].style.display = "table"; } else { ammoRows[i].style.display = "none"; }
-    }
+    navMenu(id,'ammo');
   }
 
   render() {
@@ -180,7 +166,7 @@ function styleRow(row) {
     switch (y) {
       case 0:
         td.title = row[1] + ' / ' + row[2];
-        td.innerHTML = row[y];
+        td.innerHTML = '<a target="_blank" href="https://escapefromtarkov.gamepedia.com/'+row[y]+'">'+row[y]+'</a>';
         break;
       case 5:
         td.title ='Armor Penetration Power';

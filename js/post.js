@@ -20,7 +20,7 @@ export default class Post extends React.Component {
     let newId = id.replace(/postBtn/gi,'postText');
     let postText = document.getElementById(newId);
 
-    if (postText.style.display === "none") {
+    if (postText.style.display == "none") {
       postText.style.display = "block";
       postBtn.innerHTML = 'Hide Post';
     } else {
@@ -37,6 +37,9 @@ export default class Post extends React.Component {
     let pTitle = cleanPost(data.title, data.link_flair_text);
     let pText = null;
     let pButton = null;
+    let pVisibility = 'hidden';
+
+    if (data.link_flair_text == 'WTS') { pVisibility = 'block'; }
 
     if (data.selftext) {  
       pButton = <a id={'postBtn-'+ postIndex} className="btn btn-default btn-sm tgl-txt" onClick={this.onClick} style={{float:"right"}}>Show Post</a>
@@ -46,12 +49,12 @@ export default class Post extends React.Component {
 
     postIndex ++
     for (let i=0; i < 3; i++) {
+      let menuLi = document.getElementsByClassName(postCount[i].name);
       if (data.link_flair_text == postCount[i].name) {postCount[i].count++}
-      // if (postCount[i].count <= 0) {let menuLi = document.getElementsByClassName(postCount[i].name); menuLi[0].style.display = 'none'};
+      // if (postCount[i].count <= 0) { menuLi.style.display = 'none' } else { menuLi.style.display = 'block' };
     }
-
     return ( 
-      <div className="postObj thing" style={{display: "none"}}>
+      <div className="postObj thing" style={{display: "block"}}>
         <p className="title"><a target="_blank" className={"post-title-" + data.link_flair_text} href={data.url}>{pTitle}</a>{pButton}{pText}</p>
       </div>)
   }

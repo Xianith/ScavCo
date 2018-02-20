@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 
 import '../css/barter.css';
 import mods from '../assets/categories/mods.png';
+import { navMenu } from '../js/menu.js';
 
 var SHEET_ID = '1Yk-VriCy_8vDH4V9SsLwRYxem2mkzoDrULiaHZY5UGQ';
 var RANGE = 'A2:L184';
@@ -52,22 +53,7 @@ export default class Barter extends Component {
 
   handleClick(event) {
     const {id} = event.target;
-
-    let total = 0;
-
-    const barter = id.replace('sort-','') + '-row';
-    const barterRows = document.getElementsByClassName('barter-row');
-    const barterBtns = document.getElementsByClassName('barter-btn');
-
-    for (var i=0; i < barterBtns.length; i++) {
-      if (barterBtns[i].id.includes(barter))
-      { barterBtns[i].classList.add('barter-btn-active'); } else { barterBtns[i].classList.remove('barter-btn-active'); }
-    }
-
-    for (var i=0; i < barterRows.length; i++) {
-      if (barterRows[i].className.includes(barter))
-      { barterRows[i].style.display = "table"; } else { barterRows[i].style.display = "none"; }
-    }
+    navMenu(id,'barter');
   }
 
   render() {
@@ -176,25 +162,6 @@ function styleRow(row) {
       }
     }
 
-    // if (row.indexOf('Prapor') > 0) {
-    //   tr.className = 'prapor-row barter-row';
-    //   } else if (row.indexOf('Skier') > 0) {
-    //   tr.className = 'skier-row barter-row';
-    //   tr.style.display = 'none';
-    //   } else if (row.indexOf('Therapist') > 0) {
-    //   tr.className = 'therapist-row barter-row';
-    //   tr.style.display = 'none'; 
-    //   } else if (row.indexOf('Peacekeeper') > 0) {
-    //   tr.className = 'peacekeeper-row barter-row';
-    //   tr.style.display = 'none'; 
-    //   } else if (row.indexOf('Fence') > 0) {
-    //   tr.className = 'fence-row barter-row';
-    //   tr.style.display = 'none'; 
-    //   } else {
-    //   tr.className = 'other-row barter-row';
-    //   tr.style.display = 'none';  
-    // }
-
     if (y == 6) {td.className = 'success';}
 
     if (typeof row[10] != 'undefined' && row[10].length > 0) {tr.className = tr.className + ' tradeable-row'; }
@@ -206,12 +173,16 @@ function styleRow(row) {
 
     var value = document.createElement('span');
 
-    if (y == 0) {
+    switch (y) {
+      case 0:
         td.appendChild(styleCat(row[1])); //Swap Category to row 0
-      } else if (y == 1) {
+        break;
+      case 1:
         td.colSpan = 2;
-        td.appendChild(document.createTextNode(row[0])); //Swap Item to row 1
-      } else if (y == 2) {
+        let cleanTitle = row[0].replace(/\([^)]*\)/gi,'');
+        td.innerHTML = '<a target="_blank" href="https://escapefromtarkov.gamepedia.com/'+cleanTitle+'">'+row[0]+'</a>'; //Swap Item to row 1
+        break;
+      case 2:
         if (row[3] == row[4]) { 
           value.innerHTML = row[2] +'₽';
           } else {
@@ -224,12 +195,14 @@ function styleRow(row) {
         td.colSpan = 2;
         tr.appendChild(td);
         tbody.appendChild(tr);
-      } else if (y == 6) {
+        break;
+      case 6:
         value.innerHTML = row[6] +  
           '₽ (' + row[7] + ':' + row[5] + ')';
         td.colSpan = 2;
         td.appendChild(value);
-      } else {
+        break;
+      default:
         td.appendChild(text);
     }
 

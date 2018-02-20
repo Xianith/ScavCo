@@ -6,7 +6,7 @@ import font from '../assets/1escape.ttf';
 
 var BtnArray = [{"name":"Home","color":"white","status":"active"},
   {"name":"Ammo","color":"white","status":""},
-  {"name":"Maps","color":"gray","status":"inactive"},
+  {"name":"Maps","color":"gray","status":"nav-dd"},
   // {"name":"Keys","color":"gray","status":""},
   {"name":"Bartering","color":"white","status":""},
   {"name":"Trading","color":"white","status":""}];
@@ -54,8 +54,23 @@ function menuSelect(Id) {
     }
 }
 
-export default class Menu extends Component {
+export function navMenu(id, type) {
+  const menu = id.replace('sort-','') + '-row';
+  const menuRows = document.getElementsByClassName(type+'-row');
+  const menuBtns = document.getElementsByClassName(type+'-btn');
 
+  for (var i=0; i < menuBtns.length; i++) {
+    if (menuBtns[i].id.includes(id))
+    { menuBtns[i].classList.add(type+'-btn-active'); } else { menuBtns[i].classList.remove(type+'-btn-active'); }
+  }
+
+  for (var i=0; i < menuRows.length; i++) {
+    if (menuRows[i].className.includes(menu))
+    { menuRows[i].style.display = "table"; } else { menuRows[i].style.display = "none"; }
+  }
+}
+
+export default class Menu extends Component {
   constructor(props) {
     super();
     this.onClick = this.handleClick.bind(this);
@@ -67,11 +82,6 @@ export default class Menu extends Component {
      if (id.length != 0 || id != undefined ) {
 
        const filterId = id.replace(/tgl-/gi,'post-title-');
-
-       let total = 0;
-
-       const filter = document.getElementsByClassName(filterId);
-       const posts = document.getElementsByClassName('postObj');
        const navBtns =  document.getElementsByClassName('nav-btn');
 
        for (var i=0; i < navBtns.length; i++) { navBtns[i].parentElement.classList.remove('active'); }
@@ -79,9 +89,6 @@ export default class Menu extends Component {
        menuSelect(filterId);
 
        document.getElementById(id).parentElement.classList.add('active');
-
-       for (var i=0; i < posts.length; i++) { posts[i].style.display = "none"; }
-       for (var i=0; i < filter.length; i++) { filter[i].parentElement.parentElement.style.display = "block"; total++; }
     }
    }
 
