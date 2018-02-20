@@ -13,7 +13,7 @@ var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
 var dnr = [3,4,5,7,8]; //Rows that should not be rendered
 
-var traderArray = ['prapor','therapist','fence','skier','peacekeeper','tradeable'];
+var barterArray = ['prapor','therapist','fence','skier','peacekeeper','tradeable'];
 
 export default class Barter extends Component {
 
@@ -55,27 +55,27 @@ export default class Barter extends Component {
 
     let total = 0;
 
-    const trader = id.replace('sort-','') + '-row';
-    const traderRows = document.getElementsByClassName('trader-row');
-    const traderBtns = document.getElementsByClassName('trader-btn');
+    const barter = id.replace('sort-','') + '-row';
+    const barterRows = document.getElementsByClassName('barter-row');
+    const barterBtns = document.getElementsByClassName('barter-btn');
 
-    for (var i=0; i < traderBtns.length; i++) {
-      if (traderBtns[i].id.includes(trader))
-      { traderBtns[i].classList.add('trader-btn-active'); } else { traderBtns[i].classList.remove('trader-btn-active'); }
+    for (var i=0; i < barterBtns.length; i++) {
+      if (barterBtns[i].id.includes(barter))
+      { barterBtns[i].classList.add('barter-btn-active'); } else { barterBtns[i].classList.remove('barter-btn-active'); }
     }
 
-    for (var i=0; i < traderRows.length; i++) {
-      if (traderRows[i].className.includes(trader))
-      { traderRows[i].style.display = "table"; } else { traderRows[i].style.display = "none"; }
+    for (var i=0; i < barterRows.length; i++) {
+      if (barterRows[i].className.includes(barter))
+      { barterRows[i].style.display = "table"; } else { barterRows[i].style.display = "none"; }
     }
   }
 
   render() {
     return (  
-      <div className="jumbotron contentcontainer trader-container" id="Bartering" style={{display: "none"}}>
-        <div className="trader-menu"><center>
-        {traderArray.map((btn) =>
-               <button id={'sort-'+btn} className='btn btn-default trader-btn' onClick={this.onClick}>{jsUcfirst(btn)}</button>
+      <div className="jumbotron contentcontainer barter-container" id="Bartering" style={{display: "none"}}>
+        <div className="barter-menu"><center>
+        {barterArray.map((btn) =>
+               <button id={'sort-'+btn} className='btn btn-default barter-btn' onClick={this.onClick}>{jsUcfirst(btn)}</button>
             )}
         </center></div>
 
@@ -119,7 +119,6 @@ function makeApiCall() {
     } else {
       tableFill('No data found.');
     }
-    console.log(response.result);
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
   });
@@ -166,33 +165,33 @@ function styleRow(row) {
     var td = document.createElement('td');
     var text = document.createTextNode(row[y]);
 
-    for (var a = 0; a < traderArray.length; a++) {
-      if (row.indexOf(jsUcfirst(traderArray[a])) > -1) {
-        tr.className = traderArray[a] + '-row trader-row';
-        if (traderArray[a] == 'prapor') { tr.style.display = 'table' } else {
+    for (var a = 0; a < barterArray.length; a++) {
+      if (row.indexOf(jsUcfirst(barterArray[a])) > -1) {
+        tr.className = barterArray[a] + '-row barter-row';
+        if (barterArray[a] == 'prapor') { tr.style.display = 'table' } else {
           tr.style.display = 'none'; }
       } else if (tr.className.length == 0) {
-        tr.className = 'other-trader-row ammo-row';
+        tr.className = 'other-barter-row ammo-row';
         tr.style.display = 'none';
       }
     }
 
     // if (row.indexOf('Prapor') > 0) {
-    //   tr.className = 'prapor-row trader-row';
+    //   tr.className = 'prapor-row barter-row';
     //   } else if (row.indexOf('Skier') > 0) {
-    //   tr.className = 'skier-row trader-row';
+    //   tr.className = 'skier-row barter-row';
     //   tr.style.display = 'none';
     //   } else if (row.indexOf('Therapist') > 0) {
-    //   tr.className = 'therapist-row trader-row';
+    //   tr.className = 'therapist-row barter-row';
     //   tr.style.display = 'none'; 
     //   } else if (row.indexOf('Peacekeeper') > 0) {
-    //   tr.className = 'peacekeeper-row trader-row';
+    //   tr.className = 'peacekeeper-row barter-row';
     //   tr.style.display = 'none'; 
     //   } else if (row.indexOf('Fence') > 0) {
-    //   tr.className = 'fence-row trader-row';
+    //   tr.className = 'fence-row barter-row';
     //   tr.style.display = 'none'; 
     //   } else {
-    //   tr.className = 'other-row trader-row';
+    //   tr.className = 'other-row barter-row';
     //   tr.style.display = 'none';  
     // }
 

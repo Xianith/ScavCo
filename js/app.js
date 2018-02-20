@@ -4,11 +4,12 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 import '../css/main.css';
 
-import Post from '../js/post.js';
 import Menu from '../js/menu.js';
 import Home from '../js/home.js';
 import Ammo from '../js/ammo.js';
 import Barter from '../js/barter.js';
+import Post from '../js/post.js';
+import Trading from '../js/trading.js';
 
 class MainContainer extends Component {
 
@@ -17,7 +18,6 @@ class MainContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {isMainContainerOn: true, posts: []};
-    this.frameLoad = this.resizeIframe.bind(this);
   }
 
   componentWillMount() {
@@ -32,36 +32,14 @@ class MainContainer extends Component {
     if (p.length == 0) { return (<div className="loading-div">Loading...</div>) }
     return (<div>
       <Menu />
-
-      <div className="container">
-        <div className="jumbotron contentcontainer" id="Barter" style={{display: "none"}}>
-          <div id="content">
-          </div>{p}
+        <div className="container">
+          <Home />
+          <Ammo />
+          <Barter />
+          <Trading />
         </div>
-        <Home />
-        <Ammo />
-        <Barter />
-      </div>
-
       </div>);
   }
-
-  resizeIframe(event) {
-    const {id} = event.target;
-
-    const main = document.getElementById(id);
-
-    console.log(id);
-    const gglBtns = main.getElementsByClassName('switcherItem');
-
-    for (var i=0; i < gglBtns.length; i++) { gglBtns[i].parentElement.style.display = 'none'; }
-    // id.style.height = id.contentWindow.document.body.scrollHeight + 'px';
-   }
-
-   frameStylize(obj) {
-    console.log("got here");
-    console.log(obj);
-   }
 }
 
 render(<MainContainer />, document.getElementById('main'));

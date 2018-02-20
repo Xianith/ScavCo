@@ -26,7 +26,6 @@ export default class Home extends Component {
           <div>
           <h2>Guides</h2>
             <a target="_blank" href="https://docs.google.com/presentation/d/1fipxlW4zdGAyXpjRdJvKJUuwMfiX0xZvnsvRj0QX-2w/edit#slide=id.p">Keys</a> |&nbsp;
-            Maps (<a target="_blank" href="http://www.gamemaps.co.uk/game/tarkov">1</a> - <a target="_blank" href="https://docs.google.com/presentation/d/15B0UDdvBr7RdOgVph9s9mTHAwdqlaeSflOCJ_uSDJn0/edit#slide=id.g1ea126bf8f_5_68">2</a> - <a target="_blank" href="https://tarkov.directory/">3</a>) |&nbsp;
             <a target="_blank" href="http://forum.escapefromtarkov.com/topic/35903-weapons-and-attachments-mega-thread/">Attachments</a> |&nbsp;
             <a target="_blank" href="http://jjames.info/eFT_modCompat.php?tableType=advanced">Mods</a>
           </div>

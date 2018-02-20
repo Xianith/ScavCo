@@ -4,18 +4,53 @@ import { render } from 'react-dom';
 import '../css/menu.css';
 import font from '../assets/1escape.ttf';
 
-var BtnArray = [{"name":"Home","color":"white","status":"active"},{"name":"Ammo","color":"white","status":""},{"name":"Bartering","color":"white","status":""},{"name":"WTS","color":"green", "status": ""},{"name":"WTB","color":"orange", "status": ""},{"name":"WTT","color":"#b557b5", "status": ""}];
+var BtnArray = [{"name":"Home","color":"white","status":"active"},
+  {"name":"Ammo","color":"white","status":""},
+  {"name":"Maps","color":"gray","status":"inactive"},
+  // {"name":"Keys","color":"gray","status":""},
+  {"name":"Bartering","color":"white","status":""},
+  {"name":"Trading","color":"white","status":""}];
+
+var MapsArray = [{"name":"Game Maps","url":"http://www.gamemaps.co.uk/game/tarkov"},
+  {"name":"Tarkov Directory","url":"https://tarkov.directory/"},
+  {"name":"Other","url":"https://docs.google.com/presentation/d/15B0UDdvBr7RdOgVph9s9mTHAwdqlaeSflOCJ_uSDJn0"}];
+
+function dropDown(id, action) {
+  var ddOrigin = document.getElementById('tgl-' + id);
+  var dd = document.createElement('ul');
+
+  if (action == 'create') {
+    dd.className = 'dropdown';
+    for (var m=0; m < MapsArray.length; m++) {
+      let mapOption = document.createElement('li');
+      mapOption.innerHTML = '<a target="_blank" class="dd-item" href="' + MapsArray[m].url + '">' + MapsArray[m].name + '</a>';
+      dd.appendChild(mapOption);
+    }
+    ddOrigin.appendChild(dd);
+  } else {
+    if (document.getElementsByClassName('dropdown')[0] != undefined) {
+      document.getElementsByClassName('dropdown')[0].remove();
+    } else {}
+  }
+}
 
 function menuSelect(Id) {
     const content =  document.getElementsByClassName('contentcontainer');
 
     let filterId = Id.replace(/post-title-/gi,'');
 
-    if (filterId == "WTS" || filterId == "WTB" || filterId == "WTT") { filterId = "Barter"; }
-
     for (var i=0; i < content.length; i++) { 
-      if (content[i].id == filterId) { content[i].style.display = "block"; }
-      else {content[i].style.display = "none" } 
+      if (filterId == "" || filterId == undefined) {}
+      if (filterId == "Maps" || filterId == "Keys") {
+        dropDown(filterId, 'create');
+        break;
+      } else { 
+        dropDown(filterId, 'destroy');
+        if (content[i].id == filterId) { content[i].style.display = "block"; 
+          if (filterId == "Home") { document.getElementById('footer').style.display = 'none'; }
+          else { document.getElementById('footer').style.display = 'block'; }
+        } else {content[i].style.display = "none" } 
+      }
     }
 }
 
@@ -29,22 +64,25 @@ export default class Menu extends Component {
   handleClick(event) {
      const {id} = event.target;
 
-     const filterId = id.replace(/tgl-/gi,'post-title-');
+     if (id.length != 0 || id != undefined ) {
 
-     let total = 0;
+       const filterId = id.replace(/tgl-/gi,'post-title-');
 
-     const filter = document.getElementsByClassName(filterId);
-     const posts = document.getElementsByClassName('postObj');
-     const navBtns =  document.getElementsByClassName('nav-btn');
+       let total = 0;
 
-     for (var i=0; i < navBtns.length; i++) { navBtns[i].parentElement.classList.remove('active'); }
+       const filter = document.getElementsByClassName(filterId);
+       const posts = document.getElementsByClassName('postObj');
+       const navBtns =  document.getElementsByClassName('nav-btn');
 
-     menuSelect(filterId);
+       for (var i=0; i < navBtns.length; i++) { navBtns[i].parentElement.classList.remove('active'); }
 
-     document.getElementById(id).parentElement.classList.add('active');
+       menuSelect(filterId);
 
-     for (var i=0; i < posts.length; i++) { posts[i].style.display = "none"; }
-     for (var i=0; i < filter.length; i++) { filter[i].parentElement.parentElement.style.display = "block"; total++; }
+       document.getElementById(id).parentElement.classList.add('active');
+
+       for (var i=0; i < posts.length; i++) { posts[i].style.display = "none"; }
+       for (var i=0; i < filter.length; i++) { filter[i].parentElement.parentElement.style.display = "block"; total++; }
+    }
    }
 
   render() {

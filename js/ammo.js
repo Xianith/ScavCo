@@ -49,7 +49,7 @@ export default class Barter extends Component {
     this.onClick = this.handleClick.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
    this.loadGapi();
   }
 
@@ -133,7 +133,7 @@ function styleHeader(row) {
     switch (y){
       case 5:
         th.title = 'Armor Penetration Power';
-        th.innerHTML = 'Pen';
+        th.innerHTML = 'Penetration';
         break;
       case 7:
         th.title = 'Armor Damage';
