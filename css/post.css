@@ -1,0 +1,23 @@
+.tgl-txt {
+  color:white;
+  margin-right: 2px;
+  border: 2px solid #9a8866 !important;
+  background-color:#292929 !important;
+  border-radius: 0px;
+}
+
+p.post-text {
+  font-size: 12px;
+  color: gray;
+}
+
+a.post-title-WTS, a.post-title-WTB, a.post-title-WTT {
+  color: #8e8670 !important;
+  font-size: 16px;
+}
+
+.post-text {
+  font-size: 12px;
+  font-style: italic;
+  color: #bcb9a9;
+}
