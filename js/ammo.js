@@ -12,12 +12,12 @@ var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleuserco
 var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
 var dnr = [1,2,3,6,11]; //Rows that should not be rendered
-var ammoArray = [{"name":"7.62x","id":"762x"},
-  {"name":"9x","id":"9x"},
-  {"name":"5.45x39","id":"545x39"},
-  {"name":"5.56x45","id":"556x45"},
-  {"name":".366","id":"366"},
-  {"name":"Other","id":"other-ammo"}];
+var ammoArray = [{"name":"7.62x","id":"762x","status":"ammo-btn-active"},
+  {"name":"9x","id":"9x","status":""},
+  {"name":"5.45x39","id":"545x39","status":""},
+  {"name":"5.56x45","id":"556x45","status":""},
+  {"name":".366","id":"366","status":""},
+  {"name":"Other","id":"other-ammo","status":""}];
 
 export default class Barter extends Component {
 
@@ -64,7 +64,7 @@ export default class Barter extends Component {
       <div className="jumbotron contentcontainer ammo-container" id="Ammo" style={{display: "none"}}>
        <div className="ammo-menu"><center>
            {ammoArray.map((btn) =>
-                  <button id={'sort-'+btn.id} className='btn btn-default ammo-btn' onClick={this.onClick}>{btn.name}</button>
+                  <button id={'sort-'+btn.id} className={'btn btn-default ammo-btn '+btn.status} onClick={this.onClick}>{btn.name}</button>
                  )}
            </center></div>
 
@@ -117,6 +117,10 @@ function styleHeader(row) {
     var th = document.createElement('th');
 
     switch (y){
+      case 0:
+        th.innerHTML = 'Name';
+        th.colSpan = 2;
+        break;
       case 5:
         th.title = 'Armor Penetration Power';
         th.innerHTML = 'Penetration';
@@ -165,6 +169,7 @@ function styleRow(row) {
 
     switch (y) {
       case 0:
+        td.colSpan = 2;
         td.title = row[1] + ' / ' + row[2];
         td.innerHTML = '<a target="_blank" href="https://escapefromtarkov.gamepedia.com/'+row[y]+'">'+row[y]+'</a>';
         break;

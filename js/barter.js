@@ -14,7 +14,8 @@ var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
 var dnr = [3,4,5,7,8]; //Rows that should not be rendered
 
-var barterArray = ['prapor','therapist','fence','skier','peacekeeper','tradeable'];
+var barterArray = ['prapor','therapist','fence','skier','peacekeeper','tradeable','buyable'];
+var catArray = ['tradeable','buyable'];
 
 export default class Barter extends Component {
 
@@ -70,7 +71,7 @@ export default class Barter extends Component {
         <tbody></tbody>
       </table>
 
-      <span>Data is pulled from the following <a href={'https://docs.google.com/spreadsheets/d/'+SHEET_ID}>spreadsheet</a>. Which is maintained by /u/Gieke85</span>
+      <span>Data is pulled from the following <a href={'https://docs.google.com/spreadsheets/d/'+SHEET_ID}>spreadsheet</a>. <i>Which is maintained by <a href="https://www.reddit.com/user/Gieke85">/u/Gieke85</a></i></span>
     </div>);
   }
 }
@@ -166,6 +167,7 @@ function styleRow(row) {
 
     if (typeof row[10] != 'undefined' && row[10].length > 0) {tr.className = tr.className + ' tradeable-row'; }
     if (typeof row[9] != 'undefined' && row[9].length > 0) {tr.className = tr.className + ' quest-row'; }
+    if (typeof row[11] != 'undefined' && row[11].length > 0) {tr.className = tr.className + ' buyable-row'; }
     if (typeof row[y] == 'undefined') { 
       var td = document.createElement('td');
       var text = document.createTextNode('');

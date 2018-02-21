@@ -4,8 +4,7 @@ import { render } from 'react-dom';
 import '../css/menu.css';
 import font from '../assets/1escape.ttf';
 
-var BtnArray = [{"name":"Home","color":"white","status":"active"},
-  {"name":"Ammo","color":"white","status":""},
+var BtnArray = [{"name":"Ammo","color":"white","status":""},
   {"name":"Maps","color":"gray","status":"nav-dd"},
   // {"name":"Keys","color":"gray","status":""},
   {"name":"Bartering","color":"white","status":""},
@@ -37,17 +36,15 @@ function dropDown(id, action) {
 function menuSelect(Id) {
     const content =  document.getElementsByClassName('contentcontainer');
 
-    let filterId = Id.replace(/post-title-/gi,'');
-
     for (var i=0; i < content.length; i++) { 
-      if (filterId == "" || filterId == undefined) {}
-      if (filterId == "Maps" || filterId == "Keys") {
-        dropDown(filterId, 'create');
+      if (Id == "" || Id == undefined) {}
+      if (Id == "Maps" || Id == "Keys") {
+        dropDown(Id, 'create');
         break;
       } else { 
-        dropDown(filterId, 'destroy');
-        if (content[i].id == filterId) { content[i].style.display = "block"; 
-          if (filterId == "Home") { document.getElementById('footer').style.display = 'none'; }
+        dropDown(Id, 'destroy');
+        if (content[i].id == Id) { content[i].style.display = "block"; 
+          if (Id == "Home") { document.getElementById('footer').style.display = 'none'; }
           else { document.getElementById('footer').style.display = 'block'; }
         } else {content[i].style.display = "none" } 
       }
@@ -78,18 +75,15 @@ export default class Menu extends Component {
 
   handleClick(event) {
      const {id} = event.target;
+     const filterId = id.replace(/tgl-/gi,'');
+     const navBtns =  document.getElementsByClassName('nav-btn');
 
-     if (id.length != 0 || id != undefined ) {
-
-       const filterId = id.replace(/tgl-/gi,'post-title-');
-       const navBtns =  document.getElementsByClassName('nav-btn');
-
+      if (id.length != 0 && id != undefined && filterId != 'Home') {
        for (var i=0; i < navBtns.length; i++) { navBtns[i].parentElement.classList.remove('active'); }
-
-       menuSelect(filterId);
-
-       document.getElementById(id).parentElement.classList.add('active');
-    }
+        document.getElementById(id).parentElement.classList.add('active');
+      }
+      console.log(filterId + ' =>' + event.target);
+      menuSelect(filterId);
    }
 
   render() {
@@ -100,14 +94,14 @@ export default class Menu extends Component {
           <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span className="sr-only">Toggle navigation</span>
           </button>
-          <p className="navbar-brand" style={{color: "white"}}>SCAV<b>.CO</b></p>
+          <a href="#Home" style={{color: "white"}} className="navbar-brand" id="tgl-Home" onClick={this.onClick}>SCAV</a>
         </div>
         <div id="navbar" className="navbar-collapse collapse">
           <ul className="nav navbar-nav">
             {BtnArray.map((btn) =>
-                    <li className={btn.status + " nav-btn-brd " + btn.name}><a className="btn nav-btn" style={{color:btn.color}} id={"tgl-" + btn.name} onClick={this.onClick}>
-                      {btn.name}
-                    </a></li>
+                    <li className={btn.status + " nav-btn-brd " + btn.name}>
+                      <a href={'#' + btn.name} className="btn nav-btn" style={{color:btn.color}} id={"tgl-" + btn.name} onClick={this.onClick}>
+                      {btn.name}</a></li>
                   )}
           </ul>
           <ul className="nav navbar-nav navbar-right">

@@ -15,7 +15,7 @@
   border-radius: 0px;
 }
 
-.ammo-btn:hover,.barter-btn:hover, .trading-btn:hover {
+.ammo-btn:hover,.barter-btn:hover, .trading-btn:hover, .ammo-btn:focus,.barter-btn:focus, .trading-btn:focus {
   color: #9a8866;
   border-color: white;
 }
