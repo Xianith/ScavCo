@@ -1,0 +1,51 @@
+.ammo-container, .barter-container, .trading-container {
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+
+.ammo-menu, .barter-menu, .trading-menu {
+  padding-bottom: 5px;
+}
+
+.ammo-btn, .barter-btn, .trading-btn {
+  color:white;
+  margin-right: 2px;
+  border: 2px solid #9a8866;
+  background-color:#292929 !important;
+  border-radius: 0px;
+}
+
+.ammo-btn:hover,.barter-btn:hover, .trading-btn:hover, .ammo-btn:focus,.barter-btn:focus, .trading-btn:focus {
+  color: #9a8866;
+  border-color: white;
+}
+
+.postContainer {
+  height: 450px;
+  overflow: auto;
+}
+
+.ammo-btn-active, .barter-btn-active {
+  color: #9a8866;
+  border-color: white;
+}
+
+/*Table Style*/
+
+#barter-table tbody, #ammo-table tbody {
+    display:block;
+    background-color: #eee !important;
+    color: black !important;
+    height:405px;
+    overflow:auto;
+}
+#barter-table thead, #barter-table tbody tr, #ammo-table thead, #ammo-table tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+#barter-table thead, #ammo-table thead {
+    background-color: white;
+    color: black;
+    width: calc( 100% - 1em )
+}

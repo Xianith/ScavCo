@@ -1,0 +1,115 @@
+@font-face {
+    font-family: tarkov;
+    src: url('../assets/1escape.ttf'); /*1ESCAPE FROM TARKOV by iWolf.ttf*/
+}
+
+.navbar-fixed-top {
+    box-shadow: 0 0 100px rgba(65,61,52,1), 0 0 6px rgba(232,190,107,0.8);
+    border:0;
+    background-color: black;
+    border-bottom: 1px solid #6f6a5b;
+}
+
+.navbar {
+    min-height: 40px;
+}
+
+.navbar-brand {
+    font-family: tarkov;
+    letter-spacing: 3px;
+    font-size: 24px;
+    color: black !important;
+    padding: 10px;
+    margin: 0px;
+    height: 0;
+    -webkit-text-stroke: 0.8px #e8ddc7;
+    /*text-shadow: 3px 3px 0 #d6bd8e, -1px -1px 0 #d6bd8e, 1px -1px 0 #d6bd8e, -1px 1px 0 #d6bd8e, 1px 1px 0 #d6bd8e;*/
+}
+
+.navbar-brand::after{
+    content: '.CO';
+    color: #8e5050 !important;
+}
+
+.active .nav-btn{
+    border-radius: 0;
+    box-shadow:0px 0px 0px 2px #9a8866 inset;
+    cursor: default;
+    color: #9a8866 !important;
+    background-color:#292929 !important;
+}
+
+.nav-btn-brd:not(.active):hover {
+    box-shadow:0px 0px 0px 2px gray inset;
+}
+
+.nav-btn-brd:not(.active):hover a{
+    color: gray !important;
+}
+
+.nav-btn {
+    padding:5px !important;
+}
+
+.nav-btn-brd {
+    margin: 3px;
+}
+
+.nav-btn {
+    margin: 0;
+}
+
+.nav-btn-brd.WTS {
+    border: 2px solid green;
+    background-color: #00800069;
+}
+
+.nav-btn-brd.WTB {
+    border: 2px solid orange;
+    background-color: #ffa50070;
+}
+
+.nav-btn-brd.WTT {
+    border: 2px solid purple;
+    background-color: #c100c16e;
+}
+
+/**/
+
+.navbar-toggle {
+    border-radius: 0;
+    box-shadow: 0px 0px 0px 2px #9a8866 inset;
+    color: #9a8866 !important;
+    background-color: #292929 !important;
+    border: 0;
+    padding: 0 5px;
+}
+
+.navbar-toggle:not(.active):hover {
+    box-shadow:0px 0px 0px 2px gray inset;
+}
+
+.navbar-toggle:not(.active):hover span{
+    color: gray !important;
+}  
+
+/**/
+
+.dropdown {
+    color: #c5b88e;
+    /* float: left; */
+    position: fixed;
+    background-color: #292929;
+    border: 1px solid #6f6a5b;
+    display: inline-block;
+    top: 42px;
+    margin-left: -46px;
+}
+
+.dropdown li{
+    list-style: none;
+    margin-left: -45px;
+    padding: 10px;
+    line-height: 2px;
+    text-align: left;                           
+}
