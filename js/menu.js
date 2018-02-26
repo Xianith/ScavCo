@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import '../css/menu.css';
+import '../css/top-menu.css';
 import font from '../assets/1escape.ttf';
 
 var BtnArray = [{"name":"Ammo","color":"white","status":""},
-  {"name":"Maps","color":"gray","status":"nav-dd"},
+  {"name":"Maps","color":"white","status":"nav-dd"},
   // {"name":"Keys","color":"gray","status":""},
   {"name":"Bartering","color":"white","status":""},
   {"name":"Trading","color":"white","status":""}];
@@ -14,16 +14,16 @@ var MapsArray = [{"name":"Game Maps","url":"http://www.gamemaps.co.uk/game/tarko
   {"name":"Tarkov Directory","url":"https://tarkov.directory/"},
   {"name":"Other","url":"https://docs.google.com/presentation/d/15B0UDdvBr7RdOgVph9s9mTHAwdqlaeSflOCJ_uSDJn0"}];
 
-function dropDown(id, action) {
+function dropDown(action, id, array) {
   var ddOrigin = document.getElementById('tgl-' + id);
   var dd = document.createElement('ul');
 
-  if (action == 'create') {
+  if (action == 'create' && arguments.length > 2) {
     dd.className = 'dropdown';
     for (var m=0; m < MapsArray.length; m++) {
-      let mapOption = document.createElement('li');
-      mapOption.innerHTML = '<a target="_blank" class="dd-item" href="' + MapsArray[m].url + '">' + MapsArray[m].name + '</a>';
-      dd.appendChild(mapOption);
+      let linkList = document.createElement('li');
+      linkList.innerHTML = '<a target="_blank" class="dd-item" href="' + array[m].url + '">' + array[m].name + '</a>';
+      dd.appendChild(linkList);
     }
     ddOrigin.appendChild(dd);
   } else {
@@ -33,22 +33,30 @@ function dropDown(id, action) {
   }
 }
 
-function menuSelect(Id) {
+function menuSelect(id) {
+    const filterId = id.replace(/tgl-/gi,'');
     const content =  document.getElementsByClassName('contentcontainer');
+    const navBtns =  document.getElementsByClassName('nav-btn');
 
-    for (var i=0; i < content.length; i++) { 
-      if (Id == "" || Id == undefined) {}
-      if (Id == "Maps" || Id == "Keys") {
-        dropDown(Id, 'create');
-        break;
-      } else { 
-        dropDown(Id, 'destroy');
-        if (content[i].id == Id) { content[i].style.display = "block"; 
-          if (Id == "Home") { document.getElementById('footer').style.display = 'none'; }
-          else { document.getElementById('footer').style.display = 'block'; }
-        } else {content[i].style.display = "none" } 
+    if (filterId != "") { 
+
+      for (var i=0; i < navBtns.length; i++) { navBtns[i].parentElement.classList.remove('active'); }
+      document.getElementById(id).parentElement.classList.add('active');
+
+      for (var i=0; i < content.length; i++) { 
+        if (filterId == "Maps" || filterId == "Keys") {
+          dropDown('create', filterId, MapsArray);
+          break;
+        } else {
+          dropDown('destroy', filterId); 
+          if (content[i].id == filterId) { content[i].style.display = "block"; 
+            if (filterId == "Home") { document.getElementById('footer').style.display = 'none'; }
+            else { document.getElementById('footer').style.display = 'block'; }
+          } else { content[i].style.display = "none" } 
+        }
       }
-    }
+    } else if (filterId == "Home") { for (var i=0; i < navBtns.length; i++) { navBtns[i].parentElement.classList.remove('active'); }
+    } else { dropDown('destroy', filterId); }
 }
 
 export function navMenu(id, type) {
@@ -74,16 +82,8 @@ export default class Menu extends Component {
   }
 
   handleClick(event) {
-     const {id} = event.target;
-     const filterId = id.replace(/tgl-/gi,'');
-     const navBtns =  document.getElementsByClassName('nav-btn');
-
-      if (id.length != 0 && id != undefined && filterId != 'Home') {
-       for (var i=0; i < navBtns.length; i++) { navBtns[i].parentElement.classList.remove('active'); }
-        document.getElementById(id).parentElement.classList.add('active');
-      }
-      console.log(filterId + ' =>' + event.target);
-      menuSelect(filterId);
+      const {id} = event.target;
+      menuSelect(id);
    }
 
   render() {
@@ -92,7 +92,7 @@ export default class Menu extends Component {
       <div className="container">
         <div className="navbar-header">
           <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span className="sr-only">Toggle navigation</span>
+            <span className="glyphicon glyphicon-menu-hamburger"></span><span className="sr-only">Toggle navigation</span>
           </button>
           <a href="#Home" style={{color: "white"}} className="navbar-brand" id="tgl-Home" onClick={this.onClick}>SCAV</a>
         </div>

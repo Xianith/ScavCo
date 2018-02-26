@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import '../css/barter.css'
+import '../css/tabs.css'
 import { navMenu } from '../js/menu.js';
 
 var SHEET_ID = '1t4lA1NCQmM0NpTprGJT7rDVKZXHmQuPzQK5Ul23UoVo';
 var RANGE = 'A1:P72';
+// New Range - A1:J67 (Need to Hide Row H)
 
 var API_KEY = 'AIzaSyBuiD7FAD9c7PAj0Np_ZwVsiHLbyTLKoBk';
+// New API Key - 1l_8zSZg-viVTZ2bavMEIIKhix6mFTXuVHWcNKZgBrjQ
 var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleusercontent.com';
 var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 

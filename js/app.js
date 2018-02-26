@@ -10,6 +10,7 @@ import Ammo from '../js/ammo.js';
 import Barter from '../js/barter.js';
 import Post from '../js/post.js';
 import Trading from '../js/trading.js';
+import Test from '../js/test.js'
 
 class MainContainer extends Component {
 

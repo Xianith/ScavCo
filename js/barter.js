@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import '../css/barter.css';
+import '../css/tabs.css';
 import mods from '../assets/categories/mods.png';
 import { navMenu } from '../js/menu.js';
 
 var SHEET_ID = '1Yk-VriCy_8vDH4V9SsLwRYxem2mkzoDrULiaHZY5UGQ';
-var RANGE = 'A2:L184';
+var RANGE = 'A3:L189';
 
 var API_KEY = 'AIzaSyBuiD7FAD9c7PAj0Np_ZwVsiHLbyTLKoBk';
 var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleusercontent.com';
