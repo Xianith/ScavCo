@@ -7,6 +7,7 @@ import '../css/main.css';
 import Menu from '../js/menu.js';
 import Home from '../js/home.js';
 import Ammo from '../js/ammo.js';
+import NewAmmo from '../js/new-ammo.js';
 import Barter from '../js/barter.js';
 import Post from '../js/post.js';
 import Trading from '../js/trading.js';
@@ -36,6 +37,7 @@ class MainContainer extends Component {
         <div className="container">
           <Home />
           <Ammo />
+          <NewAmmo />
           <Barter />
           <Trading />
         </div>

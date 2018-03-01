@@ -32,20 +32,24 @@
 
 /*Table Style*/
 
-#barter-table tbody, #ammo-table tbody {
+#ammo-table {
+  display: none;
+}
+
+#barter-table tbody, #ammo-table tbody,#ammo-table-two tbody  {
     display:block;
     background-color: #eee !important;
     color: black !important;
     height:405px;
     overflow:auto;
 }
-#barter-table thead, #barter-table tbody tr, #ammo-table thead, #ammo-table tbody tr {
+#barter-table thead, #barter-table tbody tr, #ammo-table thead, #ammo-table tbody tr, #ammo-table-two thead, #ammo-table-two tbody tr {
     display:table;
     width:100%;
     table-layout:fixed;
 }
-#barter-table thead, #ammo-table thead {
-    background-color: white;
-    color: black;
+#barter-table thead, #ammo-table thead, #ammo-table-two thead {
+/*    background-color: white;
+    color: black;*/
     width: calc( 100% - 1em )
 }

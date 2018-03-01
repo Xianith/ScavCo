@@ -5,11 +5,10 @@ import '../css/tabs.css'
 import { navMenu } from '../js/menu.js';
 
 var SHEET_ID = '1t4lA1NCQmM0NpTprGJT7rDVKZXHmQuPzQK5Ul23UoVo';
+
 var RANGE = 'A1:P72';
-// New Range - A1:J67 (Need to Hide Row H)
 
 var API_KEY = 'AIzaSyBuiD7FAD9c7PAj0Np_ZwVsiHLbyTLKoBk';
-// New API Key - 1l_8zSZg-viVTZ2bavMEIIKhix6mFTXuVHWcNKZgBrjQ
 var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleusercontent.com';
 var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
@@ -21,7 +20,11 @@ var ammoArray = [{"name":"7.62x","id":"762x","status":"ammo-btn-active"},
   {"name":".366","id":"366","status":""},
   {"name":"Other","id":"other-ammo","status":""}];
 
-export default class Barter extends Component {
+$(document).ready(function() {
+    $('#ammo-table').DataTable();
+} );
+
+export default class Ammo extends Component {
 
   loadGapi() {
     const script = document.createElement("script");
@@ -50,10 +53,16 @@ export default class Barter extends Component {
   constructor(props) {
     super();
     this.onClick = this.handleClick.bind(this);
+    this.tableSwap = this.tableSwap.bind(this);
   }
 
   componentWillMount() {
    this.loadGapi();
+  }
+
+  tableSwap(event) {
+    document.getElementById('Ammo').style.display = 'none';
+    document.getElementById('Ammo-Two').style.display = 'block';
   }
 
   handleClick(event) {
@@ -70,12 +79,13 @@ export default class Barter extends Component {
                  )}
            </center></div>
 
-           <table id="ammo-table" className="table table-fixed table-hover table-bordered table-responsive table-sm" cellSpacing="0" width="100%">
+           <table id="ammo-table" className="table table-fixed table-hover table-responsive table-sm" cellSpacing="0" width="100%">
              <thead></thead>
              <tbody></tbody>
            </table>
 
-      <span>Data is pulled from the following <a href={'https://docs.google.com/spreadsheets/d/'+SHEET_ID}>spreadsheet</a>.</span>
+      <span>Data is pulled from the following <a href={'https://docs.google.com/spreadsheets/d/'+SHEET_ID}>spreadsheet</a>.
+      <a href="#" style={{color: "#d7b100", float: "right"}} onClick={this.tableSwap}>Switch to Official Data</a></span>
     </div>);
   }
 }
@@ -86,22 +96,16 @@ function updateSignInStatus(isSignedIn) {
   } else { makeApiCall(); }
 }
 
-function makeApiCall() {
-  var params = {
-    spreadsheetId: SHEET_ID,
-    range: RANGE,
-    valueRenderOption: 'FORMATTED_VALUE',
-    dateTimeRenderOption: 'SERIAL_NUMBER',
-  };
-
+function tableStylize(params, table) {
   var request = gapi.client.sheets.spreadsheets.values.get(params);
   request.then(function(response) {
    var range = response.result;
     if (range.values.length > 0) {
       for (var i = 0; i < range.values.length; i++) {
         var row = range.values[i];
-        if (i == 0) { styleHeader(row); } else { styleRow(row); }
+        if (i == 0) { styleHeader(row, table); } else { styleRow(row, table); }
       }
+      document.getElementById(table).style.display = "table";
     } else {
       tableFill('No data found.');
     }
@@ -110,13 +114,61 @@ function makeApiCall() {
   });
 }
 
-function styleHeader(row) {
-  var table = document.getElementById('ammo-table');
+function makeApiCall() {
+  var params = {
+    spreadsheetId: SHEET_ID,
+    range: RANGE,
+    valueRenderOption: 'FORMATTED_VALUE',
+    dateTimeRenderOption: 'SERIAL_NUMBER',
+  };
+  tableStylize(params, 'ammo-table');
+}
+
+var tableArray = [
+  {"id": 0,
+  "colspan":2,
+  "header":{
+      "title":"",
+      "html":"Name"
+    },
+  "row":{
+    "title":"row[1] + \' / \' + row[2]",
+    "html":"'<a target=\"_blank\" href=\"https://escapefromtarkov.gamepedia.com/'+row[y]+'\">'+row[y]+'</a>'"
+  }
+}]
+
+function tableBuilder(row, table, num, dnr) {
+  for (var y = 0; y < 12; y++) {
+    var thead = table.getElementsByTagName('thead')[0];
+    var th = document.createElement('th');
+
+    // for (var t = 0; t < tableArray.length; t++) {
+    //   th.innerHTML = tableArray[t].header.html;
+    //   th.title = tableArray[t].header.title;
+    //   th.colSpan = tableArray[t].colspan;
+    // }
+
+    if (dnr.indexOf(y) > -1) { } 
+    else {
+      tr.appendChild(th);
+      thead.appendChild(tr);
+    }
+  }
+}
+
+function styleHeader(row, Table) {
+  var table = document.getElementById(Table);
   var tr = document.createElement('tr');
 
   for (var y = 0; y < 12; y++) {
     var thead = table.getElementsByTagName('thead')[0];
     var th = document.createElement('th');
+
+    // for (var t = 0; t < tableArray.length; t++) {
+    //   th.innerHTML = tableArray[t].header.html;
+    //   th.title = tableArray[t].header.title;
+    //   th.colSpan = tableArray[t].colspan;
+    // }
 
     switch (y){
       case 0:
@@ -150,8 +202,8 @@ function styleHeader(row) {
   }
 }
 
-function styleRow(row) {
-  var table = document.getElementById('ammo-table');
+function styleRow(row, Table) {
+  var table = document.getElementById(Table);
   var tr = document.createElement('tr'); 
 
   for (var y = 0; y < 12; y++) {
@@ -159,7 +211,9 @@ function styleRow(row) {
     var td = document.createElement('td');
 
     for (var a = 0; a < ammoArray.length; a++) {
-      if (row[0].indexOf(ammoArray[a].name) > -1) {
+      // console.log(row[0] +' => '+ammoArray[a].name);
+      // if (row[0].indexOf(ammoArray[a].name) > -1) {
+      if (row[0].includes(ammoArray[a].name)) {
         tr.className = ammoArray[a].id + '-row ammo-row';
         if (ammoArray[a].id == '762x') { tr.style.display = 'table' } else {
           tr.style.display = 'none'; }

@@ -66,7 +66,7 @@ export default class Barter extends Component {
             )}
         </center></div>
 
-      <table data-toggle="table" id="barter-table" className="table table-fixed table-hover table-bordered table-responsive table-sm" cellSpacing="0" width="100%">
+      <table data-toggle="table" id="barter-table" className="table table-fixed table-hover table-responsive table-sm" cellSpacing="0" width="100%">
         <thead></thead>
         <tbody></tbody>
       </table>
