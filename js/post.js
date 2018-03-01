@@ -6,6 +6,10 @@ import '../css/post.css';
 let postIndex = 0;
 let postCount = [{"name":"WTS","count":0},{"name":"WTB","count":0},{"name":"WTT","count":0}];
 
+let items = [{"name":"Gold Chain"},{"name":"Marked Key"},{"name":"Customs Key"}];
+
+var discord = '';
+
 export default class Post extends React.Component {
 
   constructor(props) {
@@ -47,6 +51,9 @@ export default class Post extends React.Component {
         <span className='post-text'>{data.selftext}</span></span>
     }
 
+    discord = data.selftext.match(/\S*#[0-9]{4}/gi);
+    if (discord != null) { console.log(discord); }
+
     postIndex ++
     for (let i=0; i < 3; i++) {
       let menuLi = document.getElementsByClassName(postCount[i].name);
@@ -64,12 +71,17 @@ function cleanPost(post, title) {
   post = post.replace(title, '');
   post = post.replace(/([)|(])|(- )|(: )|(wtb)|(wtt)|(wts)|/gi, '');
   post = post.replace('[','');
+  post = post.replace('discord','');
+  post = post.replace(':','');
   post = post.replace(']','');
   post = post.replace('] ','');
+  post = post.replace('&amp;','&');
+  discord = post.match(/\S*#[0-9]{4}/gi);
+  post = post.replace(/\S*#[0-9]{4}/gi,''); //Remove Discord names
   // post = post.replace(/(,)|(&amp)|(and)/gi,' -')
   // post = post.replace(/key(s)/gi, '🔑');
   // post = post.replace(/(rouble(s))|(rub)/gi, '₽');
   // post = post.replace(/(usd)|(doolar(s))/gi, '$');
-
+  if (post.length > 85) { post = post.substring(0,85) + '...'; }
   return post;  
 }

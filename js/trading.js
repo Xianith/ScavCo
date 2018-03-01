@@ -54,7 +54,7 @@ export default class Trading extends Component {
              {p}
           </div>
 
-      <span>Posts are pulled from <a href='https://www.reddit.com/r/TarkovTrading/'>Trading Tarkov</a>. <i>Additional posts will eventually be pulled from EFT Trading discord channels.</i></span>
+      <span>Posts are pulled from <a href='https://www.reddit.com/r/TarkovTrading/'>Tarkov Trading</a>. <i>Additional posts will eventually be pulled from EFT Trading discord channels.</i></span>
     </div>);
   }
 }
