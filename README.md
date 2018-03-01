@@ -3,7 +3,7 @@ Escape from Tarkov website for all your EFT needs. Links out to many guides and 
 
 **Written in:** [React](https://reactjs.org/)
 
-**Current Version: 0.0.6**
+**Current Version: 0.0.8**
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](
 https://www.paypal.me/xianith)
@@ -14,13 +14,14 @@ https://www.paypal.me/xianith)
 
 * Eventually put this somewhere for people to see
 
+* Finish cleaning up naviagtion and unify it
+    --Still working on this. 
+
 * Finish up the imaging for bartering categories
 
 * Finish up ammo types
 
-* Finish cleaning up naviagtion and unify it
-
-* Fix up the mobile view because it's terrible
+* Crossover data from several sources and notate which is "Offical" and which is community related
 
 ---
 
@@ -41,6 +42,10 @@ https://www.paypal.me/xianith)
 ---
 
 ## Finished
+
+*0.0.7*
+
+    * Fix up the mobile view because it's terrible
 
 *0.0.6*
 
