@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import '../css/tabs.css'
-import { navMenu } from '../js/menu.js';
+import '../../css/tabs.css'
+import { navMenu } from '../menu.js';
 // import { tableStylize } from '../js/ammo';
 
 var SHEET_ID = '1l_8zSZg-viVTZ2bavMEIIKhix6mFTXuVHWcNKZgBrjQ';

@@ -21,3 +21,28 @@ a.post-title-WTS, a.post-title-WTB, a.post-title-WTT {
   font-style: italic;
   color: #bcb9a9;
 }
+
+.discord-icon{
+    opacity: 1;
+    height: 30px;
+    border-radius: 55px;
+    border: 2px solid #d6bd8e;
+    background-color: white;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    margin-right: 5px;
+}
+
+.postObj {
+  display: block;
+  border: 1px solid #6f6a5b;
+  background-color: #232323;
+  padding: 5px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.postObj p {
+  padding: 0;
+}

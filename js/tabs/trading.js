@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import '../css/tabs.css'
+import '../../css/tabs.css'
 
-import Post from '../js/post.js';
+import Post from '../util/post.js';
 
 var tradingArray = [{"name":"WTS","color":"green", "status": "", "count":0},
   {"name":"WTB","color":"orange", "status": "", "count":0},

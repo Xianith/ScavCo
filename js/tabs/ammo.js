@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import '../css/tabs.css'
-import { navMenu } from '../js/menu.js';
+import '../../css/tabs.css'
+import { navMenu } from '../menu.js';
 
 var SHEET_ID = '1t4lA1NCQmM0NpTprGJT7rDVKZXHmQuPzQK5Ul23UoVo';
 

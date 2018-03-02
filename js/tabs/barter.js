@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import '../css/tabs.css';
-import mods from '../assets/categories/mods.png';
-import { navMenu } from '../js/menu.js';
+import '../../css/tabs.css';
+import mods from '../../assets/categories/mods.png';
+import { navMenu } from '../menu.js';
 
 var SHEET_ID = '1Yk-VriCy_8vDH4V9SsLwRYxem2mkzoDrULiaHZY5UGQ';
 var RANGE = 'A3:L189';

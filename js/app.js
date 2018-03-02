@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 import '../css/main.css';
 
 import Menu from '../js/menu.js';
-import Home from '../js/home.js';
-import Ammo from '../js/ammo.js';
-import NewAmmo from '../js/new-ammo.js';
-import Barter from '../js/barter.js';
-import Post from '../js/post.js';
-import Trading from '../js/trading.js';
-import Test from '../js/test.js'
+
+// tabs
+import Home from '../js/tabs/home.js';
+import Ammo from '../js/tabs/ammo.js';
+import NewAmmo from '../js/tabs/new-ammo.js';
+import Barter from '../js/tabs/barter.js';
+import Trading from '../js/tabs/trading.js';
+
+// utils
+import Post from '../js/util/post.js';
+import '../js/util/dServ.js';
 
 class MainContainer extends Component {
 
