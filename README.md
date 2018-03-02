@@ -3,7 +3,7 @@ Escape from Tarkov website for all your EFT needs. Links out to many guides and 
 
 **Written in:** [React](https://reactjs.org/)
 
-**Current Version: 0.0.8**
+**Current Version: 0.0.9**
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](
 https://www.paypal.me/xianith)
@@ -31,6 +31,8 @@ https://www.paypal.me/xianith)
 
 * Trade login to post trades on site as well as automatically to the trade sub reddit
 
+* Discord integiraiton for trades / meet ups
+
 * Api pull from multiple discords that have trade channels and post them on site (maybe have the login post there as well eventually)
 
 * News page with latest patch notes
@@ -42,6 +44,16 @@ https://www.paypal.me/xianith)
 ---
 
 ## Finished
+
+*0.0.8*
+
+    * Worked on ScavBot Discord integiration
+    
+    * Notated which trades are related to discord
+    
+    * Obtained discord tag through regex
+    
+    * Restructured file system
 
 *0.0.7*
 
