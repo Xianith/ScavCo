@@ -21,7 +21,9 @@ var ammoArray = [{"name":"7.62x","id":"762x","status":"ammo-btn-active"},
   {"name":".366","id":"366","status":""},
   {"name":"Other","id":"other-ammo","status":""}];
 
-export default class NewAmmo extends Component {
+var active = false;
+
+export default class Ammo extends Component {
 
   loadGapi() {
     const script = document.createElement("script");
@@ -58,8 +60,8 @@ export default class NewAmmo extends Component {
   }
 
   tableSwap(event) {
-    document.getElementById('Ammo').style.display = 'block';
-    document.getElementById('Ammo-Two').style.display = 'none';
+    document.getElementById('Ammo').style.display = 'none';
+    document.getElementById('Ammo-Two').style.display = 'block';
   }
 
   handleClick(event) {
@@ -68,15 +70,21 @@ export default class NewAmmo extends Component {
   }
 
   render() {
+    let t = this.state;
+
+    console.log(t);
+
+    // if (t == false) { return (<div className="loading-div">Loading...</div>) }
+
     return (
-      <div className="jumbotron contentcontainer ammo-container" id="Ammo-Two" style={{display: "none"}}>
+      <div className="jumbotron contentcontainer ammo-container" id="Ammo">
        <div className="ammo-menu"><center>
            {ammoArray.map((btn) =>
                   <button id={'sort-'+btn.id} className={'btn btn-default ammo-btn '+btn.status} onClick={this.onClick}>{btn.name}</button>
                  )}
            </center></div>
 
-           <table id="ammo-table-two" className="table table-fixed table-hover table-responsive table-sm" cellSpacing="0" width="100%">
+           <table id="ammo-table-two" className="table table-fixed sortable table-hover table-responsive table-sm" cellSpacing="0" width="100%">
              <thead></thead>
              <tbody></tbody>
            </table>
@@ -89,6 +97,7 @@ export default class NewAmmo extends Component {
 
 function updateSignInStatus(isSignedIn) {
   if (isSignedIn) {
+    active = true;
     makeApiCall();
   } else { makeApiCall(); }
 }
@@ -100,7 +109,6 @@ function makeApiCall() {
     valueRenderOption: 'FORMATTED_VALUE',
     dateTimeRenderOption: 'SERIAL_NUMBER',
   };
-
   tableStylize(params, 'ammo-table-two');
 }
 
@@ -113,7 +121,6 @@ function tableStylize(params, table) {
         var row = range.values[i];
         if (i == 0) { styleHeader(row, table); } else { styleRow(row, table); }
       }
-      document.getElementById(table).style.display = "table";
     } else {
       tableFill('No data found.');
     }
@@ -130,19 +137,14 @@ function styleHeader(row, Table) {
     var thead = table.getElementsByTagName('thead')[0];
     var th = document.createElement('th');
 
-    // for (var t = 0; t < tableArray.length; t++) {
-    //   th.innerHTML = tableArray[t].header.html;
-    //   th.title = tableArray[t].header.title;
-    //   th.colSpan = tableArray[t].colspan;
-    // }
-
     switch (y){
       case 0:
+        th.colSpan = 2;
         th.innerHTML = 'Name';
         break;
       case 1:
         th.title = 'Initial Price';
-        th.innerHTML = '₽';
+        th.innerHTML = 'Price';
         break;
       case 2:
         th.title = 'Damage';
@@ -189,44 +191,29 @@ function styleRow(row, Table) {
     var td = document.createElement('td');
 
     for (var a = 0; a < ammoArray.length; a++) {
-      // console.log(row[0] +' => '+ammoArray[a].name);
-      // if (row[0].indexOf(ammoArray[a].name) > -1) {
-      if (row[0].includes(ammoArray[a].id)) {
-        tr.className = ammoArray[a].id + '-row ammo-row';
-        if (ammoArray[a].id == '762x') { tr.style.display = 'table' } else {
-          /*tr.style.display = 'none';*/ }
-      } else if (tr.className.length == 0) {
-        tr.className = 'other-ammo-row ammo-row';
-        // tr.style.display = 'none';
-      }
+        if (row[0].includes(ammoArray[a].id)) {
+          tr.className = ammoArray[a].id + '-row ammo-row';
+          if (ammoArray[a].id == '762x') { tr.style.display = 'table' } else {
+            tr.style.display = 'none'; }
+        } else if (tr.className.length == 0) {
+          tr.className = 'other-ammo-row ammo-row';
+          tr.style.display = 'none';
+        }
     }
 
-    // switch (y) {
-    //   case 0:
-    //     td.colSpan = 2;
-    //     td.title = row[1] + ' / ' + row[2];
-    //     td.innerHTML = '<a target="_blank" href="https://escapefromtarkov.gamepedia.com/'+row[y]+'">'+row[y]+'</a>';
-    //     break;
-    //   case 5:
-    //     td.title ='Armor Penetration Power';
-    //     td.innerHTML = row[y] + ' <span class="alert-info" title="Max Armor Penetration Class">(' + row[6] + ')</span>'+
-    //       ' <span class="alert-warning" title="Penetration Power Deveation">' + row[11] + '</span>';
-    //     break;
-    //   case 9:
-    //     if (row[y] == 'TRUE') {
-    //       td.className = 'success';
-    //       td.innerHTML = '✓';
-    //       break;
-    //     } else {
-    //       td.className = 'danger';
-    //       td.innerHTML = '<b>X</b>';
-    //       break;
-    //     }
-    //   default:
-    //     td.innerHTML = row[y];
-    // }
-
-    td.innerHTML = row[y];
+    switch (y) {
+      case 0:
+        td.colSpan = 2;
+        td.title = row[y];
+        let name = nameClean(row[y]);
+        td.innerHTML = '<a target="_blank" href="https://escapefromtarkov.gamepedia.com/'+name+'">'+name+'</a>'; //Swap Item to row 1
+        break;
+      case 1:
+        td.innerHTML = row[y] + '₽';
+        break;
+      default:
+        td.innerHTML = row[y];
+    }
 
     if (dnr.indexOf(y) > -1) { } 
     else {
@@ -234,4 +221,25 @@ function styleRow(row, Table) {
       tbody.appendChild(tr);
     }
   }
+}
+
+function nameClean(name) {
+
+  name = name.replace(/_/gi,' ');
+
+  switch (name.charAt(0)) {
+    case '3':
+      name = "." + name;
+      break;
+    case '5':
+    case '7':
+      name = name.charAt(0) + "." + name.slice(1);
+      if (name.includes('tt') == true) { name = name.replace('tt', 'mm TT'); } else { name = name.replace(' ', ' mm '); }
+      break;
+    case '9':
+      if (name.includes('pm') == true) { name = name.replace('pm', ' mm PM'); } else { name = name.replace(' ', ' mm '); }
+    default:
+  }
+
+  return name;
 }

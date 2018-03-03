@@ -31,16 +31,16 @@
     color: #8e5050 !important;
 }
 
-.active .nav-btn{
+.active {
     border-radius: 0;
-    box-shadow:0px 0px 0px 2px #9a8866 inset;
+    box-shadow:0px -2px 0px 0px #9a8866 inset !important;
     cursor: default;
     color: #9a8866 !important;
     background-color:#292929 !important;
 }
 
 .nav-btn-brd:not(.active):hover {
-    box-shadow:0px 0px 0px 2px gray inset;
+    box-shadow:0px -2px 0px 0px gray inset;
 }
 
 .nav-btn-brd:not(.active):hover a{

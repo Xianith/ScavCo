@@ -17,14 +17,10 @@ export default class Trading extends Component {
     this.state = {isMainContainerOn: true, posts: []};
   }
 
-  componentWillMount() {
+  componentDidMount() {
     fetch('https://www.reddit.com/r/TarkovTrading/new/.json?limit=100').then((e) => {
       e.json().then((f) => { this.setState({ posts: f.data.children })})
     });
-  }
-
-  componentDidMount() {
-    // document.getElementsByClassName('post-title-WTS').parentElement.parentElement.style.display = "block";
   }
 
   handleClick(event) {
@@ -42,8 +38,9 @@ export default class Trading extends Component {
   render() { 
     let p = this.state.posts.map((e) => (<Post data={e}/>));
 
+    if (p.length == 0) { return (<div className="loading-div">Loading...</div>) }
     return (  
-      <div className="jumbotron contentcontainer trading-container" id="Trading" style={{display: "none"}}>
+      <div className="jumbotron contentcontainer trading-container" id="Trading">
        <div className="trading-menu"><center>
            {tradingArray.map((btn) =>
                   <button id={'sort-'+btn.name} className={'nav-btn-brd nav-btn trading-btn '+btn.name} style={{color:btn.color}} onClick={this.onClick}>{btn.name}</button>

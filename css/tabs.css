@@ -32,10 +32,6 @@
 
 /*Table Style*/
 
-#ammo-table {
-  display: none;
-}
-
 #barter-table tbody, #ammo-table tbody,#ammo-table-two tbody  {
     display:block;
     background-color: #eee !important;

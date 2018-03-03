@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  NavLink,
+  Switch,
+  Redirect
+} from "react-router-dom";
 
 import '../../css/tabs.css'
 import { navMenu } from '../menu.js';
@@ -20,11 +28,7 @@ var ammoArray = [{"name":"7.62x","id":"762x","status":"ammo-btn-active"},
   {"name":".366","id":"366","status":""},
   {"name":"Other","id":"other-ammo","status":""}];
 
-$(document).ready(function() {
-    $('#ammo-table').DataTable();
-} );
-
-export default class Ammo extends Component {
+export default class OldAmmo extends Component {
 
   loadGapi() {
     const script = document.createElement("script");
@@ -61,8 +65,8 @@ export default class Ammo extends Component {
   }
 
   tableSwap(event) {
-    document.getElementById('Ammo').style.display = 'none';
-    document.getElementById('Ammo-Two').style.display = 'block';
+    document.getElementById('Ammo').style.display = 'block';
+    document.getElementById('Ammo-Two').style.display = 'none';
   }
 
   handleClick(event) {
@@ -71,8 +75,9 @@ export default class Ammo extends Component {
   }
 
   render() {
+    
     return (  
-      <div className="jumbotron contentcontainer ammo-container" id="Ammo" style={{display: "none"}}>
+      <div className="jumbotron contentcontainer ammo-container" id="Ammo-Two" style={{display: "none"}}>
        <div className="ammo-menu"><center>
            {ammoArray.map((btn) =>
                   <button id={'sort-'+btn.id} className={'btn btn-default ammo-btn '+btn.status} onClick={this.onClick}>{btn.name}</button>
@@ -110,7 +115,7 @@ function tableStylize(params, table) {
       tableFill('No data found.');
     }
   }, function(reason) {
-    console.error('error: ' + reason.result.error.message);
+    console.log('error: ' + reason.result.error.message);
   });
 }
 

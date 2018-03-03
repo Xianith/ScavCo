@@ -50,6 +50,7 @@ export default class Barter extends Component {
 
   componentDidMount() {
    this.loadGapi();
+   if (document.getElementById("Ammo-Two").style.display != 'none') { document.getElementById("Ammo-Two").style.display = 'none'; }
   }
 
   handleClick(event) {
@@ -59,7 +60,7 @@ export default class Barter extends Component {
 
   render() {
     return (  
-      <div className="jumbotron contentcontainer barter-container" id="Bartering" style={{display: "none"}}>
+      <div className="jumbotron contentcontainer barter-container" id="Bartering">
         <div className="barter-menu"><center>
         {barterArray.map((btn) =>
                <button id={'sort-'+btn} className='btn btn-default barter-btn' onClick={this.onClick}>{jsUcfirst(btn)}</button>
