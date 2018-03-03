@@ -57,6 +57,7 @@ export default class Ammo extends Component {
 
   componentWillMount() {
    this.loadGapi();
+   if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
   }
 
   tableSwap(event) {

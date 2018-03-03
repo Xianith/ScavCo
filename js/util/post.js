@@ -9,7 +9,7 @@ let postCount = [{"name":"WTS","count":0},{"name":"WTB","count":0},{"name":"WTT"
 
 let items = [{"name":"Gold Chain"},{"name":"Marked Key"},{"name":"Customs Key"}];
 
-var discord = '';
+let discord = '';
 
 export default class Post extends React.Component {
 
@@ -48,8 +48,8 @@ export default class Post extends React.Component {
     if (data.link_flair_text == 'WTS') { pVisibility = 'block'; }
 
     discord = data.selftext.match(/\S*#[0-9]{4}/gi);
-    data.selftext = data.selftext.replace(/\S*#[0-9]{4}/gi,'');
-    data.selftext = data.selftext.replace('discord:','');
+    // data.selftext = data.selftext.replace(/\S*#[0-9]{4}/gi,'');
+    // data.selftext = data.selftext.replace('discord:','');
     if (discord != null) { 
       dButton = <a target="_blank" href="https://discord.gg/GUWxkns"><img  src={dIcon} className="discord-icon" title={discord} alt={discord} /></a> }
 

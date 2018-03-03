@@ -64,6 +64,10 @@ export default class OldAmmo extends Component {
    this.loadGapi();
   }
 
+  ComponentDidMount() {
+    if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
+  }
+
   tableSwap(event) {
     document.getElementById('Ammo').style.display = 'block';
     document.getElementById('Ammo-Two').style.display = 'none';

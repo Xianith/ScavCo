@@ -51,6 +51,7 @@ export default class Barter extends Component {
   componentDidMount() {
    this.loadGapi();
    if (document.getElementById("Ammo-Two").style.display != 'none') { document.getElementById("Ammo-Two").style.display = 'none'; }
+   if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
   }
 
   handleClick(event) {

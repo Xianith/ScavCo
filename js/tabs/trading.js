@@ -13,7 +13,7 @@ export default class Trading extends Component {
 
   constructor(props) {
     super();
-    this.onClick = this.handleClick.bind(this);
+    this.pstFltr = this.postFilter.bind(this);
     this.state = {isMainContainerOn: true, posts: []};
   }
 
@@ -21,9 +21,10 @@ export default class Trading extends Component {
     fetch('https://www.reddit.com/r/TarkovTrading/new/.json?limit=100').then((e) => {
       e.json().then((f) => { this.setState({ posts: f.data.children })})
     });
+    if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
   }
 
-  handleClick(event) {
+  postFilter(event) {
     const {id} = event.target;
 
     const filterId = id.replace(/sort-/gi,'post-title-');
@@ -43,7 +44,7 @@ export default class Trading extends Component {
       <div className="jumbotron contentcontainer trading-container" id="Trading">
        <div className="trading-menu"><center>
            {tradingArray.map((btn) =>
-                  <button id={'sort-'+btn.name} className={'nav-btn-brd nav-btn trading-btn '+btn.name} style={{color:btn.color}} onClick={this.onClick}>{btn.name}</button>
+                  <button id={'sort-'+btn.name} className={'nav-btn-brd nav-btn trading-btn '+btn.name} style={{color:btn.color}} onClick={this.pstFltr}>{btn.name}</button>
                  )}
            </center></div>
 
