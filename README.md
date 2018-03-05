@@ -3,7 +3,7 @@ Escape from Tarkov website for all your EFT needs. Links out to many guides and 
 
 **Written in:** [React](https://reactjs.org/)
 
-**Current Version: 0.0.9**
+**Current Version: 0.1.0**
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](
 https://www.paypal.me/xianith)
@@ -12,10 +12,9 @@ https://www.paypal.me/xianith)
 
 ## Currently working on:
 
-* Eventually put this somewhere for people to see
+* Data Sorting
 
-* Finish cleaning up naviagtion and unify it
-    --Still working on this. 
+* Start messing around with the Google Maps API
 
 * Finish up the imaging for bartering categories
 
@@ -44,6 +43,14 @@ https://www.paypal.me/xianith)
 ---
 
 ## Finished
+
+*0.0.9*
+
+    * Eventually put this somewhere for people to see
+        --https://tinyurl.com/yc8pw9hg
+
+    * Finish cleaning up naviagtion and unify it
+        --Still needs work but is in a much better state
 
 *0.0.8*
 
