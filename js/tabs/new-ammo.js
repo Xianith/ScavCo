@@ -3,15 +3,12 @@ import { render } from 'react-dom';
 
 import '../../css/tabs.css'
 import { navMenu } from '../menu.js';
+import {API_KEY, SCOPE, CLIENT_ID } from '../util/gapiData.js'
 // import { tableStylize } from '../js/ammo';
 
 var SHEET_ID = '1l_8zSZg-viVTZ2bavMEIIKhix6mFTXuVHWcNKZgBrjQ';
 
 var RANGE = 'A1:J67';
-
-var API_KEY = 'AIzaSyBuiD7FAD9c7PAj0Np_ZwVsiHLbyTLKoBk';
-var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleusercontent.com';
-var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
 var dnr = [7]; //Rows that should not be rendered
 var ammoArray = [{"name":"7.62x","id":"762x","status":"ammo-btn-active"},
@@ -20,8 +17,6 @@ var ammoArray = [{"name":"7.62x","id":"762x","status":"ammo-btn-active"},
   {"name":"5.56x45","id":"556x45","status":""},
   {"name":".366","id":"366","status":""},
   {"name":"Other","id":"other-ammo","status":""}];
-
-var active = false;
 
 export default class Ammo extends Component {
 
@@ -71,14 +66,11 @@ export default class Ammo extends Component {
   }
 
   render() {
-    let t = this.state;
-
-    console.log(t);
-
     // if (t == false) { return (<div className="loading-div">Loading...</div>) }
 
-    return (
-      <div className="jumbotron contentcontainer ammo-container" id="Ammo">
+    return (<div>
+      <div className="loading-div">Loading...</div>
+      <div className="jumbotron contentcontainer ammo-container" id="Ammo" style={{display:"none"}}>
        <div className="ammo-menu"><center>
            {ammoArray.map((btn) =>
                   <button id={'sort-'+btn.id} className={'btn btn-default ammo-btn '+btn.status} onClick={this.onClick}>{btn.name}</button>
@@ -91,7 +83,8 @@ export default class Ammo extends Component {
            </table>
 
       <span>Data is pulled from the following <a href={'https://docs.google.com/spreadsheets/d/'+SHEET_ID}>spreadsheet</a>.
-      <a href="#" style={{color: "#gray", float: "right"}} onClick={this.tableSwap}>Switch to Unofficial Data</a></span>
+      <a style={{color: "#gray", float: "right", cursor:"pointer"}} onClick={this.tableSwap}>Switch to Unofficial Data</a></span>
+    </div>
     </div>);
   }
 }
@@ -122,6 +115,8 @@ function tableStylize(params, table) {
         var row = range.values[i];
         if (i == 0) { styleHeader(row, table); } else { styleRow(row, table); }
       }
+      document.getElementsByClassName('loading-div')[0].remove();
+      document.getElementById('Ammo').style.display = 'block';
     } else {
       tableFill('No data found.');
     }

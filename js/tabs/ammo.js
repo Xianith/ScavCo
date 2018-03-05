@@ -1,26 +1,14 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  NavLink,
-  Switch,
-  Redirect
-} from "react-router-dom";
 
 import '../../css/tabs.css'
-import { navMenu } from '../menu.js';
+import { navMenu } from '../menu'
+import {API_KEY, SCOPE, CLIENT_ID } from '../util/gapiData'
 
 var SHEET_ID = '1t4lA1NCQmM0NpTprGJT7rDVKZXHmQuPzQK5Ul23UoVo';
-
 var RANGE = 'A1:P72';
-
-var API_KEY = 'AIzaSyBuiD7FAD9c7PAj0Np_ZwVsiHLbyTLKoBk';
-var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleusercontent.com';
-var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
-
 var dnr = [1,2,3,6,11]; //Rows that should not be rendered
+
 var ammoArray = [{"name":"7.62x","id":"762x","status":"ammo-btn-active"},
   {"name":"9x","id":"9x","status":""},
   {"name":"5.45x39","id":"545x39","status":""},
@@ -94,7 +82,7 @@ export default class OldAmmo extends Component {
            </table>
 
       <span>Data is pulled from the following <a href={'https://docs.google.com/spreadsheets/d/'+SHEET_ID}>spreadsheet</a>.
-      <a href="#" style={{color: "#d7b100", float: "right"}} onClick={this.tableSwap}>Switch to Official Data</a></span>
+      <a style={{color: "#d7b100", float: "right", cursor:"pointer"}} onClick={this.tableSwap}>Switch to Official Data</a></span>
     </div>);
   }
 }

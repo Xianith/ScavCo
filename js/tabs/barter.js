@@ -4,17 +4,21 @@ import { render } from 'react-dom';
 import '../../css/tabs.css';
 import mods from '../../assets/categories/mods.png';
 import { navMenu } from '../menu.js';
+import {API_KEY, SCOPE, CLIENT_ID } from '../util/gapiData.js'
 
 var SHEET_ID = '1Yk-VriCy_8vDH4V9SsLwRYxem2mkzoDrULiaHZY5UGQ';
 var RANGE = 'A3:L189';
 
-var API_KEY = 'AIzaSyBuiD7FAD9c7PAj0Np_ZwVsiHLbyTLKoBk';
-var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleusercontent.com';
-var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
-
 var dnr = [3,4,5,7,8]; //Rows that should not be rendered
 
-var barterArray = ['prapor','therapist','fence','skier','peacekeeper','tradeable','buyable'];
+var barterArray = [{"name":"prapor","status":"barter-btn-active"},
+{"name":"therapist","status":""},
+{"name":"fence","status":""},
+{"name":"skier","status":""},
+{"name":"peacekeeper","status":""},
+{"name":"tradeable","status":""},
+{"name":"buyable","status":""}];
+
 var catArray = ['tradeable','buyable'];
 
 export default class Barter extends Component {
@@ -60,11 +64,12 @@ export default class Barter extends Component {
   }
 
   render() {
-    return (  
-      <div className="jumbotron contentcontainer barter-container" id="Bartering">
+    return (<div>
+        <div className="loading-div">Loading...</div>  
+      <div className="jumbotron contentcontainer barter-container" id="Bartering" style={{display:"none"}}>
         <div className="barter-menu"><center>
         {barterArray.map((btn) =>
-               <button id={'sort-'+btn} className='btn btn-default barter-btn' onClick={this.onClick}>{jsUcfirst(btn)}</button>
+               <button id={'sort-'+btn.name} className={'btn btn-default barter-btn ' + btn.status} onClick={this.onClick}>{jsUcfirst(btn.name)}</button>
             )}
         </center></div>
 
@@ -74,7 +79,7 @@ export default class Barter extends Component {
       </table>
 
       <span>Data is pulled from the following <a href={'https://docs.google.com/spreadsheets/d/'+SHEET_ID}>spreadsheet</a>. <i>Which is maintained by <a href="https://www.reddit.com/user/Gieke85">/u/Gieke85</a></i></span>
-    </div>);
+    </div></div>);
   }
 }
 
@@ -105,6 +110,8 @@ function makeApiCall() {
         var row = range.values[i];
         if (i == 0) { styleHeader(row); } else { styleRow(row); }
       }
+      document.getElementsByClassName('loading-div')[0].remove();
+      document.getElementById('Bartering').style.display = 'block';
     } else {
       tableFill('No data found.');
     }
@@ -155,9 +162,9 @@ function styleRow(row) {
     var text = document.createTextNode(row[y]);
 
     for (var a = 0; a < barterArray.length; a++) {
-      if (row.indexOf(jsUcfirst(barterArray[a])) > -1) {
-        tr.className = barterArray[a] + '-row barter-row';
-        if (barterArray[a] == 'prapor') { tr.style.display = 'table' } else {
+      if (row.indexOf(jsUcfirst(barterArray[a].name)) > -1) {
+        tr.className = barterArray[a].name + '-row barter-row';
+        if (barterArray[a].name == 'prapor') { tr.style.display = 'table' } else {
           tr.style.display = 'none'; }
       } else if (tr.className.length == 0) {
         tr.className = 'other-barter-row ammo-row';

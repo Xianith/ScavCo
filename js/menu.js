@@ -17,6 +17,22 @@ var BtnArray = [{"name":"Ammo","color":"white","status":""},
   {"name":"Bartering","color":"white","status":""},
   {"name":"Trading","color":"white","status":""}];
 
+export function navMenu(id, type) {
+  const menu = id.replace('sort-','') + '-row';
+  const menuRows = document.getElementsByClassName(type+'-row');
+  const menuBtns = document.getElementsByClassName(type+'-btn');
+
+  for (var i=0; i < menuBtns.length; i++) {
+    if (menuBtns[i].id.includes(id))
+    { menuBtns[i].classList.add(type+'-btn-active'); } else { menuBtns[i].classList.remove(type+'-btn-active'); }
+  }
+
+  for (var i=0; i < menuRows.length; i++) {
+    if (menuRows[i].className.includes(menu))
+    { menuRows[i].style.display = "table"; } else { menuRows[i].style.display = "none"; }
+  }
+}
+
 export default class Menu extends Component {
   constructor(props) {
     super();
