@@ -47,7 +47,7 @@ https://www.paypal.me/xianith)
 *0.0.9*
 
     * Eventually put this somewhere for people to see
-        --https://tinyurl.com/yc8pw9hg
+        --https://redd.it/82ag20
 
     * Finish cleaning up naviagtion and unify it
         --Still needs work but is in a much better state
