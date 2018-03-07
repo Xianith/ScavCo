@@ -9,7 +9,7 @@ var SHEET_ID = '1t4lA1NCQmM0NpTprGJT7rDVKZXHmQuPzQK5Ul23UoVo';
 var RANGE = 'A1:P72';
 var dnr = [1,2,3,6,11]; //Rows that should not be rendered
 
-var ammoArray = [{"name":"7.62x","id":"762x","status":"ammo-btn-active"},
+var ammoArray = [{"name":"7.62x","id":"762x","status":"active"},
   {"name":"9x","id":"9x","status":""},
   {"name":"5.45x39","id":"545x39","status":""},
   {"name":"5.56x45","id":"556x45","status":""},
@@ -30,15 +30,13 @@ export default class OldAmmo extends Component {
               'scope': SCOPE,
               'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
             }).then(function() {
-              gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
-              updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+                makeApiCall();
             });
         });
     }
     script.onreadystatechange = () => {
       if (this.readyState === 'complete') this.onload();
     }
-
     document.body.appendChild(script);
   }
 
@@ -67,7 +65,6 @@ export default class OldAmmo extends Component {
   }
 
   render() {
-    
     return (  
       <div className="jumbotron contentcontainer tab-container" id="Ammo-Two" style={{display: "none"}}>
        <div className="sub-nav-menu"><center>

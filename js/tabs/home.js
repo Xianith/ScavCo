@@ -13,6 +13,7 @@ export default class Home extends Component {
 
   componentDidMount() {
     document.getElementById('footer').style.display = 'none';
+    if (document.getElementById("Ammo-Two").style.display != 'none') { document.getElementById("Ammo-Two").style.display = 'none'; }
   }
 
   render() {

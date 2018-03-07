@@ -44,7 +44,7 @@
 }
 
 .nav-btn-brd:not(.active):hover a{
-    color: gray !important;
+    color: gray;
 }
 
 .nav-btn {

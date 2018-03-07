@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 import '../../css/tabs.css'
-import { navMenu } from '../menu.js';
-import {API_KEY, SCOPE, CLIENT_ID } from '../util/gapiData.js'
+import { navMenu } from '../menu';
+import { initGapi } from '../util/gapiData.js'
 // import { tableStylize } from '../js/ammo';
 
 var SHEET_ID = '1l_8zSZg-viVTZ2bavMEIIKhix6mFTXuVHWcNKZgBrjQ';
@@ -19,31 +19,6 @@ var ammoArray = [{"name":"7.62x","id":"762x","status":"ammo-btn-active"},
   {"name":"Other","id":"other-ammo","status":""}];
 
 export default class Ammo extends Component {
-
-  loadGapi() {
-    const script = document.createElement("script");
-    script.src = "https://apis.google.com/js/api.js";
-
-    script.onload = () => {
-        gapi.load('client', () => {
-            gapi.client.init({
-              'apiKey': API_KEY,
-              'clientId': CLIENT_ID,
-              'scope': SCOPE,
-              'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-            }).then(function() {
-              gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
-              updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-            });
-        });
-    }
-    script.onreadystatechange = () => {
-      if (this.readyState === 'complete') this.onload();
-    }
-
-    document.body.appendChild(script);
-  }
-
   constructor(props) {
     super();
     this.onClick = this.handleClick.bind(this);
@@ -51,7 +26,9 @@ export default class Ammo extends Component {
   }
 
   componentWillMount() {
-   this.loadGapi();
+   var goog = initGapi(SHEET_ID, RANGE, (resp) => {
+     tableStylize(resp, 'ammo-table-two');
+   }); 
    if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
   }
 
@@ -89,26 +66,7 @@ export default class Ammo extends Component {
   }
 }
 
-function updateSignInStatus(isSignedIn) {
-  if (isSignedIn) {
-    active = true;
-    makeApiCall();
-  } else { makeApiCall(); }
-}
-
-function makeApiCall() {
-  var params = {
-    spreadsheetId: SHEET_ID,
-    range: RANGE,
-    valueRenderOption: 'FORMATTED_VALUE',
-    dateTimeRenderOption: 'SERIAL_NUMBER',
-  };
-  tableStylize(params, 'ammo-table-two');
-}
-
-function tableStylize(params, table) {
-  var request = gapi.client.sheets.spreadsheets.values.get(params);
-  request.then(function(response) {
+function tableStylize(response, table) {
    var range = response.result;
     if (range.values.length > 0) {
       for (var i = 0; i < range.values.length; i++) {
@@ -120,9 +78,6 @@ function tableStylize(params, table) {
     } else {
       tableFill('No data found.');
     }
-  }, function(reason) {
-    console.error('error: ' + reason.result.error.message);
-  });
 }
 
 function styleHeader(row, Table) {

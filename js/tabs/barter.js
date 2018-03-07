@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 import '../../css/tabs.css';
-import mods from '../../assets/categories/mods.png';
-import { navMenu } from '../menu.js';
-import {API_KEY, SCOPE, CLIENT_ID } from '../util/gapiData.js'
+import mods from '../../assets/categories/mods.png'
+import { navMenu } from '../menu'
+import { initGapi } from '../util/gapiData.js'
+import { jsUcfirst } from '../app'
 
-var SHEET_ID = '1Yk-VriCy_8vDH4V9SsLwRYxem2mkzoDrULiaHZY5UGQ';
-var RANGE = 'A3:L189';
+var SHEET_ID = '1Yk-VriCy_8vDH4V9SsLwRYxem2mkzoDrULiaHZY5UGQ'
+var RANGE = 'A3:L189'
 
-var dnr = [3,4,5,7,8]; //Rows that should not be rendered
+var dnr = [3,4,5,7,8] //Rows that should not be rendered
 
 var barterArray = [{"name":"prapor","status":"barter-btn-active"},
 {"name":"therapist","status":""},
@@ -22,38 +23,15 @@ var barterArray = [{"name":"prapor","status":"barter-btn-active"},
 var catArray = ['tradeable','buyable'];
 
 export default class Barter extends Component {
-
-  loadGapi() {
-    const script = document.createElement("script");
-    script.src = "https://apis.google.com/js/api.js";
-
-    script.onload = () => {
-        gapi.load('client', () => {
-            gapi.client.init({
-              'apiKey': API_KEY,
-              'clientId': CLIENT_ID,
-              'scope': SCOPE,
-              'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-            }).then(function() {
-              gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
-              updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-            });
-        });
-    }
-    script.onreadystatechange = () => {
-      if (this.readyState === 'complete') this.onload();
-    }
-
-    document.body.appendChild(script);
-  }
-
   constructor(props) {
     super();
     this.onClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
-   this.loadGapi();
+   var goog = initGapi(SHEET_ID, RANGE, (resp) => {
+     tableStylize(resp, 'ammo-table-two');
+   }); 
    if (document.getElementById("Ammo-Two").style.display != 'none') { document.getElementById("Ammo-Two").style.display = 'none'; }
    if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
   }
@@ -83,41 +61,24 @@ export default class Barter extends Component {
   }
 }
 
-function jsUcfirst(string) 
-{
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 function updateSignInStatus(isSignedIn) {
   if (isSignedIn) {
     makeApiCall();
   } else { makeApiCall(); }
 }
 
-function makeApiCall() {
-  var params = {
-    spreadsheetId: SHEET_ID,
-    range: RANGE,
-    valueRenderOption: 'FORMATTED_VALUE',
-    dateTimeRenderOption: 'SERIAL_NUMBER',
-  };
-
-  var request = gapi.client.sheets.spreadsheets.values.get(params);
-  request.then(function(response) {
+function tableStylize(response, table) {
    var range = response.result;
     if (range.values.length > 0) {
       for (var i = 0; i < range.values.length; i++) {
         var row = range.values[i];
-        if (i == 0) { styleHeader(row); } else { styleRow(row); }
+        if (i == 0) { styleHeader(row,); } else { styleRow(row); }
       }
       document.getElementsByClassName('loading-div')[0].remove();
       document.getElementById('Bartering').style.display = 'block';
     } else {
       tableFill('No data found.');
     }
-  }, function(reason) {
-    console.error('error: ' + reason.result.error.message);
-  });
 }
 
 function styleHeader(row) {

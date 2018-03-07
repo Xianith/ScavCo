@@ -25,6 +25,11 @@ import Dev from '../js/_testing/test.js';
 // utils
 import '../js/util/dServ.js';
 
+export function jsUcfirst(string) 
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 class MainContainer extends Component {
 
 	displayName: 'main';

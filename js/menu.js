@@ -34,7 +34,7 @@ export default class Menu extends Component {
   constructor(props) {
     super();
   }
-
+  
   render() {
     return (
       <nav className="navbar navbar-default navbar-fixed-top">
