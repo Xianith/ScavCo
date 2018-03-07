@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 import '../../css/post.css';
-import dIcon from '../../assets/social/discord.png';
+import dIcon from '../../assets/social/discord.jpg';
 
 let postIndex = 0;
 let postCount = [{"name":"WTS","count":0},{"name":"WTB","count":0},{"name":"WTT","count":0}];
 
 let items = [{"name":"Gold Chain"},{"name":"Marked Key"},{"name":"Customs Key"}];
-
 let discord = '';
 
 export default class Post extends React.Component {
@@ -46,12 +45,12 @@ export default class Post extends React.Component {
     let pVisibility = 'hidden';
 
     if (data.link_flair_text == 'WTS') { pVisibility = 'block'; }
-
-    discord = data.selftext.match(/\S*#[0-9]{4}/gi);
     // data.selftext = data.selftext.replace(/\S*#[0-9]{4}/gi,'');
     // data.selftext = data.selftext.replace('discord:','');
+
+    discord = data.selftext.match(/\S*#[0-9]{4}/gi);
     if (discord != null) { 
-      dButton = <a target="_blank" href="https://discord.gg/GUWxkns"><img  src={dIcon} className="discord-icon" title={discord} alt={discord} /></a> }
+      dButton = <a className="dBtn" title={discord} target="_blank" href="https://discord.gg/GUWxkns"><img src={dIcon} className="discord-icon" alt='Discord Logo'/>{discord}</a> }
 
     if (data.selftext && data.selftext.length > 3) {  
       pButton = <a id={'postBtn-'+ postIndex} className="btn btn-default btn-sm tgl-txt" onClick={this.onClick}>Show Post</a>

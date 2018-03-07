@@ -12,10 +12,7 @@ import {
 import '../css/top-menu.css';
 import font from '../assets/1escape.ttf';
 
-var BtnArray = [{"name":"Ammo","color":"white","status":""},
-  // {"name":"Keys","color":"gray","status":""},
-  {"name":"Bartering","color":"white","status":""},
-  {"name":"Trading","color":"white","status":""}];
+var btnArray = ["Ammo","Bartering","Trading"]
 
 export function navMenu(id, type) {
   const menu = id.replace('sort-','') + '-row';
@@ -50,9 +47,9 @@ export default class Menu extends Component {
         </div>
         <div id="navbar" className="navbar-collapse collapse">
           <ul className="nav navbar-nav">
-            {BtnArray.map((btn) =>
-                    <li className={btn.status + " nav-btn-brd " + btn.name}>
-                      <NavLink to={"/" + btn.name.toLowerCase()} activeClassName='active' style={{color:btn.color}} className="btn nav-btn">{btn.name}</NavLink></li>
+            {btnArray.map((btn) =>
+                    <li className={"nav-btn-brd " + btn}>
+                      <NavLink to={"/" + btn.toLowerCase()} activeClassName='active' style={{color: 'white'}} className="btn nav-btn">{btn}</NavLink></li>
                   )}
           </ul>
           <ul className="nav navbar-nav navbar-right">

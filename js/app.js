@@ -42,7 +42,7 @@ class MainContainer extends Component {
           {["/home", "/"].map(path => 
                <Route exact path={path} component={Home} />
            )}
-          // <Route path="/keys" component={Keys} />
+          <Route path="/keys" component={Keys} />
           <Route path="/ammo" component={Ammo} />
           <Route path="/dev" component={Dev} />
           <Route path="/bartering" component={Bartering} />
