@@ -151,6 +151,10 @@ h2, h3 {
     padding-left: 15px;   
 }
 
+#Home {
+    width:550px;
+}
+
 /*#Barter {
     overflow-y: scroll;
     height: 500px;

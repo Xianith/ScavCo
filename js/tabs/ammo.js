@@ -69,14 +69,14 @@ export default class OldAmmo extends Component {
   render() {
     
     return (  
-      <div className="jumbotron contentcontainer ammo-container" id="Ammo-Two" style={{display: "none"}}>
-       <div className="ammo-menu"><center>
+      <div className="jumbotron contentcontainer tab-container" id="Ammo-Two" style={{display: "none"}}>
+       <div className="sub-nav-menu"><center>
            {ammoArray.map((btn) =>
-                  <button id={'sort-'+btn.id} className={'btn btn-default ammo-btn '+btn.status} onClick={this.onClick}>{btn.name}</button>
+                  <button id={'sort-'+btn.id} className={btn.status} onClick={this.onClick}>{btn.name}</button>
                  )}
            </center></div>
 
-           <table id="ammo-table" className="table table-fixed table-hover table-responsive table-sm" cellSpacing="0" width="100%">
+           <table id="ammo-table" className="sheets-table table table-fixed table-hover table-responsive table-sm" cellSpacing="0" width="100%">
              <thead></thead>
              <tbody></tbody>
            </table>
@@ -103,6 +103,7 @@ function tableStylize(params, table) {
         if (i == 0) { styleHeader(row, table); } else { styleRow(row, table); }
       }
       document.getElementById(table).style.display = "table";
+      $(table).DataTable();
     } else {
       tableFill('No data found.');
     }

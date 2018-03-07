@@ -52,7 +52,7 @@ export default class Menu extends Component {
           <ul className="nav navbar-nav">
             {BtnArray.map((btn) =>
                     <li className={btn.status + " nav-btn-brd " + btn.name}>
-                      <NavLink to={"/" + btn.name} activeClassName='active' style={{color:btn.color}} className="btn nav-btn">{btn.name}</NavLink></li>
+                      <NavLink to={"/" + btn.name.toLowerCase()} activeClassName='active' style={{color:btn.color}} className="btn nav-btn">{btn.name}</NavLink></li>
                   )}
           </ul>
           <ul className="nav navbar-nav navbar-right">

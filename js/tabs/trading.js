@@ -41,10 +41,10 @@ export default class Trading extends Component {
 
     if (p.length == 0) { return (<div className="loading-div">Loading...</div>) }
     return (  
-      <div className="jumbotron contentcontainer trading-container" id="Trading">
-       <div className="trading-menu"><center>
+      <div className="jumbotron contentcontainer tab-container" id="Trading">
+       <div className="sub-nav-menu"><center>
            {tradingArray.map((btn) =>
-                  <button id={'sort-'+btn.name} className={'nav-btn-brd nav-btn trading-btn '+btn.name} style={{color:btn.color}} onClick={this.pstFltr}>{btn.name}</button>
+                  <button id={'sort-'+btn.name} className={btn.name} style={{color:btn.color}} onClick={this.pstFltr}>{btn.name}</button>
                  )}
            </center></div>
 

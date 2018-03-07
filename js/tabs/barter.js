@@ -66,14 +66,14 @@ export default class Barter extends Component {
   render() {
     return (<div>
         <div className="loading-div">Loading...</div>  
-      <div className="jumbotron contentcontainer barter-container" id="Bartering" style={{display:"none"}}>
-        <div className="barter-menu"><center>
+      <div className="jumbotron contentcontainer tab-container" id="Bartering" style={{display:"none"}}>
+        <div className="sub-nav-menu"><center>
         {barterArray.map((btn) =>
-               <button id={'sort-'+btn.name} className={'btn btn-default barter-btn ' + btn.status} onClick={this.onClick}>{jsUcfirst(btn.name)}</button>
+               <button id={'sort-'+btn.name} className={btn.status} onClick={this.onClick}>{jsUcfirst(btn.name)}</button>
             )}
         </center></div>
 
-      <table data-toggle="table" id="barter-table" className="table table-fixed table-hover table-responsive table-sm" cellSpacing="0" width="100%">
+      <table data-toggle="table" id="barter-table" className="sheets-table table table-fixed table-hover table-responsive table-sm" cellSpacing="0" width="100%">
         <thead></thead>
         <tbody></tbody>
       </table>

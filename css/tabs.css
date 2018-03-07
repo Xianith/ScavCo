@@ -1,21 +1,22 @@
-.ammo-container, .barter-container, .trading-container {
+.tab-container {
   padding-top: 30px;
   padding-bottom: 15px;
 }
 
-.ammo-menu, .barter-menu, .trading-menu {
+.sub-nav-menu {
   padding-bottom: 5px;
 }
 
-.ammo-btn, .barter-btn, .trading-btn {
+.sub-nav-menu button {
   color:white;
   margin-right: 2px;
+  padding: 4px;
   border: 2px solid #9a8866;
   background-color:#292929 !important;
   border-radius: 0px;
 }
 
-.ammo-btn:hover,.barter-btn:hover, .trading-btn:hover, .ammo-btn:focus,.barter-btn:focus, .trading-btn:focus {
+.sub-nav-menu button:focus, .sub-nav-menu button:hover {
   color: #9a8866;
   border-color: white;
 }
@@ -25,26 +26,26 @@
   overflow: auto;
 }
 
-.ammo-btn-active, .barter-btn-active {
+.sub-nav-btn-active {
   color: #9a8866;
   border-color: white;
 }
 
 /*Table Style*/
 
-#barter-table tbody, #ammo-table tbody,#ammo-table-two tbody  {
+#barter-table tbody, #ammo-table tbody, #ammo-table-two tbody, .sheets-table tbody  {
     display:block;
     background-color: #eee !important;
     color: black !important;
     height:405px;
     overflow:auto;
 }
-#barter-table thead, #barter-table tbody tr, #ammo-table thead, #ammo-table tbody tr, #ammo-table-two thead, #ammo-table-two tbody tr {
+#barter-table thead, #barter-table tbody tr, #ammo-table thead, #ammo-table tbody tr, #ammo-table-two thead, #ammo-table-two tbody tr, .sheets-table tbody tr {
     display:table;
     width:100%;
     table-layout:fixed;
 }
-#barter-table thead, #ammo-table thead, #ammo-table-two thead {
+#barter-table thead, #ammo-table thead, #ammo-table-two thead, .sheets-table thead {
 /*    background-color: white;
     color: black;*/
     width: calc( 100% - 1em )

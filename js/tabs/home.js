@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import '../../css/home.css';
-
 import discord from '../../assets/social/discord.png';
 import gamepedia from '../../assets/social/gamepedia.png';
 import reddit from '../../assets/social/reddit.png';
@@ -21,17 +19,18 @@ export default class Home extends Component {
     return ( 
        <div className="jumbotron contentcontainer" id="Home">
           <center>
-          <div style={{'border-bottom': '1px solid #6f6a5b','padding-bottom':'15px'}}>
+          <div style={{'border-bottom': '1px solid #6f6a5b','paddingBottom':'15px'}}>
           <h2>Guides</h2>
-            <a target="_blank" href="https://docs.google.com/presentation/d/1fipxlW4zdGAyXpjRdJvKJUuwMfiX0xZvnsvRj0QX-2w/edit#slide=id.p">Keys</a> |&nbsp;
+            <a target="_blank" href="https://forums.uwsgaming.com/topic/3871-map-keys-and-you/">Keys</a> |&nbsp;
             <a target="_blank" href="http://forum.escapefromtarkov.com/topic/35903-weapons-and-attachments-mega-thread/">Attachments</a> |&nbsp;
             <a target="_blank" href="http://jjames.info/eFT_modCompat.php?tableType=advanced">Mods</a>
+            <br /><a target="_blank" href="https://docs.google.com/presentation/d/1fipxlW4zdGAyXpjRdJvKJUuwMfiX0xZvnsvRj0QX-2w">Customs Dorms Keys</a>
           <h4>Maps</h4>
             <a target="_blank" href="http://www.gamemaps.co.uk/game/tarkov">Game Maps</a> |&nbsp;
             <a target="_blank" href="https://tarkov.directory/">Tarkov Directory</a>
           </div>
 
-          <div style={{'border-bottom': '1px solid #6f6a5b','padding-bottom':'15px'}}>
+          <div style={{'border-bottom': '1px solid #6f6a5b','paddingBottom':'15px'}}>
           <h2>Sites</h2>
             <a target="_blank" href="https://escapefromtarkov.gamepedia.com"><img src={ gamepedia } className="socialicon" title="Gamepedia" alt="Gamepedia" /></a> &nbsp;
             <a target="_blank" href="https://www.reddit.com/r/escapefromtarkov/"><img src={ reddit } className="socialicon" title="Subreddit" alt="Subreddit"/></a> &nbsp;

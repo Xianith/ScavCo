@@ -70,14 +70,14 @@ export default class Ammo extends Component {
 
     return (<div>
       <div className="loading-div">Loading...</div>
-      <div className="jumbotron contentcontainer ammo-container" id="Ammo" style={{display:"none"}}>
-       <div className="ammo-menu"><center>
+      <div className="jumbotron contentcontainer tab-container" id="Ammo" style={{display:"none"}}>
+       <div className="sub-nav-menu"><center>
            {ammoArray.map((btn) =>
-                  <button id={'sort-'+btn.id} className={'btn btn-default ammo-btn '+btn.status} onClick={this.onClick}>{btn.name}</button>
+                  <button id={'sort-'+btn.id} className={btn.status} onClick={this.onClick}>{btn.name}</button>
                  )}
            </center></div>
 
-           <table id="ammo-table-two" className="table table-fixed sortable table-hover table-responsive table-sm" cellSpacing="0" width="100%">
+           <table id="ammo-table-two" className="sheets-table table table-fixed sortable table-hover table-responsive table-sm" cellSpacing="0" width="100%">
              <thead></thead>
              <tbody></tbody>
            </table>
