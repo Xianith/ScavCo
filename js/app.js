@@ -9,21 +9,22 @@ import {
 } from "react-router-dom";
 
 import '../css/main.css';
-
-import Menu from '../js/menu.js';
+import Menu from '../js/menu';
 
 // tabs
-import Home from '../js/tabs/home.js';
-import OldAmmo from '../js/tabs/ammo.js';
-import Ammo from '../js/tabs/new-ammo.js';
-import Bartering from '../js/tabs/barter.js';
-import Trading from '../js/tabs/trading.js';
-import Keys from '../js/tabs/keys.js';
+import Home from '../js/tabs/home';
+import OldAmmo from '../js/tabs/ammo';
+import Ammo from '../js/tabs/new-ammo';
+import Bartering from '../js/tabs/barter';
+import Trading from '../js/tabs/trading';
 
-import Dev from '../js/_testing/test.js';
+// inDev
+import Keys from '../js/tabs/keys';
+import Maps from '../js/tabs/maps';
+import Dev from '../js/_testing/test';
 
 // utils
-import '../js/util/dServ.js';
+import '../js/util/dServ';
 
 export function jsUcfirst(string) 
 {
@@ -47,6 +48,7 @@ class MainContainer extends Component {
           {["/home", "/"].map(path => 
                <Route exact path={path} component={Home} />
            )}
+          <Route path="/maps" component={Maps} />
           <Route path="/keys" component={Keys} />
           <Route path="/ammo" component={Ammo} />
           <Route path="/dev" component={Dev} />

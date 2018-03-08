@@ -5,7 +5,9 @@ import '../../css/tabs.css'
 import { navMenu } from '../menu';
 import { initGapi } from '../util/gapiData'
 import { offStyleH, offStyleR, uOffStyleH, uOffStyleR } from '../data/sheetStyles'
-// import { tableStylize } from '../js/ammo';
+
+// const $ = require('jquery');
+// $.DataTable = require('datatables.net');
 
 var sArray = [{
   "name":"Official",
@@ -48,7 +50,17 @@ export default class Ammo extends Component {
   getGoog(sheetIndex) {
     var goog = initGapi(sArray[sheetIndex].id, sArray[sheetIndex].range, (resp) => {
       tableStylize(resp, 'ammo-table', sArray[sheetIndex].styler.header, sArray[sheetIndex].styler.row, sArray[sheetIndex].dnr);
+      // $('#ammo-table').DataTable();
     }); 
+  }
+
+  updateFooter(sheetIndex) {
+    var swap = document.getElementById('ammoTableSwapper');
+    var link = document.getElementById('ammoTableLink');
+
+    swap.innerHTML = 'Switch to '+ sArray[sheetIndex].name +' Data';
+    swap.style.color = sArray[sheetIndex].color;
+    link.href  = 'https://docs.google.com/spreadsheets/d/'+sArray[sheetIndex].id;
   }
 
   componentDidMount() {
@@ -61,20 +73,13 @@ export default class Ammo extends Component {
   }
 
   tableSwap(event) {
-    var swap = document.getElementById('ammoTableSwapper');
-    var link = document.getElementById('ammoTableLink');
-
     if (sheet == 0) {
       this.getGoog(1);
-      swap.innerHTML = 'Switch to '+ sArray[0].name +' Data';
-      swap.style.color = sArray[0].color;
-      link.href  = 'https://docs.google.com/spreadsheets/d/'+sArray[0].id;
+      this.updateFooter(0);
       sheet = 1;
     } else {
       this.getGoog(0);
-      swap.innerHTML = 'Switch to '+ sArray[1].name +' Data';
-      swap.style.color = sArray[1].color;
-      link.href  = 'https://docs.google.com/spreadsheets/d/'+sArray[1].id;
+      this.updateFooter(1);
       sheet = 0;
     }
   }
@@ -94,7 +99,7 @@ export default class Ammo extends Component {
                  )}
            </center></div>
 
-           <table id="ammo-table" className="sheets-table table table-fixed sortable table-hover table-responsive table-sm" cellSpacing="0" width="100%">
+           <table ref="main" id="ammo-table" className="sheets-table table table-fixed sortable table-hover table-responsive table-sm" cellSpacing="0" width="100%">
            </table>
 
       <span>Data is pulled from the following <a id="ammoTableLink" href={'https://docs.google.com/spreadsheets/d/'+sArray[0].id}>spreadsheet</a>.

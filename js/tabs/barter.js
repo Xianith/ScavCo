@@ -28,10 +28,14 @@ export default class Barter extends Component {
     this.onClick = this.handleClick.bind(this);
   }
 
+  componentWillMount() {
+    var goog = initGapi(SHEET_ID, RANGE, (resp) => {
+      tableStylize(resp, 'barter-table');
+    }); 
+  }
+
   componentDidMount() {
-   var goog = initGapi(SHEET_ID, RANGE, (resp) => {
-     tableStylize(resp, 'barter-table');
-   }); 
+
    // if (document.getElementById("Ammo-Two").style.display != 'none') { document.getElementById("Ammo-Two").style.display = 'none'; }
    if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
   document.title = "Scav Co 🔸 Barter";

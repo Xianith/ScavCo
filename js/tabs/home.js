@@ -13,7 +13,6 @@ export default class Home extends Component {
 
   componentDidMount() {
     document.getElementById('footer').style.display = 'none';
-    // if (document.getElementById("Ammo-Two").style.display != 'none') { document.getElementById("Ammo-Two").style.display = 'none'; }
     document.title = "Scav Co";
   }
 
@@ -27,9 +26,6 @@ export default class Home extends Component {
             <a target="_blank" href="http://forum.escapefromtarkov.com/topic/35903-weapons-and-attachments-mega-thread/">Attachments</a> |&nbsp;
             <a target="_blank" href="http://jjames.info/eFT_modCompat.php?tableType=advanced">Mods</a>
             <br /><a target="_blank" href="https://docs.google.com/presentation/d/1fipxlW4zdGAyXpjRdJvKJUuwMfiX0xZvnsvRj0QX-2w">Customs Dorms Keys</a>
-          <h4>Maps</h4>
-            <a target="_blank" href="http://www.gamemaps.co.uk/game/tarkov">Game Maps</a> |&nbsp;
-            <a target="_blank" href="https://tarkov.directory/">Tarkov Directory</a>
           </div>
 
           <div style={{'borderBottom': '1px solid #6f6a5b','paddingBottom':'15px'}}>
