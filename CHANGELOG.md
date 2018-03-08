@@ -35,3 +35,9 @@
       
       * Figure out why Font's are weird. 
             -- Fixed in Webpack config
+            
+*0.0.4*
+
+      * Need to reactify the pages that handle the GoogleAPI stuff (ammo.html and barter.html)
+
+          * barter complete, need to work on ammo
