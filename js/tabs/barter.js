@@ -30,10 +30,11 @@ export default class Barter extends Component {
 
   componentDidMount() {
    var goog = initGapi(SHEET_ID, RANGE, (resp) => {
-     tableStylize(resp, 'ammo-table-two');
+     tableStylize(resp, 'barter-table');
    }); 
-   if (document.getElementById("Ammo-Two").style.display != 'none') { document.getElementById("Ammo-Two").style.display = 'none'; }
+   // if (document.getElementById("Ammo-Two").style.display != 'none') { document.getElementById("Ammo-Two").style.display = 'none'; }
    if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
+  document.title = "Scav Co 🔸 Barter";
   }
 
   handleClick(event) {
@@ -68,6 +69,7 @@ function updateSignInStatus(isSignedIn) {
 }
 
 function tableStylize(response, table) {
+  document.getElementById(table).innerHTML = '<thead></thead><tbody></tbody>';
    var range = response.result;
     if (range.values.length > 0) {
       for (var i = 0; i < range.values.length; i++) {

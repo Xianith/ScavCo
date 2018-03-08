@@ -32,7 +32,7 @@ export function jsUcfirst(string)
 
 class MainContainer extends Component {
 
-	displayName: 'main';
+	// displayName: 'main';
 
   constructor(props) {
     super(props);

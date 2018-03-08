@@ -13,14 +13,15 @@ export default class Home extends Component {
 
   componentDidMount() {
     document.getElementById('footer').style.display = 'none';
-    if (document.getElementById("Ammo-Two").style.display != 'none') { document.getElementById("Ammo-Two").style.display = 'none'; }
+    // if (document.getElementById("Ammo-Two").style.display != 'none') { document.getElementById("Ammo-Two").style.display = 'none'; }
+    document.title = "Scav Co";
   }
 
   render() {
     return ( 
        <div className="jumbotron contentcontainer" id="Home">
           <center>
-          <div style={{'border-bottom': '1px solid #6f6a5b','paddingBottom':'15px'}}>
+          <div style={{'borderBottom': '1px solid #6f6a5b','paddingBottom':'15px'}}>
           <h2>Guides</h2>
             <a target="_blank" href="https://forums.uwsgaming.com/topic/3871-map-keys-and-you/">Keys</a> |&nbsp;
             <a target="_blank" href="http://forum.escapefromtarkov.com/topic/35903-weapons-and-attachments-mega-thread/">Attachments</a> |&nbsp;
@@ -31,7 +32,7 @@ export default class Home extends Component {
             <a target="_blank" href="https://tarkov.directory/">Tarkov Directory</a>
           </div>
 
-          <div style={{'border-bottom': '1px solid #6f6a5b','paddingBottom':'15px'}}>
+          <div style={{'borderBottom': '1px solid #6f6a5b','paddingBottom':'15px'}}>
           <h2>Sites</h2>
             <a target="_blank" href="https://escapefromtarkov.gamepedia.com"><img src={ gamepedia } className="socialicon" title="Gamepedia" alt="Gamepedia" /></a> &nbsp;
             <a target="_blank" href="https://www.reddit.com/r/escapefromtarkov/"><img src={ reddit } className="socialicon" title="Subreddit" alt="Subreddit"/></a> &nbsp;

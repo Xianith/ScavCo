@@ -3,14 +3,34 @@ import { render } from 'react-dom';
 
 import '../../css/tabs.css'
 import { navMenu } from '../menu';
-import { initGapi } from '../util/gapiData.js'
+import { initGapi } from '../util/gapiData'
+import { offStyleH, offStyleR, uOffStyleH, uOffStyleR } from '../data/sheetStyles'
 // import { tableStylize } from '../js/ammo';
 
-var SHEET_ID = '1l_8zSZg-viVTZ2bavMEIIKhix6mFTXuVHWcNKZgBrjQ';
+var sArray = [{
+  "name":"Official",
+  "color":"#d7b100",
+  "id":"1l_8zSZg-viVTZ2bavMEIIKhix6mFTXuVHWcNKZgBrjQ",
+  "range":"A1:J67",
+  "styler":{
+    "header":offStyleH,
+    "row":offStyleR
+  },
+  "dnr": [7]
+},{
+  "name":"Unofficial",
+  "color":"gray",
+  "id":"1t4lA1NCQmM0NpTprGJT7rDVKZXHmQuPzQK5Ul23UoVo",
+  "range":"A1:P72",
+  "styler":{
+    "header":uOffStyleH,
+    "row":uOffStyleR
+  },
+  "dnr": [1,2,3,6,11]
+}];
 
-var RANGE = 'A1:J67';
+var sheet = 0;
 
-var dnr = [7]; //Rows that should not be rendered
 var ammoArray = [{"name":"7.62x","id":"762x","status":"ammo-btn-active"},
   {"name":"9x","id":"9x","status":""},
   {"name":"5.45x39","id":"545x39","status":""},
@@ -25,16 +45,38 @@ export default class Ammo extends Component {
     this.tableSwap = this.tableSwap.bind(this);
   }
 
+  getGoog(sheetIndex) {
+    var goog = initGapi(sArray[sheetIndex].id, sArray[sheetIndex].range, (resp) => {
+      tableStylize(resp, 'ammo-table', sArray[sheetIndex].styler.header, sArray[sheetIndex].styler.row, sArray[sheetIndex].dnr);
+    }); 
+  }
+
+  componentDidMount() {
+    this.getGoog(0);
+  }
+
   componentWillMount() {
-   var goog = initGapi(SHEET_ID, RANGE, (resp) => {
-     tableStylize(resp, 'ammo-table-two');
-   }); 
    if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
+   document.title = "Scav Co 🔸 Ammo";
   }
 
   tableSwap(event) {
-    document.getElementById('Ammo').style.display = 'none';
-    document.getElementById('Ammo-Two').style.display = 'block';
+    var swap = document.getElementById('ammoTableSwapper');
+    var link = document.getElementById('ammoTableLink');
+
+    if (sheet == 0) {
+      this.getGoog(1);
+      swap.innerHTML = 'Switch to '+ sArray[0].name +' Data';
+      swap.style.color = sArray[0].color;
+      link.href  = 'https://docs.google.com/spreadsheets/d/'+sArray[0].id;
+      sheet = 1;
+    } else {
+      this.getGoog(0);
+      swap.innerHTML = 'Switch to '+ sArray[1].name +' Data';
+      swap.style.color = sArray[1].color;
+      link.href  = 'https://docs.google.com/spreadsheets/d/'+sArray[1].id;
+      sheet = 0;
+    }
   }
 
   handleClick(event) {
@@ -43,8 +85,6 @@ export default class Ammo extends Component {
   }
 
   render() {
-    // if (t == false) { return (<div className="loading-div">Loading...</div>) }
-
     return (<div>
       <div className="loading-div">Loading...</div>
       <div className="jumbotron contentcontainer tab-container" id="Ammo" style={{display:"none"}}>
@@ -54,24 +94,23 @@ export default class Ammo extends Component {
                  )}
            </center></div>
 
-           <table id="ammo-table-two" className="sheets-table table table-fixed sortable table-hover table-responsive table-sm" cellSpacing="0" width="100%">
-             <thead></thead>
-             <tbody></tbody>
+           <table id="ammo-table" className="sheets-table table table-fixed sortable table-hover table-responsive table-sm" cellSpacing="0" width="100%">
            </table>
 
-      <span>Data is pulled from the following <a href={'https://docs.google.com/spreadsheets/d/'+SHEET_ID}>spreadsheet</a>.
-      <a style={{color: "#gray", float: "right", cursor:"pointer"}} onClick={this.tableSwap}>Switch to Unofficial Data</a></span>
+      <span>Data is pulled from the following <a id="ammoTableLink" href={'https://docs.google.com/spreadsheets/d/'+sArray[0].id}>spreadsheet</a>.
+      <a id="ammoTableSwapper" style={{color: "#gray", float: "right", cursor:"pointer"}} onClick={this.tableSwap}>Switch to Unofficial Data</a></span>
     </div>
     </div>);
   }
 }
 
-function tableStylize(response, table) {
+function tableStylize(response, table, hStyler, rStyler, dnr) {
+  document.getElementById(table).innerHTML = '<thead></thead><tbody></tbody>';
    var range = response.result;
     if (range.values.length > 0) {
       for (var i = 0; i < range.values.length; i++) {
         var row = range.values[i];
-        if (i == 0) { styleHeader(row, table); } else { styleRow(row, table); }
+        if (i == 0) { styleHeader(row, table, hStyler, dnr); } else { styleRow(row, table, rStyler, dnr); }
       }
       document.getElementsByClassName('loading-div')[0].remove();
       document.getElementById('Ammo').style.display = 'block';
@@ -80,7 +119,7 @@ function tableStylize(response, table) {
     }
 }
 
-function styleHeader(row, Table) {
+function styleHeader(row, Table, styler, dnr) {
   var table = document.getElementById(Table);
   var tr = document.createElement('tr');
 
@@ -88,42 +127,7 @@ function styleHeader(row, Table) {
     var thead = table.getElementsByTagName('thead')[0];
     var th = document.createElement('th');
 
-    switch (y){
-      case 0:
-        th.colSpan = 2;
-        th.innerHTML = 'Name';
-        break;
-      case 1:
-        th.title = 'Initial Price';
-        th.innerHTML = 'Price';
-        break;
-      case 2:
-        th.title = 'Damage';
-        th.innerHTML = 'Damage';
-        break;
-      case 3:
-        th.title = 'Penetration Value';
-        th.innerHTML = 'Armor Pen';
-        break;
-      case 4:
-        th.title = 'Projectile speed (m/s)';
-        th.innerHTML = 'Speed';
-        break;
-      case 5:
-        th.title = 'Richochet Percentage / Chance';
-        th.innerHTML = 'Richochet %';
-        break;
-      case 6:
-        th.title = 'Fragmentaiton Percentage / Chance';
-        th.innerHTML = 'Frag %';
-        break;
-      case 8:
-        th.title = 'Usefulness Meta Value';
-        th.innerHTML = 'Usefullness';
-        break;
-      default:
-        th.innerHTML = row[y];
-    }
+    styler(y, row, th);
 
     if (dnr.indexOf(y) > -1) { } 
     else {
@@ -133,7 +137,7 @@ function styleHeader(row, Table) {
   }
 }
 
-function styleRow(row, Table) {
+function styleRow(row, Table, styler, dnr) {
   var table = document.getElementById(Table);
   var tr = document.createElement('tr'); 
 
@@ -142,7 +146,7 @@ function styleRow(row, Table) {
     var td = document.createElement('td');
 
     for (var a = 0; a < ammoArray.length; a++) {
-        if (row[0].includes(ammoArray[a].id)) {
+        if (row[0].includes(ammoArray[a].id) || row[0].includes(ammoArray[a].name)) {
           tr.className = ammoArray[a].id + '-row ammo-row';
           if (ammoArray[a].id == '762x') { tr.style.display = 'table' } else {
             tr.style.display = 'none'; }
@@ -152,19 +156,7 @@ function styleRow(row, Table) {
         }
     }
 
-    switch (y) {
-      case 0:
-        td.colSpan = 2;
-        td.title = row[y];
-        let name = nameClean(row[y]);
-        td.innerHTML = '<a target="_blank" href="https://escapefromtarkov.gamepedia.com/'+name+'">'+name+'</a>'; //Swap Item to row 1
-        break;
-      case 1:
-        td.innerHTML = row[y] + '₽';
-        break;
-      default:
-        td.innerHTML = row[y];
-    }
+    styler(y, row, td)
 
     if (dnr.indexOf(y) > -1) { } 
     else {
@@ -172,25 +164,4 @@ function styleRow(row, Table) {
       tbody.appendChild(tr);
     }
   }
-}
-
-function nameClean(name) {
-
-  name = name.replace(/_/gi,' ');
-
-  switch (name.charAt(0)) {
-    case '3':
-      name = "." + name;
-      break;
-    case '5':
-    case '7':
-      name = name.charAt(0) + "." + name.slice(1);
-      if (name.includes('tt') == true) { name = name.replace('tt', 'mm TT'); } else { name = name.replace(' ', ' mm '); }
-      break;
-    case '9':
-      if (name.includes('pm') == true) { name = name.replace('pm', ' mm PM'); } else { name = name.replace(' ', ' mm '); }
-    default:
-  }
-
-  return name;
 }

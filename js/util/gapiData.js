@@ -5,8 +5,27 @@ var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleuserco
 var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
 export function initGapi(sheet, range, callback) {
+	var scripts = document.getElementsByTagName('script');
+	var source = "js/util/google-api.js";
+
+	var params = {
+	    spreadsheetId: sheet,
+	    range: range,
+	    valueRenderOption: 'FORMATTED_VALUE',
+	    dateTimeRenderOption: 'SERIAL_NUMBER',
+	};
+
+	for (var s = 0; s < scripts.length; s++) {
+		if(scripts[s].src == "http://scav.co/"+source) {
+			var request = gapi.client.sheets.spreadsheets.values.get(params);
+			request.execute((resp) => {
+				callback(resp);
+			});
+			break;
+		}
+	}
 	const script = document.createElement("script");
-	script.src = "js/util/google-api.js";
+	script.src = source;
 
 	script.onload = () => {
 	    gapi.load('client', () => {
@@ -16,12 +35,6 @@ export function initGapi(sheet, range, callback) {
 	          'scope': SCOPE,
 	          'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
 	        }).then(function() {
-		        var params = {
-		            spreadsheetId: sheet,
-		            range: range,
-		            valueRenderOption: 'FORMATTED_VALUE',
-		            dateTimeRenderOption: 'SERIAL_NUMBER',
-		        };
 		        var request = gapi.client.sheets.spreadsheets.values.get(params);
 		        request.execute((resp) => {
 		        	callback(resp);
