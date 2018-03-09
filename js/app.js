@@ -13,14 +13,15 @@ import Menu from '../js/menu';
 
 // tabs
 import Home from '../js/tabs/home';
-import OldAmmo from '../js/tabs/ammo';
-import Ammo from '../js/tabs/new-ammo';
+import Ammo from '../js/tabs/ammo';
+import Maps from '../js/tabs/maps';
 import Bartering from '../js/tabs/barter';
 import Trading from '../js/tabs/trading';
 
+import {API_KEY, SCOPE, CLIENT_ID } from '../js/util/gapiData'
+
 // inDev
 import Keys from '../js/tabs/keys';
-import Maps from '../js/tabs/maps';
 import Dev from '../js/_testing/test';
 
 // utils
@@ -33,10 +34,34 @@ export function jsUcfirst(string)
 
 class MainContainer extends Component {
 
-	// displayName: 'main';
+	displayName: 'main';
+
+  loadGapi() {
+    const script = document.createElement("script");
+    script.src = "https://apis.google.com/js/api.js";
+
+    script.onload = () => {
+        gapi.load('client', () => {
+            gapi.client.init({
+              'apiKey': API_KEY,
+              'clientId': CLIENT_ID,
+              'scope': SCOPE,
+              'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+            })
+        });
+    }
+    script.onreadystatechange = () => {
+      if (this.readyState === 'complete') this.onload();
+    }
+    document.body.appendChild(script);
+  }
 
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.loadGapi()
   }
 
   render() {
@@ -55,7 +80,6 @@ class MainContainer extends Component {
           <Route path="/bartering" component={Bartering} />
           <Route path="/trading" component={Trading} />
         </Switch>
-        <OldAmmo />
         </div>
       </div>
     </Router>);

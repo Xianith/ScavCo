@@ -21,7 +21,7 @@ export default class Trading extends Component {
     fetch('https://www.reddit.com/r/TarkovTrading/new/.json?limit=100').then((e) => {
       e.json().then((f) => { this.setState({ posts: f.data.children })})
     });
-    if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
+    // if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
     document.title = "Scav Co 🔸 Trading";
   }
 

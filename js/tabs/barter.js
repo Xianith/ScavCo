@@ -35,9 +35,7 @@ export default class Barter extends Component {
   }
 
   componentDidMount() {
-
-   // if (document.getElementById("Ammo-Two").style.display != 'none') { document.getElementById("Ammo-Two").style.display = 'none'; }
-   if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
+   // if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
   document.title = "Scav Co 🔸 Barter";
   }
 
