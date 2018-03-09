@@ -40,7 +40,10 @@ export default class Menu extends Component {
       <nav className="navbar navbar-default navbar-fixed-top">
       <div className="container">
         <div className="navbar-header">
-          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <button 
+            type="button" 
+            className="navbar-toggle collapsed" 
+            data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span className="glyphicon glyphicon-menu-hamburger"></span><span className="sr-only">Toggle navigation</span>
           </button>
           <Link to="/" className="navbar-brand">SCAV</Link>
@@ -49,7 +52,13 @@ export default class Menu extends Component {
           <ul className="nav navbar-nav">
             {btnArray.map((btn) =>
                     <li className={"nav-btn-brd " + btn}>
-                      <NavLink to={"/" + btn.toLowerCase()} activeClassName='active' style={{color: 'white'}} className="btn nav-btn">{btn}</NavLink></li>
+                      <NavLink 
+                        to={"/" + btn.toLowerCase()} 
+                        activeClassName='active' 
+                        style={{color: 'white'}} 
+                        className="btn nav-btn">{btn}
+                      </NavLink>
+                    </li>
                   )}
           </ul>
           <ul className="nav navbar-nav navbar-right">
