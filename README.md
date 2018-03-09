@@ -1,9 +1,15 @@
 # Scav Co
 Escape from Tarkov website for all your EFT needs. Links out to many guides and resources but I am working on trying to house everything in one area while providing unique tools that people can use.
 
-**Written in:** [React](https://reactjs.org/)
+**Built with:** 
 
-**Current Version: 0.1.1**
+[![React](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/200px-React-icon.svg.png)](https://reactjs.org/)
+
+[![Leaflet](https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Leaflet_logo.svg/200px-Leaflet_logo.svg.png)](http://leafletjs.com/)
+
+[![Google](https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Google_Developers_logo.svg/200px-Google_Developers_logo.svg.png)](https://developers.google.com/)
+
+**Current Version: 0.1.2**
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](
 https://www.paypal.me/xianith)
@@ -47,6 +53,16 @@ https://www.paypal.me/xianith)
 ---
 
 ## Finished
+
+*0.1.1*
+  
+  * Stylized Maps
+  
+  * Markers are per map now
+  
+  * Finished some basic markers and object writing
+  
+  * Removed footer
 
 *0.1.0*
 
