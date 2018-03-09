@@ -12,7 +12,6 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    document.getElementById('footer').style.display = 'none';
     document.title = "Scav Co";
   }
 
