@@ -67,6 +67,7 @@ export default class Ammo extends Component {
     loadGapi();
     this.getGoog(0);
     document.getElementById('fourohfour').style.display = 'none';
+    document.getElementById('MainMenu').style.display = 'block';
   }
 
   componentWillMount() {

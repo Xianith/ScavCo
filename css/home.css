@@ -1,3 +1,48 @@
+#Home .hm-hr {
+	border-bottom: 1px solid #6f6a5b;
+	padding-bottom: 15px;
+}
+
 #Home {
-    width:550px;
+	padding-top: 0px;
+	padding-bottom: 15px;
+}
+
+#MainMenu { display: none; }
+
+#titlescreen .navbar-brand {
+	text-align: center;
+	display: block;
+	width: 100%;
+	margin-bottom: 20px;
+    font-size: 50px;
+
+}
+
+#titlescreen {
+	font-size: 10px;
+	letter-spacing: 3px;
+	color: #bcb9a9;
+}
+
+#titlescreen h2 {
+	font-size: 20px;
+}
+
+.hm-btn {
+	list-style: none;
+}
+
+.hm-nav-btn {
+	color: white;
+	margin: 5px;
+	padding: 4px;
+	border: 2px solid #9a8866;
+	background-color: #292929 !important;
+	border-radius: 0px;
+}
+
+.hm-nav-btn:hover {
+	color: #9a8866;
+	border-color: white;
 }

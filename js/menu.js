@@ -12,7 +12,7 @@ import {
 import '../css/top-menu.css';
 import font from '../assets/1escape.ttf';
 
-var btnArray = ["Ammo","Bartering","Trading","Maps"]
+export var btnArray = ["Ammo","Bartering","Trading","Maps"]
 
 export function navMenu(id, type) {
   const menu = id.replace('sort-','') + '-row';
@@ -37,7 +37,7 @@ export default class Menu extends Component {
   
   render() {
     return (
-      <nav className="navbar navbar-default navbar-fixed-top">
+      <nav className="navbar navbar-default navbar-fixed-top" id="MainMenu">
       <div className="container">
         <div className="navbar-header">
           <button 

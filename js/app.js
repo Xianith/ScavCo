@@ -17,16 +17,18 @@ import Ammo from '../js/tabs/ammo'
 import Maps from '../js/tabs/maps'
 import Bartering from '../js/tabs/barter'
 import Trading from '../js/tabs/trading'
-import Art from '../js/tabs/art'
-
-import { loadGapi } from '../js/util/gapiData'
 
 // inDev
+import Art from '../js/tabs/art'
+import Mods from '../js/tabs/mods'
 import Keys from '../js/tabs/keys'
+
+// Testing
 import Dev from '../js/_testing/test'
 
 // utils
 import '../js/util/dServ';
+import { loadGapi } from '../js/util/gapiData'
 
 export function jsUcfirst(string) 
 {
@@ -61,6 +63,7 @@ class MainContainer extends Component {
           <Route path="/bartering" component={Bartering} />
           <Route path="/trading" component={Trading} />
           <Route path="/art" component={Art} />
+          <Route path="/mods" component={Mods} />
         </Switch>
         </div>
       <a id="art-tag" href="" style={{display: 'none'}}>Art by TarkovMemes</a>
