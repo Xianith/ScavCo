@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import '../../css/tabs.css';
 import mods from '../../assets/categories/mods.png'
 import { navMenu } from '../menu'
-import { initGapi } from '../util/gapiData.js'
+import { initGapi, loadGapi  } from '../util/gapiData.js'
 import { jsUcfirst } from '../app'
 
 var SHEET_ID = '1Yk-VriCy_8vDH4V9SsLwRYxem2mkzoDrULiaHZY5UGQ'
@@ -29,6 +29,7 @@ export default class Barter extends Component {
   }
 
   componentWillMount() {
+    loadGapi()
     var goog = initGapi(SHEET_ID, RANGE, (resp) => {
       tableStylize(resp, 'barter-table');
     }); 
@@ -36,7 +37,8 @@ export default class Barter extends Component {
 
   componentDidMount() {
    // if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
-  document.title = "Scav Co 🔸 Barter";
+    document.title = "Scav Co 🔸 Barter";
+    document.getElementById('fourohfour').style.display = 'none';
   }
 
   handleClick(event) {
@@ -46,21 +48,24 @@ export default class Barter extends Component {
 
   render() {
     return (<div>
-        <div className="loading-div">Loading...</div>  
+      <div className="loading-div">Loading...</div>  
       <div className="jumbotron contentcontainer tab-container" id="Bartering" style={{display:"none"}}>
-        <div className="sub-nav-menu"><center>
-        {barterArray.map((btn) =>
-               <button id={'sort-'+btn.name} className={btn.status} onClick={this.onClick}>{jsUcfirst(btn.name)}</button>
-            )}
-        </center></div>
+        <div>
+          <div className="sub-nav-menu"><center>
+          {barterArray.map((btn) =>
+                 <button id={'sort-'+btn.name} className={btn.status} onClick={this.onClick}>{jsUcfirst(btn.name)}</button>
+              )}
+          </center></div>
 
-      <table data-toggle="table" id="barter-table" className="sheets-table table table-fixed table-hover table-responsive table-sm" cellSpacing="0" width="100%">
-        <thead></thead>
-        <tbody></tbody>
-      </table>
+        <table data-toggle="table" id="barter-table" className="sheets-table table table-fixed table-hover table-responsive table-sm" cellSpacing="0" width="100%">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
 
-      <span>Data is pulled from the following <a href={'https://docs.google.com/spreadsheets/d/'+SHEET_ID}>spreadsheet</a>. <i>Which is maintained by <a href="https://www.reddit.com/user/Gieke85">/u/Gieke85</a></i></span>
-    </div></div>);
+        <span>Data is pulled from the following <a href={'https://docs.google.com/spreadsheets/d/'+SHEET_ID}>spreadsheet</a>. <i>Which is maintained by <a href="https://www.reddit.com/user/Gieke85">/u/Gieke85</a></i></span>
+      </div>
+    </div>
+  </div>);
   }
 }
 

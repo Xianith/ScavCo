@@ -4,6 +4,28 @@ var API_KEY = 'AIzaSyBuiD7FAD9c7PAj0Np_ZwVsiHLbyTLKoBk';
 var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleusercontent.com';
 var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
+var source = "js/util/google-api.js";
+
+export function loadGapi() {
+	const script = document.createElement("script");
+	script.src = "https://apis.google.com/js/api.js";
+
+	script.onload = () => {
+	    gapi.load('client', () => {
+	        gapi.client.init({
+	          'apiKey': API_KEY,
+	          'clientId': CLIENT_ID,
+	          'scope': SCOPE,
+	          'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+	        })
+	    });
+	}
+	script.onreadystatechange = () => {
+	  if (this.readyState === 'complete') this.onload();
+	}
+	document.body.appendChild(script);
+}
+
 export function initGapi(sheet, range, callback) {
 	var scripts = document.getElementsByTagName('script');
 	var source = "js/util/google-api.js";
@@ -15,12 +37,15 @@ export function initGapi(sheet, range, callback) {
 	    dateTimeRenderOption: 'SERIAL_NUMBER',
 	};
 
+	// loadGapi()
+
 	for (var s = 0; s < scripts.length; s++) {
 		if(scripts[s].src == "http://scav.co/"+source) {
-			var request = gapi.client.sheets.spreadsheets.values.get(params);
-			request.execute((resp) => {
-				callback(resp);
-			});
+			scripts[s].remove()
+			// var request = gapi.client.sheets.spreadsheets.values.get(params);
+			// request.execute((resp) => {
+			// 	callback(resp);
+			// });
 			break;
 		}
 	}

@@ -23,6 +23,7 @@ export default class Trading extends Component {
     });
     // if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
     document.title = "Scav Co 🔸 Trading";
+    document.getElementById('fourohfour').style.display = 'none';
   }
 
   postFilter(event) {

@@ -13,6 +13,7 @@ export default class Home extends Component {
 
   componentDidMount() {
     document.title = "Scav Co";
+    document.getElementById('fourohfour').style.display = 'none';
   }
 
   render() {

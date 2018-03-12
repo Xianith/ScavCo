@@ -50,3 +50,14 @@
     color: black;*/
     width: calc( 100% - 1em )
 }
+
+/* New response tab (needs work)
+
+display: block;
+    position: absolute;
+    width: 85%;
+    margin: auto;
+    top: 20px;
+    bottom: 35px;
+    left: 0;
+    right: 0;*/

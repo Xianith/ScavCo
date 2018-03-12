@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 
 import '../../css/tabs.css'
 import { navMenu } from '../menu';
-import { initGapi } from '../util/gapiData'
+import { initGapi, loadGapi } from '../util/gapiData'
 import { offStyleH, offStyleR, uOffStyleH, uOffStyleR } from '../data/sheetStyles'
 
 // const $ = require('jquery');
@@ -64,7 +64,9 @@ export default class Ammo extends Component {
   }
 
   componentDidMount() {
+    loadGapi();
     this.getGoog(0);
+    document.getElementById('fourohfour').style.display = 'none';
   }
 
   componentWillMount() {
