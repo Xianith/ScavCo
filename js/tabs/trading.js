@@ -47,7 +47,7 @@ export default class Trading extends Component {
       <div className="jumbotron contentcontainer tab-container" id="Trading">
        <div className="sub-nav-menu"><center>
            {tradingArray.map((btn) =>
-                  <button id={'sort-'+btn.name} className={btn.name} style={{color:btn.color}} onClick={this.pstFltr}>{btn.name}</button>
+                  <button id={'sort-'+btn.name} className={btn.name} style={{color:btn.color}} onClick={this.pstFltr} key={'trade-btn-'+btn.name}>{btn.name}</button>
                  )}
            </center></div>
 

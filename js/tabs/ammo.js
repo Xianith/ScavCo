@@ -98,7 +98,7 @@ export default class Ammo extends Component {
       <div className="jumbotron contentcontainer tab-container" id="Ammo" style={{display:"none"}}>
        <div className="sub-nav-menu"><center>
            {ammoArray.map((btn) =>
-                  <button id={'sort-'+btn.id} className={btn.status} onClick={this.onClick}>{btn.name}</button>
+                  <button id={'sort-'+btn.id} className={btn.status} onClick={this.onClick} key={'ammo-btn-'+btn.id}>{btn.name}</button>
                  )}
            </center></div>
 

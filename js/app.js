@@ -54,16 +54,16 @@ class MainContainer extends Component {
         <div className="container">
         <Switch>
           {["/home", "/"].map(path => 
-               <Route exact path={path} component={Home} />
+               <Route exact path={path} component={Home} key="homePanel"/>
            )}
-          <Route path="/maps" component={Maps} />
-          <Route path="/keys" component={Keys} />
-          <Route path="/ammo" component={Ammo} />
-          <Route path="/dev" component={Dev} />
-          <Route path="/bartering" component={Bartering} />
-          <Route path="/trading" component={Trading} />
-          <Route path="/art" component={Art} />
-          <Route path="/mods" component={Mods} />
+          <Route path="/maps" component={Maps} key="mapPanel"/>
+          <Route path="/keys" component={Keys}  key="keyPanel"/>
+          <Route path="/ammo" component={Ammo}  key="ammoPanel"/>
+          <Route path="/bartering" component={Bartering}  key="barterPanel"/>
+          <Route path="/trading" component={Trading}  key="tradingPanel"/>
+          <Route path="/art" component={Art}  key="artPanel"/>
+          <Route path="/mods" component={Mods}  key="modsPanel"/>
+          <Route path="/dev" component={Dev}  key="devPanel"/>
         </Switch>
         </div>
       <a id="art-tag" href="" style={{display: 'none'}}>Art by TarkovMemes</a>

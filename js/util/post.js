@@ -53,8 +53,8 @@ export default class Post extends React.Component {
       dButton = <a className="dBtn" title={discord} target="_blank" href="https://discord.gg/GUWxkns"><img src={dIcon} className="discord-icon" alt='Discord Logo'/>{discord}</a> }
 
     if (data.selftext && data.selftext.length > 3) {  
-      pButton = <a id={'postBtn-'+ postIndex} className="btn btn-default btn-sm tgl-txt" onClick={this.onClick}>Show Post</a>
-      pText = <span className="listing-info" id={'postText-'+ postIndex}  style={{display: "none"}}>
+      pButton = <a id={'postBtn-'+ postIndex} className="btn btn-default btn-sm tgl-txt" key={"post-tgl-"+postIndex} onClick={this.onClick}>Show Post</a>
+      pText = <span className="listing-info" id={'postText-'+ postIndex} style={{display: "none"}}>
         <span className='post-text'>{data.selftext}</span></span>
     }
 
@@ -65,8 +65,8 @@ export default class Post extends React.Component {
       // if (postCount[i].count <= 0) { menuLi.style.display = 'none' } else { menuLi.style.display = 'block' };
     }
     return ( 
-      <div className="postObj thing" style={{display: "block"}}>
-        <p className="title"><a target="_blank" className={"post-title-" + data.link_flair_text} href={data.url}>{pTitle}</a><div style={{float:"right"}}>{dButton}{pButton}</div>{pText}</p>
+      <div className="postObj thing" style={{display: "block"}} key={"post-key-"+postIndex}>
+        <p className="title"><a target="_blank" className={"post-title-" + data.link_flair_text} href={data.url}>{pTitle}</a><span style={{float:"right"}}>{dButton}{pButton}</span>{pText}</p>
       </div>)
   }
 }

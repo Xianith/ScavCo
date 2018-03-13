@@ -43,6 +43,7 @@ export default class Home extends Component {
           <div className='hm-hr' style={{paddingBottom: "0px"}}>
           {btnArray.map((btn) =>
             <NavLink 
+              key={"hm-main-"+btn}
               to={"/" + btn.toLowerCase()} 
               activeClassName='active' 
               style={{color: 'white'}} 

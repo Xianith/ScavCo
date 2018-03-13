@@ -54,7 +54,7 @@ export default class Barter extends Component {
         <div>
           <div className="sub-nav-menu"><center>
           {barterArray.map((btn) =>
-                 <button id={'sort-'+btn.name} className={btn.status} onClick={this.onClick}>{jsUcfirst(btn.name)}</button>
+                 <button id={'sort-'+btn.name} className={btn.status} onClick={this.onClick} key={'barter-btn-'+btn.name}>{jsUcfirst(btn.name)}</button>
               )}
           </center></div>
 
