@@ -6,6 +6,10 @@ import gamepedia from '../../assets/social/gamepedia.png';
 import reddit from '../../assets/social/reddit.png';
 import battlestate from '../../assets/social/battlestate.jpg';
 
+const $ = require('jquery');
+$.DataTable = require('datatables.net');
+
+
 import {
   BrowserRouter as Router,
   Route,
@@ -26,15 +30,41 @@ export default class Home extends Component {
 
   componentDidMount() {
     document.title = "Scav Co";
+    this.getNews();
     document.getElementById('MainMenu').style.display = 'none';
     document.getElementById('fourohfour').style.display = 'none';
+  }
+
+  getNews() {
+    var options = { mode: 'no-cors', headers: 'Access-Control-Allow-Origin' }
+
+    $.get("http://developertracker.com/escape-from-tarkov/rss/", options, function(data) {    
+
+        var $xml = $(data);   
+        var items = [];
+
+        $xml.find("item").each(function() {
+            var $this = $(this);
+            items.push({
+                title: $this.find("title").text(),
+                link: $this.find("link").text(),
+                description: $this.find("description").text(),
+                pubDate: $this.find("pubDate").text(),
+            });
+        });
+
+        this.setState({ news: items });
+
+    }.bind(this),'xml');    
   }
 
   render() {
     return (<div>
       <div id='titlescreen'>
-      <b className="navbar-brand">SCAV</b><br/>
-      <center><h2>Где мусорщики идут</h2>
+
+      <b className="navbar-brand hidden">SCAV</b><br/>
+      <center><img style={{height: '150px', margin: '-45px'}}src="https://i.imgur.com/PJk5HdP.png" />
+      <h2>Где мусорщики идут</h2>
       (Where the scavs go!)</center>
       </div>
        <div className="jumbotron contentcontainer" id="Home">
@@ -52,8 +82,12 @@ export default class Home extends Component {
           )}
           </div>
 
-          <div>
-          <h3>Sites</h3>
+          <div className='hm-hr' style={{paddingBottom: "0px"}}>
+          <h3 style={{paddingTop: "0px"}}>Latest News:</h3>
+          </div>
+
+          <div style={{paddingTop: "0px"}}>
+          <h3 style={{paddingTop: "0px"}}>Sites</h3>
             <a target="_blank" href="https://escapefromtarkov.gamepedia.com"><img src={ gamepedia } className="socialicon" title="Gamepedia" alt="Gamepedia" /></a> &nbsp;
             <a target="_blank" href="https://www.reddit.com/r/escapefromtarkov/"><img src={ reddit } className="socialicon" title="Subreddit" alt="Subreddit"/></a> &nbsp;
             <a target="_blank" href="https://developertracker.com/escape-from-tarkov/"><img src={ battlestate } className="socialicon" title="Dev Tracker" alt="Dev Tracker" /></a>

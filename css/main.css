@@ -11,9 +11,9 @@
     border-radius: 0 !important;
 }
 
-body {
+body, html {
     background-color: #0e0e0e;
-    height: auto;
+    height: 100%;
 }
 
 a {
