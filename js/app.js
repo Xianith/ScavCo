@@ -49,7 +49,7 @@ class MainContainer extends Component {
 
   render() {
     return (<Router>
-    <div id='backdrop'>
+    <div>
       <Menu />
         <div className="container">
         <Switch>

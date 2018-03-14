@@ -1,7 +1,4 @@
-@font-face {
-    font-family: tarkov;
-    src: url('../assets/1escape.ttf'); /*1ESCAPE FROM TARKOV by iWolf.ttf*/
-}
+
 
 .navbar-fixed-top {
     box-shadow: 0 0 100px rgba(65,61,52,1), 0 0 6px rgba(232,190,107,0.8);
@@ -15,7 +12,7 @@
 }
 
 .navbar-brand {
-    font-family: tarkov;
+    /*font-family: tarkov;*/
     letter-spacing: 3px;
     font-size: 24px;
     color: black !important;
@@ -95,9 +92,8 @@
 
 /**/
 
-.dropdown {
+/*.dropdown {
     color: #c5b88e;
-    /* float: left; */
     position: fixed;
     background-color: #292929;
     border: 1px solid #6f6a5b;
@@ -112,4 +108,4 @@
     padding: 10px;
     line-height: 2px;
     text-align: left;                           
-}
+}*/
