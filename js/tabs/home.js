@@ -36,26 +36,36 @@ export default class Home extends Component {
   }
 
   getNews() {
-    var options = { mode: 'no-cors', headers: 'Access-Control-Allow-Origin' }
+    var options = { dataType: 'jsonp'}
 
-    $.get("http://developertracker.com/escape-from-tarkov/rss/", options, function(data) {    
+    $.getJSON("//ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?", {
+        num: 10,
+        q: "http://developertracker.com/escape-from-tarkov/rss/"
+    }).done(function (data) {
+        console.log(data);
+    });
 
-        var $xml = $(data);   
-        var items = [];
 
-        $xml.find("item").each(function() {
-            var $this = $(this);
-            items.push({
-                title: $this.find("title").text(),
-                link: $this.find("link").text(),
-                description: $this.find("description").text(),
-                pubDate: $this.find("pubDate").text(),
-            });
-        });
+    // $.get("http://developertracker.com/escape-from-tarkov/rss/", function(data) {    
 
-        this.setState({ news: items });
+    //     var $xml = $(data);   
+    //     var items = [];
 
-    }.bind(this),'xml');    
+    //     $xml.find("item").each(function() {
+    //         var $this = $(this);
+    //         items.push({
+    //             title: $this.find("title").text(),
+    //             link: $this.find("link").text(),
+    //             description: $this.find("description").text(),
+    //             pubDate: $this.find("pubDate").text(),
+    //         });
+    //     });
+
+    //     console.log(items);
+
+        // this.setState({ news: items });
+
+    // }.bind(this),'xml');    
   }
 
   render() {
@@ -63,7 +73,7 @@ export default class Home extends Component {
       <div id='titlescreen'>
 
       <b className="navbar-brand hidden">SCAV</b><br/>
-      <center><img style={{height: '150px', margin: '-45px'}}src="https://i.imgur.com/PJk5HdP.png" />
+      <center><img style={{height: '150px', margin: '-45px'}}src="https://s3.amazonaws.com/scavco/scavco_websize.png" />
       <h2>Где мусорщики идут</h2>
       (Where the scavs go!)</center>
       </div>
@@ -80,10 +90,6 @@ export default class Home extends Component {
               className="hm-nav-btn btn nav-btn">{btn}
             </NavLink>
           )}
-          </div>
-
-          <div className='hm-hr' style={{paddingBottom: "0px"}}>
-          <h3 style={{paddingTop: "0px"}}>Latest News:</h3>
           </div>
 
           <div style={{paddingTop: "0px"}}>
@@ -110,6 +116,7 @@ export default class Home extends Component {
            <div>
            <h3>Scav Co Development</h3>
              <span>This site is being developed by <a href="http://xianith.com">Xianith</a>.<br />
+             Art generously provided by <a href="https://www.instagram.com/tarkovmemes/">TarkovMemes</a>.<br />
              Check out the <a href="https://github.com/Xianith/ScavCo">github repo</a> for more info.</span>
            </div>
            </center>

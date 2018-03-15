@@ -10,7 +10,7 @@
 
 #main {
 	background: url(https://s3.amazonaws.com/scavco/art/8-Light+in+Darkness.png) no-repeat center center fixed; 
-	/*height: 100%;*/
+	height: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

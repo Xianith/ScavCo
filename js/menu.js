@@ -46,7 +46,7 @@ export default class Menu extends Component {
             data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span className="glyphicon glyphicon-menu-hamburger"></span><span className="sr-only">Toggle navigation</span>
           </button>
-          <Link to="/"><img style={{height: "55px", marginTop: "-8px", marginBottom: "-15px", marginRight: "15px"}}src="https://s3.amazonaws.com/scavco/logo.png" /></Link>
+          <Link to="/"><img style={{height: "55px", marginTop: "-8px", marginBottom: "-15px", marginRight: "15px"}}src="https://s3.amazonaws.com/scavco/scavco_websize.png" /></Link>
           <Link to="/" className="navbar-brand hidden">SCAV</Link>
         </div>
         <div id="navbar" className="navbar-collapse collapse">

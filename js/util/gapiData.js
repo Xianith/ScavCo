@@ -4,7 +4,7 @@ var API_KEY = 'AIzaSyBuiD7FAD9c7PAj0Np_ZwVsiHLbyTLKoBk';
 var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleusercontent.com';
 var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
-var source = "js/util/google-api.js";
+// var source = "js/util/google-api.js";
 
 export function loadGapi() {
 	const script = document.createElement("script");
@@ -28,7 +28,7 @@ export function loadGapi() {
 
 export function initGapi(sheet, range, callback) {
 	var scripts = document.getElementsByTagName('script');
-	var source = "js/util/google-api.js";
+	var source = "https://apis.google.com/js/api.js";
 
 	var params = {
 	    spreadsheetId: sheet,
