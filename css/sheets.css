@@ -1,0 +1,47 @@
+.sheets-header {
+
+}
+
+.react-bs-table-bordered { 
+	border: 0px;
+	border-radius: 0px;
+}
+
+.sheets-body-class {
+	color:black;
+	background-color: white;
+}
+.sheets-container-class {
+	
+}
+.sheets-table-container-class {
+	border: 1px solid #6f6a5b !important;
+	border-radius: 0px !important;
+}
+.sheets-header-container-class {
+
+}
+.sheets-body-container-class {
+
+}
+
+.ReactTable .-pagination .-btn {
+	color: white;
+	border: 1px solid #6f6a5b;
+}
+
+.ReactTable .rt-td {
+	background-color: white;
+	color: black;
+}
+
+.ReactTable .rt-th {
+	text-align: left;
+	font-size: 15px;
+}
+
+.value-row {
+	color: #3c763d !important;
+	background-color: #dff0d8 !important;
+	border-color: #d6e9c6 !important;
+}

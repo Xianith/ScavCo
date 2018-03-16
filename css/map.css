@@ -1,0 +1,43 @@
+.map-container {
+	width: 98%;
+    height: 90%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.map-container .postContainer {
+	height:90%;
+}
+
+#mapid {
+	height: 100%;
+}
+
+/*Leaflet Override*/
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar, .leaflet-control-zoom a {
+	 background-color: #292929; 
+	 color: #bcb9a9; 
+	 border: 1px solid #6f6a5b
+}
+
+.leaflet-bar a.leaflet-disabled {
+	background-color: #bcb9a9; 
+	color: #292929; 
+}
+
+.leaflet-container .leaflet-control-attribution {
+	background-color: #292929; 
+	color: #bcb9a9; 
+}
+
+.leaflet-bottom.leaflet-right{
+	display: none;
+}
+
+.leaflet-container {
+	background-color:#00000040;
+	border: 1px solid #6f6a5b
+}
