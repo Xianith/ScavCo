@@ -5,10 +5,11 @@ var CLIENT_ID = '268531681980-bqf0gvhlgt0op2u526ts5ppvoov3hfk3.apps.googleuserco
 var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
 // var source = "js/util/google-api.js";
+var source = "https://apis.google.com/js/api.js";
 
 export function loadGapi() {
 	const script = document.createElement("script");
-	script.src = "https://apis.google.com/js/api.js";
+	script.src = source;
 
 	script.onload = () => {
 	    gapi.load('client', () => {
@@ -28,7 +29,6 @@ export function loadGapi() {
 
 export function initGapi(sheet, range, callback) {
 	var scripts = document.getElementsByTagName('script');
-	var source = "https://apis.google.com/js/api.js";
 
 	var params = {
 	    spreadsheetId: sheet,
