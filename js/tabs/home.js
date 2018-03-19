@@ -26,6 +26,8 @@ import '../../css/home.css';
 export default class Home extends Component {
   constructor(props) {
     super();
+
+    this.state = {news: null}
   }
 
   componentDidMount() {
@@ -37,38 +39,30 @@ export default class Home extends Component {
 
   getNews() {
     var options = { dataType: 'jsonp'}
+    var url = 'http://developertracker.com/escape-from-tarkov/rss/';
 
-    $.getJSON("//ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?", {
-        num: 10,
-        q: "http://developertracker.com/escape-from-tarkov/rss/"
-    }).done(function (data) {
-        console.log(data);
-    });
-
-
-    // $.get("http://developertracker.com/escape-from-tarkov/rss/", function(data) {    
-
-    //     var $xml = $(data);   
-    //     var items = [];
-
-    //     $xml.find("item").each(function() {
-    //         var $this = $(this);
-    //         items.push({
-    //             title: $this.find("title").text(),
-    //             link: $this.find("link").text(),
-    //             description: $this.find("description").text(),
-    //             pubDate: $this.find("pubDate").text(),
-    //         });
-    //     });
-
-    //     console.log(items);
-
-        // this.setState({ news: items });
-
-    // }.bind(this),'xml');    
+   const proxyurl = "https://cors-anywhere.herokuapp.com/";
+   // const url = "https://example.com"; // site that doesn’t send Access-Control-*
+   fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
+   .then(response => response.text())
+   // .then(contents => this.setState({news:JSON.stringify(contents)}) )
+   .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+   .then(data => this.setState({news:data})
+   .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+   )  
   }
 
   render() {
+    let news = this.state.news;
+
+    // if (news != null) {
+    //   var container = document.createElement('div');
+    //   console.log(news.getElementsByTagName('item')[0]);
+    //   let item = container.append(news.getElementsByTagName('item')[0]);
+    //   news = container;
+
+    // };
+
     return (<div>
       <div id='titlescreen'>
 
@@ -108,10 +102,8 @@ export default class Home extends Component {
            <center>
            <div className='hm-hr hm-sub'>
            <h3>Additional Guides</h3>
-             <a target="_blank" href="https://forums.uwsgaming.com/topic/3871-map-keys-and-you/">Keys</a> |&nbsp;
              <a target="_blank" href="http://forum.escapefromtarkov.com/topic/35903-weapons-and-attachments-mega-thread/">Attachments</a> |&nbsp;
              <a target="_blank" href="http://jjames.info/eFT_modCompat.php?tableType=advanced">Mods</a>
-             <br /><a target="_blank" href="https://docs.google.com/presentation/d/1fipxlW4zdGAyXpjRdJvKJUuwMfiX0xZvnsvRj0QX-2w">Customs Dorms Keys</a>
            </div>
            <div>
            <h3>Scav Co Development</h3>
@@ -124,3 +116,8 @@ export default class Home extends Component {
          </div>);
   }
 }
+
+           // <h3>News</h3>
+           // {news &&
+           //  <p>{news}</p>
+           // }

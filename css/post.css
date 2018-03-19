@@ -1,11 +1,3 @@
-.tgl-txt {
-  color:white;
-  margin-right: 2px;
-  border: 2px solid #9a8866 !important;
-  background-color:#292929 !important;
-  border-radius: 0px;
-}
-
 p.post-text {
   font-size: 12px;
   color: gray;
@@ -22,11 +14,6 @@ a.post-title-WTS, a.post-title-WTB, a.post-title-WTT {
   color: #bcb9a9;
 }
 
-.discord-icon{
-    opacity: 1;
-    height: 25px;
-}
-
 .postObj {
   display: block;
   border: 1px solid #6f6a5b;
@@ -41,11 +28,82 @@ a.post-title-WTS, a.post-title-WTB, a.post-title-WTT {
 }
 
 .dBtn {
-    border: 2px solid white;
-    padding: 4px 3px 6px 0px;
-    line-height: 0px;
-    font-size: 16px;
-    background-color: #5a71c2;
-    color: white;
-    margin-right: 3px;
+    border: 2px solid white !important;
+    /*padding: 4px 3px 6px 0px;*/
+    /*line-height: 0px;*/
+    padding: 0.5px !important;
+    background-color: #5a71c2 !important;
+/*    margin-right: 3px;*/
 }
+
+.discord-icon{
+    opacity: 1;
+    height: 15px;
+    margin:5px;
+}
+
+
+.jumbotron p {
+  margin-bottom: 5px;
+}
+
+.post-buttons {
+  float: right;
+}
+
+.post-buttons a {
+    float: left;
+    font-size: 14px !important;
+    color:white;
+    margin-right: 2px;
+    border: 2px solid #9a8866;
+    background-color:#292929;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 4px;
+    text-decoration: none;
+}
+
+.post-buttons a:last-child:hover {
+  background-color:white;
+  color:black !important;
+  -webkit-filter: invert(100%);
+   filter: invert(100%);
+}
+
+
+.dBtn:hover .discord-icon {
+  display: none;
+
+}
+
+.dBtn:hover span {
+  height: 15px;
+  margin: 5px;
+  padding: 2px !important;
+  display: inline-block;
+}
+
+.dBtn span {
+  display: none;
+}
+
+
+.dTxt{
+  display: none;
+}
+
+.dBtn:hover {
+  background-color:black !important;
+  color:white !important;
+  -webkit-filter: invert(100%);
+   filter: invert(100%);
+}
+
+/*.tgl-txt {
+  color:white;
+  margin-right: 2px;
+  border: 2px solid #9a8866 !important;
+  background-color:#292929 !important;
+  border-radius: 0px;
+}*/

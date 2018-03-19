@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 import '../../css/post.css';
-import dIcon from '../../assets/social/discord.jpg';
+import dIcon from '../../assets/social/discord.png';
 
 let postIndex = 0;
 let postCount = [{"name":"WTS","count":0},{"name":"WTB","count":0},{"name":"WTT","count":0}];
@@ -45,15 +45,13 @@ export default class Post extends React.Component {
     let pVisibility = 'hidden';
 
     if (data.link_flair_text == 'WTS') { pVisibility = 'block'; }
-    // data.selftext = data.selftext.replace(/\S*#[0-9]{4}/gi,'');
-    // data.selftext = data.selftext.replace('discord:','');
+    discord = data.selftext.match(/(?!\S*[*\:])\S*#[0-9]{4}/gi);
 
-    discord = data.selftext.match(/\S*#[0-9]{4}/gi);
     if (discord != null) { 
-      dButton = <a className="dBtn" title={discord} target="_blank" href="https://discord.gg/GUWxkns"><img src={dIcon} className="discord-icon" alt='Discord Logo'/>{discord}</a> }
+      dButton = <a className="dBtn" title={"Copy to Clipboard: " + discord} target="_blank" href="https://discord.gg/GUWxkns"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span><img src={dIcon} className="discord-icon" alt='Discord Logo'/>{discord}</a> }
 
     if (data.selftext && data.selftext.length > 3) {  
-      pButton = <a id={'postBtn-'+ postIndex} className="btn btn-default btn-sm tgl-txt" key={"post-tgl-"+postIndex} onClick={this.onClick}>Show Post</a>
+      pButton = <a id={'postBtn-'+ postIndex} key={"post-tgl-"+postIndex} onClick={this.onClick}>Show Post</a>
       pText = <span className="listing-info" id={'postText-'+ postIndex} style={{display: "none"}}>
         <span className='post-text'>{data.selftext}</span></span>
     }
@@ -66,7 +64,7 @@ export default class Post extends React.Component {
     }
     return ( 
       <div className="postObj thing" style={{display: "block"}} key={"post-key-"+postIndex}>
-        <p className="title"><a target="_blank" className={"post-title-" + data.link_flair_text} href={data.url}>{pTitle}</a><span style={{float:"right"}}>{dButton}{pButton}</span>{pText}</p>
+        <p className="title"><a target="_blank" className={"post-title-" + data.link_flair_text} href={data.url}>{pTitle}</a><span className="post-buttons">{dButton}{pButton}</span>{pText}</p>
       </div>)
   }
 }

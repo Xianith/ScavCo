@@ -9,12 +9,6 @@ import '../../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-a
 
 import {sArray} from '../data/headers'
 
-console.log(sArray);
-
-function priceExpand(t) {
-  console.log(t)
-}
-
 export default class CustomSortTable extends React.Component {
   constructor(props) {
       super();

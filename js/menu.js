@@ -12,7 +12,7 @@ import {
 import '../css/top-menu.css';
 import font from '../assets/1escape.ttf';
 
-export var btnArray = ["Ammo","Bartering","Trading","Maps"]
+export var btnArray = ["Ammo","Bartering","Trading","Maps","Keys"]
 
 export function navMenu(id, type) {
   const menu = id.replace('sort-','') + '-row';
