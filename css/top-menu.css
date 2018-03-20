@@ -38,6 +38,7 @@
 
 .nav-btn-brd:not(.active):hover {
     box-shadow:0px -2px 0px 0px gray inset;
+    color: gray;
 }
 
 .nav-btn-brd:not(.active):hover a{
@@ -45,15 +46,13 @@
 }
 
 .nav-btn {
+    margin: 0;
     padding:5px !important;
 }
 
 .nav-btn-brd {
     margin: 3px;
-}
-
-.nav-btn {
-    margin: 0;
+    transition: 0.5s;
 }
 
 .nav-btn-brd.WTS {

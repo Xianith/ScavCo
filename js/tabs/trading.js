@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 
 import '../../css/tabs.css'
 
+import { navMenu } from '../menu'
 import Post from '../util/post.js';
 
 var tradingArray = [{"name":"WTS","color":"green", "status": "", "count":0},
@@ -29,25 +30,18 @@ export default class Trading extends Component {
 
   postFilter(event) {
     const {id} = event.target;
-
-    const filterId = id.replace(/sort-/gi,'post-title-');
-
-    const filter = document.getElementsByClassName(filterId);
-    const posts = document.getElementsByClassName('postObj');
-
-    for (var i=0; i < posts.length; i++) { posts[i].style.display = "none"; }
-    for (var i=0; i < filter.length; i++) { filter[i].parentElement.parentElement.style.display = "block"; }
+    navMenu(id);
   }
 
   render() { 
     let p = this.state.posts.map((e) => (<Post data={e}/>));
-
     if (p.length == 0) { return (<div className="loading-div">Loading...</div>) }
+
     return (  
       <div className="jumbotron contentcontainer tab-container" id="Trading">
        <div className="sub-nav-menu"><center>
            {tradingArray.map((btn) =>
-                  <button id={'sort-'+btn.name} className={btn.name} style={{color:btn.color}} onClick={this.pstFltr} key={'trade-btn-'+btn.name}>{btn.name}</button>
+                  <button id={'sort-'+btn.name} className={'sub-nav-btn tgl-'+btn.name} onClick={this.pstFltr} key={'trade-btn-'+btn.name}>{btn.name}</button>
                  )}
            </center></div>
 

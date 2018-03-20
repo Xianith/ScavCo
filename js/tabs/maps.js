@@ -66,7 +66,7 @@ export default class Maps extends Component {
     if (map != null) map.remove();
     for (var i = 0; i < mapArray.length; i++)
     {
-      if (filterId == mapArray[i].name) { initMap(mapArray[i]);console.log(mapArray[i]);}
+      if (filterId == mapArray[i].name) { initMap(mapArray[i]) }
     }
   }
 

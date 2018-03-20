@@ -14,10 +14,12 @@
   border: 2px solid #9a8866;
   background-color:#292929 !important;
   border-radius: 0px;
+  transition: 0.3s;
 }
 
 .sub-nav-menu button:focus, .sub-nav-menu button:hover {
-  color: #9a8866;
+  color: white;
+  background-color:#9a8866 !important;
   border-color: white;
 }
 
@@ -26,13 +28,14 @@
   overflow: auto;
 }
 
-.sub-nav-btn .active {
-  color: #9a8866;
-  border-color: white;
+.sub-nav-menu button.sub-nav-btn-active {
+  color: white;
+  background-color:#9a8866 !important;
+  border-color: white !important;
 }
 
 /*Table Style*/
-
+/*
 #barter-table tbody, #ammo-table tbody, #ammo-table-two tbody, .sheets-table tbody  {
     display:block;
     background-color: #eee !important;
@@ -44,20 +47,9 @@
     display:table;
     width:100%;
     table-layout:fixed;
-}
+}*/
 #barter-table thead, #ammo-table thead, #ammo-table-two thead, .sheets-table thead {
 /*    background-color: white;
     color: black;*/
     width: calc( 100% - 1em )
 }
-
-/* New response tab (needs work)
-
-display: block;
-    position: absolute;
-    width: 85%;
-    margin: auto;
-    top: 20px;
-    bottom: 35px;
-    left: 0;
-    right: 0;*/

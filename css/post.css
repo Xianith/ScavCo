@@ -16,11 +16,16 @@ a.post-title-WTS, a.post-title-WTB, a.post-title-WTT {
 
 .postObj {
   display: block;
-  border: 1px solid #6f6a5b;
+  border: 1px solid #6f6a5b61;
   background-color: #232323;
   padding: 5px;
   margin-bottom: 0;
   padding-bottom: 0;
+}
+
+.postObj a{
+  color: #8e8670;
+  font-size: 16px;
 }
 
 .postObj p {
@@ -39,6 +44,7 @@ a.post-title-WTS, a.post-title-WTB, a.post-title-WTT {
 .discord-icon{
     opacity: 1;
     height: 15px;
+    width: 20px;
     margin:5px;
 }
 
@@ -62,13 +68,16 @@ a.post-title-WTS, a.post-title-WTB, a.post-title-WTT {
     cursor: pointer;
     padding: 4px;
     text-decoration: none;
+    transition: 0.6s;
 }
 
+.postContainer { 
+    border: 1px solid #6a6557;
+ }
+
 .post-buttons a:last-child:hover {
-  background-color:white;
-  color:black !important;
-  -webkit-filter: invert(100%);
-   filter: invert(100%);
+  background-color:#9a8866 !important;
+  border: 2px solid white;
 }
 
 
@@ -80,8 +89,12 @@ a.post-title-WTS, a.post-title-WTB, a.post-title-WTT {
 .dBtn:hover span {
   height: 15px;
   margin: 5px;
-  padding: 2px !important;
+  padding: 0px 5px 0px 5px !important;;
   display: inline-block;
+}
+
+.dBtn {
+  transition: 0.6s;
 }
 
 .dBtn span {
@@ -96,8 +109,11 @@ a.post-title-WTS, a.post-title-WTB, a.post-title-WTT {
 .dBtn:hover {
   background-color:black !important;
   color:white !important;
-  -webkit-filter: invert(100%);
-   filter: invert(100%);
+}
+
+.dBtn .glyphicon {
+  font-size: 20px;
+  margin: 0px !important;
 }
 
 /*.tgl-txt {

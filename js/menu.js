@@ -14,20 +14,21 @@ import font from '../assets/1escape.ttf';
 
 export var btnArray = ["Ammo","Bartering","Trading","Maps","Keys"]
 
-export function navMenu(id, type) {
-  const menu = id.replace('sort-','') + '-row';
-  const menuRows = document.getElementsByClassName(type+'-row');
-  const menuBtns = document.getElementsByClassName(type+'-btn');
+export function navMenu(id) {
+   const filterId = id.replace(/sort-/gi,'tgl-itm-');
+   const clickedBtn = document.getElementById(id);
+   const filter = document.getElementsByClassName(filterId);
+   const item = document.getElementsByClassName('itm');
+   const navBtns = document.getElementsByClassName('sub-nav-btn')
 
-  for (var i=0; i < menuBtns.length; i++) {
-    if (menuBtns[i].id.includes(id))
-    { menuBtns[i].classList.add(type+'-btn-active'); } else { menuBtns[i].classList.remove(type+'-btn-active'); }
-  }
+   for (var i=0; i < navBtns.length; i++) {
+     navBtns[i].classList.remove('sub-nav-btn-active');
+   }      
+   clickedBtn.classList.add('sub-nav-btn-active');
 
-  for (var i=0; i < menuRows.length; i++) {
-    if (menuRows[i].className.includes(menu))
-    { menuRows[i].style.display = "table"; } else { menuRows[i].style.display = "none"; }
-  }
+
+   for (var i=0; i < item.length; i++) { item[i].style.display = "none"; }
+   for (var i=0; i < filter.length; i++) { filter[i].style.display = "block"; }
 }
 
 export default class Menu extends Component {
