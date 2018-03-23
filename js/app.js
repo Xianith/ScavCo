@@ -56,7 +56,14 @@ class MainContainer extends Component {
           {["/home", "/"].map(path => 
                <Route exact path={path} component={Home} key="homePanel"/>
            )}
-          <Route path="/maps" component={Maps} key="mapPanel"/>
+          <Route path="/maps" render={() => (
+                  <Maps>
+                    <Switch>
+                      <Route exact path="." component={Maps}/>
+                      <Route path="customs" component={Maps}/>
+                    </Switch>
+                  </Maps>
+                )}/>
           <Route path="/keys" component={Keys}  key="keyPanel"/>
           <Route path="/ammo" component={Ammo}  key="ammoPanel"/>
           <Route path="/bartering" component={Bartering}  key="barterPanel"/>

@@ -12,7 +12,7 @@ import {
 import '../css/top-menu.css';
 import font from '../assets/1escape.ttf';
 
-export var btnArray = ["Ammo","Bartering","Trading","Maps","Keys"]
+export var btnArray = ["Ammo","Bartering","Trading","Maps","Keys","Mods"]
 
 export function navMenu(id) {
    const filterId = id.replace(/sort-/gi,'tgl-itm-');

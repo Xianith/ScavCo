@@ -46,6 +46,17 @@ var extract = L.icon({
 
 // }
 
+const MapMenu = ({Map}) => {
+
+  return (
+    <div className="sub-nav-menu"><center>
+        {locations.map((btn) =>
+               <Link to={`${Map.url}/${btn}`} id={'sort-map-'+btn} onClick={Map.onClick} className={'sub-nav-btn tgl-map-'+btn} key={'location-btn-'+btn}>{jsUcfirst(btn)}</Link>
+              )}
+        </center></div>
+  )
+}
+
 export default class Maps extends Component {
   constructor(props) {
     super();
@@ -70,6 +81,7 @@ export default class Maps extends Component {
     }
   }
 
+//            <MapMenu Map={{params: {id: 0}, url: "/maps"}} />
 
   render() {
     return (
@@ -83,6 +95,7 @@ export default class Maps extends Component {
            <div className="postContainer" style={{marginBottom: "15px"}}>
            <div id="mapid"></div>
           </div>
+
           <span>Additional Map Sites: <a target="_blank" href="http://www.gamemaps.co.uk/game/tarkov">Game Maps</a> |&nbsp; <a target="_blank" href="https://tarkov.directory/">Tarkov Directory</a>
           <a id="mapSource" style={{color: "#d7b100", float: "right", cursor:"pointer"}} title="Map Source">Map Source</a></span>
     </div>);

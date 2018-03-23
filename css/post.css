@@ -73,6 +73,7 @@ a.post-title-WTS, a.post-title-WTB, a.post-title-WTT {
 
 .postContainer { 
     border: 1px solid #6a6557;
+    margin-bottom: 10px;
  }
 
 .post-buttons a:last-child:hover {

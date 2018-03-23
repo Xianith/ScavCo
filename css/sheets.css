@@ -1,7 +1,3 @@
-.sheets-header {
-
-}
-
 .react-bs-table-bordered { 
 	border: 0px;
 	border-radius: 0px;
@@ -11,22 +7,15 @@
 	color:black;
 	background-color: white;
 }
-.sheets-container-class {
-	
-}
+
 .sheets-table-container-class {
 	border: 1px solid #6f6a5b !important;
 	border-radius: 0px !important;
 }
-.sheets-header-container-class {
-
-}
-.sheets-body-container-class {
-
-}
 
 .ReactTable .-pagination .-btn {
 	color: white;
+	height: auto;
 	border: 1px solid #6f6a5b;
 }
 
