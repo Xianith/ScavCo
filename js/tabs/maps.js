@@ -65,7 +65,6 @@ export default class Maps extends Component {
 
   componentDidMount() {
     document.title = "Scav Co 🔸 Maps";
-    document.getElementById('fourohfour').style.display = 'none';
     document.getElementById('MainMenu').style.display = 'block';
     initMap(mapArray[0])
   }
@@ -86,7 +85,6 @@ export default class Maps extends Component {
   render() {
     return (
     <div className="jumbotron contentcontainer tab-container map-container" id="Maps">
-    <span className="wipBanner">This page is a Work in Progress!</span>
        <div className="sub-nav-menu"><center>
            {locations.map((btn) =>
                   <button id={'sort-map-'+btn} className={'sub-nav-btn tgl-map-'+btn} onClick={this.onClick} key={'location-btn-'+btn}>{jsUcfirst(btn)}</button>
@@ -137,18 +135,22 @@ function initMap(array) {
   var baseMaps = { };
   var overlayMaps = {
       "Extracts": extracts,
-      "Spawns": spawns,
-      "Loot": loot,
+      // "Spawns": spawns,
+      // "Loot": loot,
   };
-// 
+
   const southWest = map.unproject([0, h], map.getMaxZoom()-1);
   const northEast = map.unproject([w, 0], map.getMaxZoom()-1);
   const bounds = new L.LatLngBounds(southWest, northEast);
+
+  // var bounds = [[0, 0], [1000, 1000]];
 
   document.getElementById('mapSource').href = 'https://escapefromtarkov.gamepedia.com/'+array.name;
 
   if (extracts != null) L.control.layers(baseMaps, overlayMaps).addTo(map);
   L.imageOverlay(url, bounds).addTo(map);
+
+  map.fitBounds(bounds);
 
   map.setZoom(2);
   map.setMaxBounds(bounds);

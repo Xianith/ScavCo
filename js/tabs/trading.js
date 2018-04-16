@@ -20,11 +20,23 @@ export default class Trading extends Component {
 
   componentDidMount() {
     fetch('https://www.reddit.com/r/TarkovTrading/new/.json?limit=100').then((e) => {
-      e.json().then((f) => { this.setState({ posts: f.data.children })})
+      e.json().then((f) => { 
+        // this.setState({ posts: f.data.children });
+
+        let tempArray = [];
+
+        f.data.children.map(function(i){
+          if (i.data.link_flair_text != "Closed") {
+            tempArray.push(i);
+          }
+        })
+
+        console.log (tempArray);
+        this.setState({ posts: tempArray });
+      })
     });
     // if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
     document.title = "Scav Co 🔸 Trading";
-    document.getElementById('fourohfour').style.display = 'none';
     document.getElementById('MainMenu').style.display = 'block';
   }
 
@@ -35,7 +47,15 @@ export default class Trading extends Component {
 
   render() { 
     let p = this.state.posts.map((e) => (<Post data={e}/>));
-    if (p.length == 0) { return (<div className="loading-div">Loading...</div>) }
+    if (p.length == 0) { 
+      setTimeout(function(){ document.getElementById("post-messanger").innerHTML = 
+        "<center>\
+            <span>Trading Closed</span>\
+              <br /><span style='font-size:12px; color: #bcb9a9'>This usually means a wipe is near!<br />\
+              Check <a target='_blank' href='https://www.reddit.com/r/TarkovTrading/'>here</a> for more info</span>\
+          </center>"; document.getElementById("post-messanger").style.height = 150;
+        }, 1500); 
+      return (<div className="loading-div" id="post-messanger">Loading...</div>); }
 
     return (  
       <div className="jumbotron contentcontainer tab-container" id="Trading">

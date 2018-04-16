@@ -11,7 +11,6 @@ export default class Barter extends Component {
   componentDidMount() {
    // if (document.getElementById("footer").style.display != 'block') { document.getElementById("footer").style.display = 'block'; }
     document.title = "Scav Co 🔸 Barter";
-    document.getElementById('fourohfour').style.display = 'none';
     document.getElementById('MainMenu').style.display = 'block';
   }
 

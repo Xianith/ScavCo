@@ -1,13 +1,22 @@
-#Home .hm-hr {
+#Home .jumbotron .hm-hr {
 	border-bottom: 1px solid #6f6a5b;
 	padding-bottom: 15px;
 }
 
-#Home {
+#Home .jumbotron  {
 	min-width: 370px;
 	max-width: 550px;
 	padding-top: 0px;
 	padding-bottom: 15px;
+}
+
+#Home .h1, #Home .h2, #Home .h3, #Home h1, #Home h2, #Home h3 {
+	margin-top: 10px;
+}
+
+#news-block {
+	margin-bottom: 10px;
+	font-size: 20px;
 }
 
 

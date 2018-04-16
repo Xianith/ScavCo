@@ -17,6 +17,18 @@
   transition: 0.3s;
 }
 
+.sub-nav-menu .disabled {
+  color: gray;
+  border: 2px solid gray !important;
+}
+
+.sub-nav-menu .disabled:hover {
+  color: gray;
+  border: 2px solid gray !important;
+  background-color:#292929 !important;
+  cursor: not-allowed;
+}
+
 .sub-nav-menu button:focus, .sub-nav-menu button:hover {
   color: white;
   background-color:#9a8866 !important;

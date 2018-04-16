@@ -28,7 +28,7 @@ export function navMenu(id) {
 
 
    for (var i=0; i < item.length; i++) { item[i].style.display = "none"; }
-   for (var i=0; i < filter.length; i++) { filter[i].style.display = "block"; }
+   for (var i=0; i < filter.length; i++) { filter[i].style.display = "grid"; }
 }
 
 export default class Menu extends Component {
@@ -64,6 +64,8 @@ export default class Menu extends Component {
                     </li>
                   )}
           </ul>
+          <div style={{padding: "9px", float: "right"}}>
+            <a style={{color: "rgb(215, 177, 0)"}} target="_blank" href="https://www.reddit.com/r/EscapefromTarkov/comments/8c1jz2/patch_08_is_scheduled_for_april_19th/">0.8 on 4/19!</a></div>
           <ul className="nav navbar-nav navbar-right">
           </ul>
         </div>

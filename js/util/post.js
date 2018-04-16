@@ -35,17 +35,19 @@ export default class Post extends React.Component {
     let postText = document.getElementById(newId);
 
     let dBtn = postText.parentNode.getElementsByClassName('dBtn')[0]
-    let dBtnShort = postText.parentNode.getElementsByClassName('Short')[0]
+    let dTxt = dBtn.getElementsByClassName('dTxt')[0]
+    // let dBtnShort = postText.parentNode.getElementsByClassName('Short')[0]
 
     if (postText.style.display == "none") {
       postText.style.display = "block";
-      dBtn.style.display = "block";
-      dBtnShort.style.display = "none";
+      dTxt.style.display = "inline-flex";
+      // dTxt.stlye.display = "block";
+      // dBtn.style.display = "block";
+      // dBtnShort.style.display = "none";
       postBtn.innerHTML = 'Hide Post';
     } else {
       postText.style.display = "none";
-      dBtn.style.display = "none";
-      dBtnShort.style.display = "block";
+      dTxt.style.display = "none";
       postBtn.innerHTML = 'Show Post';
     }
    }
@@ -87,17 +89,23 @@ export default class Post extends React.Component {
     let dButtonShort = null;
     let pVisibility = 'hidden';
 
-    if (data.link_flair_text == 'WTS') { pVisibility = 'block'; }
+    if (data.link_flair_text == 'WTS') { pVisibility = 'grid'; }
     discord = data.selftext.match(/(?!\S*[*\:])\S*#[0-9]{4}/gi);
 
     if (discord != null) { 
-      dButton = <a style={{display: "none"}} className="dBtn" title={"Copy to Clipboard: " + discord} target="_blank" onClick={this.copyDisc}><span discord={discord} className="glyphicon glyphicon-copy" aria-hidden="true"></span><img src={dIcon} className="discord-icon" alt='Discord Logo'/>{discord}</a> 
+      dButton = <a className="dBtn" title={"Copy to Clipboard: " + discord} onClick={this.copyDisc}>
+          <img src={dIcon} className="dIcon" alt='Discord Logo'/>
+          <span discord={discord} className="glyphicon glyphicon-copy" aria-hidden="true"></span>
+          <p className="dTxt">{discord}</p>
+        </a>
+      // dButton = <a style={{display: "none"}} className="dBtn" title="Copy to Clipboard" target="_blank" onClick={this.copyDisc}><span discord={discord} className="glyphicon glyphicon-copy" aria-hidden="true"></span><img src={dIcon} className="discord-icon" alt='Discord Logo'/>{discord}</a> 
       dButtonShort = <a className="dBtn Short" title={"Copy to Clipboard: " + discord} target="_blank"  onClick={this.copyDisc}><span discord={discord} className="glyphicon glyphicon-copy" aria-hidden="true"></span><img src={dIcon} className="discord-icon" alt='Discord Logo'/></a>
       }
-    if (data.selftext && data.selftext.length > 3) {  
+    if (data.selftext && data.selftext.length > 3) {
+
       pButton = <a id={'postBtn-'+ postIndex} key={"post-tgl-"+postIndex} onClick={this.onClick}>Show Post</a>
       pText = <span className="listing-info" id={'postText-'+ postIndex} style={{display: "none"}}>
-        <span className='post-text'>{data.selftext}</span></span>
+        <span className='post-text'><pre>{data.selftext}</pre></span></span>
     }
 
     postIndex ++
@@ -107,8 +115,8 @@ export default class Post extends React.Component {
       // if (postCount[i].count <= 0) { menuLi.style.display = 'none' } else { menuLi.style.display = 'block' };
     }
     return ( 
-      <div className={"postObj thing itm tgl-itm-" + data.link_flair_text} style={{display: "block"}} key={"post-key-"+postIndex}>
-        <p className="title"><a target="_blank" href={data.url}>{pTitle}</a><span className="post-buttons">{dButton}{dButtonShort}{pButton}</span>{pText}</p>
+      <div className={"postObj thing itm tgl-itm-" + data.link_flair_text} style={{display: "grid"}} key={"post-key-"+postIndex}>
+        <p className="title"><a target="_blank" href={data.url}>{pTitle}</a><span className="post-buttons">{dButton}{pButton}</span>{pText}</p>
       </div>)
   }
 }

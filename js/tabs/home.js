@@ -34,7 +34,6 @@ export default class Home extends Component {
     document.title = "Scav Co";
     this.getNews();
     document.getElementById('MainMenu').style.display = 'none';
-    document.getElementById('fourohfour').style.display = 'none';
   }
 
   getNews() {
@@ -67,37 +66,26 @@ export default class Home extends Component {
                     link: post[i].getElementsByTagName('link')[0].innerHTML, 
                     desc: post[i].getElementsByTagName('description')[0].innerHTML, 
                     date: post[i].getElementsByTagName('pubDate')[0].innerHTML})
-
         title.innerHTML = posts[i].title;
         title.href = posts[i].link;
 
         document.getElementById('news-block').appendChild(title);
-        item.push(title)
+        item.push(post[i])
       }
-     
-      // console.log(post[0]);
-      // console.log(posts);
-
-
-
-
-      // console.log(item)
       news = item
-
-      // console.log(news);
     };
 
-    console.log(news);
+    // console.log(news);
 
     return (<div>
       <div id='titlescreen'>
 
-      <b className="navbar-brand hidden">SCAV</b><br/>
-      <center><img style={{height: '150px', margin: '-45px'}}src="https://s3.amazonaws.com/scavco/scavco_websize.png" />
+      <center><img style={{height: '150px', margin: '-45px', marginTop:'-35px'}}src="https://s3.amazonaws.com/scavco/scavco_websize.png" />
       <h2>Где мусорщики идут</h2>
       (Where the scavs go!)</center>
       </div>
-       <div className="jumbotron contentcontainer" id="Home">
+      <div id="Home">
+       <div className="jumbotron contentcontainer">
           <center>
          
           <div className='hm-hr' style={{paddingBottom: "0px"}}>
@@ -112,35 +100,39 @@ export default class Home extends Component {
           )}
           </div>
 
-          <div style={{paddingTop: "0px"}}>
-          <h3 style={{paddingTop: "0px"}}>Sites</h3>
-            <a target="_blank" href="https://escapefromtarkov.gamepedia.com"><img src={ gamepedia } className="socialicon" title="Gamepedia" alt="Gamepedia" /></a> &nbsp;
-            <a target="_blank" href="escapefromtarkov.com"><img src={ battlestate } className="socialicon" title="Official Website" alt="Official Website" /></a>
-          <h4>Social</h4>
-            <a target="_blank" href="https://www.reddit.com/r/escapefromtarkov/"><img src={ reddit } className="socialicon" title="Subreddit" alt="Subreddit"/></a> &nbsp;
-            <a target="_blank" href="https://discord.gg/GUWxkns"><img src="https://cdn.discordapp.com/icons/387998106228097025/7b7a6bf03619e50f9f233c68898cc88c.png" className="socialicon" title="Scav Co Discord" alt="Scav CoDiscord" /></a> &nbsp;
-            <a target="_blank" href="https://discord.gg/YFVCGFe"><img src="https://cdn.discordapp.com/icons/372802948775936003/7b8d7d9a78be71e0866bdb9f6f85e32f.png" className="socialicon" title="Official EFT Discord" alt="Official EFTDiscord" /></a>
-          </div>   
+          <h3>News</h3>
+          <h3><a style={{color: "rgb(215, 177, 0)"}} href="https://www.reddit.com/r/EscapefromTarkov/comments/8c1jz2/patch_08_is_scheduled_for_april_19th/?utm_content=comments&utm_medium=hot&utm_source=reddit&utm_name=EscapefromTarkov">Wipe scheduled for April 19th!</a></h3>
+
+          <span style={{fontSize: "15px"}} id="news-block"></span>
+
+          <br/ ><span style={{fontSize: "12px"}}>Info provided by <a href="https://github.com/post-tracker/site">Dev Tracker</a></span>
 
           </center>
         </div>
-        <div className="jumbotron contentcontainer" id="Home">
+        <div className="jumbotron contentcontainer">
            <center>
-           <div className='hm-hr hm-sub'>
-           <h3>News</h3>
-           <div id="news-block">{news && news.map((n) => n.title)}</div>
-           </div>
-           <span>Info Provided by <a href="https://github.com/post-tracker/site">Dev Tracker</a></span>
+           <div className='m-sub'>
+           <h3 style={{paddingTop: "0px"}}>Sites</h3>
+             <a target="_blank" href="https://escapefromtarkov.gamepedia.com"><img src={ gamepedia } className="socialicon" title="Gamepedia" alt="Gamepedia" /></a> &nbsp;
+             <a target="_blank" href="escapefromtarkov.com"><img src={ battlestate } className="socialicon" title="Official Website" alt="Official Website" /></a>
+           <h4>Social</h4>
+             <a target="_blank" href="https://www.reddit.com/r/escapefromtarkov/"><img src={ reddit } className="socialicon" title="Subreddit" alt="Subreddit"/></a> &nbsp;
+             <a target="_blank" href="https://discord.gg/GUWxkns"><img src="https://cdn.discordapp.com/icons/387998106228097025/7b7a6bf03619e50f9f233c68898cc88c.png" className="socialicon" title="Scav Co Discord" alt="Scav CoDiscord" /></a> &nbsp;
+             <a target="_blank" href="https://discord.gg/YFVCGFe"><img src="https://cdn.discordapp.com/icons/372802948775936003/7b8d7d9a78be71e0866bdb9f6f85e32f.png" className="socialicon" title="Official EFT Discord" alt="Official EFTDiscord" /></a>
+           </div>   
            </center>
          </div>
-        <div className="jumbotron contentcontainer" id="Home">
+        <div className="jumbotron contentcontainer">
            <center>
            <h3>Scav Co Development</h3>
              <span>This site is being developed by <a href="http://xianith.com">Xianith</a>.<br />
-             Art generously provided by <a href="https://www.instagram.com/tarkovmemes/">TarkovMemes</a>.<br />
              Check out the <a href="https://github.com/Xianith/ScavCo">github repo</a> for more info.</span>
+          <h4>Credit</h4>
+            <a href="/art">Art</a> generously provided by <a href="https://www.instagram.com/tarkovmemes/">TarkovMemes</a>.<br />
+            Most other images are from the <a target="_blank" href="https://escapefromtarkov.gamepedia.com">EFT Gamepedia</a>.
            </center>
          </div>
+        </div>
          </div>);
   }
 }

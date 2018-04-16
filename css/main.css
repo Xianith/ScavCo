@@ -30,7 +30,7 @@ h2, h3 {
 /*-----------*/
 /*footer*/
 /*-----------*/
-.madeby, .loading-div {
+.madeby, .loading-div, .notfound-div {
     display: block;
     position: fixed;
     bottom: 0px;
@@ -43,14 +43,15 @@ h2, h3 {
     border: 1px solid #6f6a5b;
     border-radius: 0;
 }
-.madeby a, .loading-div { color: #d6bd8e; }
+.madeby a, .loading-div, .notfound-div { color: #d6bd8e; }
 
 /*-----------*/
 /*loading prompt*/
 /*-----------*/
 .loading-div {
     top: 20%;
-    width: 200px;
+    min-width: 200px;
+    max-width: 500px;
     height: 125px;
     font-size: 25px;
     display: block;
@@ -73,6 +74,17 @@ h2, h3 {
         border: 2px solid #6f6a5b;
         text-shadow: 2px 2px #696363;
         border-radius: 30px;
+}
+
+/*-----------*/
+/*404 Div*/
+/*-----------*/
+
+.notfound-div {
+    font-size: 25px;
+    display: block;
+    padding: 25px;
+    text-align: center;
 }
 
 /*-----------*/
