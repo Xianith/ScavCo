@@ -1,4 +1,5 @@
-# Scav Co
+# Scav Co - *Discontinued* 
+
 Escape from Tarkov website for all your EFT needs. Links out to many guides and resources but I am working on trying to house everything in one area while providing unique tools that people can use.
 
 **Colaborators:**
