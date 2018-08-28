@@ -32,7 +32,7 @@ export default class Home extends Component {
 
   componentDidMount() {
     document.title = "Scav Co";
-    this.getNews();
+    // this.getNews();
     document.getElementById('MainMenu').style.display = 'none';
   }
 
@@ -85,23 +85,24 @@ export default class Home extends Component {
       (Where the scavs go!)</center>
       </div>
       <div id="Home">
-       <div className="jumbotron contentcontainer">
+      <center>
+      <div>
+      {btnArray.map((btn) =>
+        <NavLink 
+          key={"hm-main-"+btn}
+          to={"/" + btn.toLowerCase()} 
+          activeClassName='active' 
+          style={{color: 'white'}} 
+          className="hm-nav-btn btn nav-btn">{btn}
+        </NavLink>
+      )}
+      </div>
+      </center>
+       <div className="jumbotron contentcontainer hidden"> 
           <center>
          
-          <div className='hm-hr' style={{paddingBottom: "0px"}}>
-          {btnArray.map((btn) =>
-            <NavLink 
-              key={"hm-main-"+btn}
-              to={"/" + btn.toLowerCase()} 
-              activeClassName='active' 
-              style={{color: 'white'}} 
-              className="hm-nav-btn btn nav-btn">{btn}
-            </NavLink>
-          )}
-          </div>
-
           <h3>News</h3>
-          <h3><a style={{color: "rgb(215, 177, 0)"}} href="https://www.reddit.com/r/EscapefromTarkov/comments/8c1jz2/patch_08_is_scheduled_for_april_19th/?utm_content=comments&utm_medium=hot&utm_source=reddit&utm_name=EscapefromTarkov">Wipe scheduled for April 19th!</a></h3>
+          <h3 style={{display: 'none'}}><a style={{color: "rgb(215, 177, 0)"}} href="https://www.reddit.com/r/EscapefromTarkov/comments/8c1jz2/patch_08_is_scheduled_for_april_19th/?utm_content=comments&utm_medium=hot&utm_source=reddit&utm_name=EscapefromTarkov">Wipe scheduled for April 19th!</a></h3>
 
           <span style={{fontSize: "15px"}} id="news-block"></span>
 
@@ -109,12 +110,12 @@ export default class Home extends Component {
 
           </center>
         </div>
-        <div className="jumbotron contentcontainer">
+        <div className="jumbotron contentcontainer" style={{marginTop:"2px"}}>
            <center>
            <div className='m-sub'>
            <h3 style={{paddingTop: "0px"}}>Sites</h3>
              <a target="_blank" href="https://escapefromtarkov.gamepedia.com"><img src={ gamepedia } className="socialicon" title="Gamepedia" alt="Gamepedia" /></a> &nbsp;
-             <a target="_blank" href="escapefromtarkov.com"><img src={ battlestate } className="socialicon" title="Official Website" alt="Official Website" /></a>
+             <a target="_blank" href="https://escapefromtarkov.com"><img src={ battlestate } className="socialicon" title="Official Website" alt="Official Website" /></a>
            <h4>Social</h4>
              <a target="_blank" href="https://www.reddit.com/r/escapefromtarkov/"><img src={ reddit } className="socialicon" title="Subreddit" alt="Subreddit"/></a> &nbsp;
              <a target="_blank" href="https://discord.gg/GUWxkns"><img src="https://cdn.discordapp.com/icons/387998106228097025/7b7a6bf03619e50f9f233c68898cc88c.png" className="socialicon" title="Scav Co Discord" alt="Scav CoDiscord" /></a> &nbsp;

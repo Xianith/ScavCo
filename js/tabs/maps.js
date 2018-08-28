@@ -19,7 +19,7 @@ import { mapArray } from '../data/maps.js'
 import extractIcon from '../../assets/map/markers/extract.jpg';
 
 var map = null,
-    locations = ['customs','woods','factory','shoreline','resort'],
+    locations = ['customs','woods','factory','shoreline','resort','interchange'],
     locMenu = [];
 
 for (var l = 0; l < locations.length; l++) { locMenu.push('/maps/'+locations[l]) }
@@ -66,6 +66,13 @@ export default class Maps extends Component {
   componentDidMount() {
     document.title = "Scav Co 🔸 Maps";
     document.getElementById('MainMenu').style.display = 'block';
+
+    var url = document.URL;
+
+    console.log("<<<" + url)
+
+    if (url.indexOf('maps/')) { console.log(url); }
+
     initMap(mapArray[0])
   }
 

@@ -12,7 +12,7 @@ import {
 import '../css/top-menu.css';
 import font from '../assets/1escape.ttf';
 
-export var btnArray = ["Ammo","Bartering","Trading","Maps","Keys","Mods"]
+export var btnArray = ["Ammo","Bartering","Trading","Maps","Keys","Mods", "Art"]
 
 export function navMenu(id) {
    const filterId = id.replace(/sort-/gi,'tgl-itm-');
@@ -65,7 +65,7 @@ export default class Menu extends Component {
                   )}
           </ul>
           <div style={{padding: "9px", float: "right"}}>
-            <a style={{color: "rgb(215, 177, 0)"}} target="_blank" href="https://www.reddit.com/r/EscapefromTarkov/comments/8c1jz2/patch_08_is_scheduled_for_april_19th/">0.8 on 4/19!</a></div>
+            <a style={{color: "rgb(215, 177, 0)"}} target="_blank" href="https://www.reddit.com/r/EscapefromTarkov/comments/8c1jz2/patch_08_is_scheduled_for_april_19th/"></a></div>
           <ul className="nav navbar-nav navbar-right">
           </ul>
         </div>
