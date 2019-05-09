@@ -1,0 +1,53 @@
+{
+  "name": "ScavCo",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.10",
+    "datatables.net": "^1.10.16",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^2.30.1",
+    "jquery": "^3.3.1",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^5.9.1",
+    "webpack": "^3.11.0",
+    "webpack-bundle-tracker": "^0.2.1",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server --hot --progress --colors",
+    "build": "webpack --watch --progress --colors --display-error-details"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.0.0",
+    "discord.js": "^11.3.0",
+    "gamepedia-api": "^0.1.1",
+    "google-maps-react": "^1.1.2",
+    "google-sheets-api": "^0.4.1",
+    "googleapis": "^27.0.0",
+    "lodash": "^4.17.5",
+    "react": "^16.2.0",
+    "react-bootstrap": "^0.32.1",
+    "react-bootstrap-table": "^4.3.1",
+    "react-bootstrap-table-next": "^0.1.4",
+    "react-dom": "^16.2.0",
+    "react-google-sheet-connector": "^1.0.1",
+    "react-image-lightbox": "^4.6.0",
+    "react-images": "^0.5.17",
+    "react-photo-gallery": "^6.0.22",
+    "react-redux": "^5.0.7",
+    "react-refetch": "^1.0.4",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-table": "^6.8.0",
+    "rss-parser-browser": "^2.2.2",
+    "url-loader": "^1.0.1",
+    "webhook-discord": "^2.0.6"
+  }
+}
