@@ -4,7 +4,7 @@ cloud-init==17.1
 command-not-found==0.3
 configobj==5.0.6
 cryptography==1.2.3
-Django==2.0.2
+Django==2.2.10
 django-filter==1.1.0
 djangorestframework==3.7.7
 hibagent==1.0.1
