@@ -6,7 +6,7 @@ configobj==5.0.6
 cryptography==1.2.3
 Django==2.0.2
 django-filter==1.1.0
-djangorestframework==3.7.7
+djangorestframework==3.11.2
 hibagent==1.0.1
 idna==2.0
 Jinja2==2.8
